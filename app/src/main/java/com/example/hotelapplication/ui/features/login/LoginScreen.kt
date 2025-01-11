@@ -106,7 +106,7 @@ fun LoginScreen(
         }
 
         LoginButton(stringResource(R.string.login)) {
-            /* TODO navController.navigate(Route.HomeScreen.route) */
+            navController.navigate(Route.MainScreen.route)
         }
 
         Column(

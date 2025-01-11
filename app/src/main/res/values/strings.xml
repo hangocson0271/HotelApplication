@@ -15,4 +15,6 @@
     <string name="txt_username">Username</string>
     <string name="txt_password">Password</string>
     <string name="txt_email">Email</string>
+
+    <string name="search_hint">Search for hotel</string>
 </resources>
