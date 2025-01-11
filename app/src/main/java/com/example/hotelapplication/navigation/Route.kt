@@ -7,4 +7,6 @@ sealed class Route (
     object LoginScreen: Route("LoginScreen")
     object ForgotPasswordScreen: Route("LoginScreen")
     object CancellationPolicyScreen: Route("CancellationPolicyScreen")
+    object SplashScreen: Route("SplashScreen")
+    object SignupScreen: Route("SignupScreen")
 }
