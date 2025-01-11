@@ -8,6 +8,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
+import com.example.hotelapplication.ui.features.main.CancellationPolicyScreen
 import com.example.hotelapplication.ui.features.login.LoginScreen
 import com.example.hotelapplication.ui.features.main.MainScreen
 import com.example.hotelapplication.ui.features.signup.SignupScreen
@@ -24,6 +25,7 @@ fun HotelAppNavGraph() {
             modifier = Modifier.padding(it)
         ) {
             composable(Route.MainScreenSample.route) { MainScreen() }
+            composable(Route.CancellationPolicyScreen.route) { CancellationPolicyScreen() }
             composable(Route.SplashScreen.route) { SplashScreen(navController) }
             composable(Route.LoginScreen.route) { LoginScreen(navController) }
             composable(Route.SignupScreen.route) { SignupScreen(navController) }
