@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -48,13 +49,17 @@ fun ElevatedCardHomeScreen(
     onClick: () -> Unit
 ) {
     ElevatedCard(
+        colors = CardDefaults.cardColors(
+            containerColor = colorResource(R.color.white)
+        ),
         onClick = singleClick(onClick), elevation = CardDefaults.cardElevation(
             defaultElevation = 10.dp // Tăng độ nổi
         ), modifier = Modifier
+            .padding(10.dp)
             .size(
                 width = 206.85.dp, height = 171.dp
             )
-            .background(color = Color(0x6B86B340))
+            //.background(color = Color(0x6B86B340))
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
