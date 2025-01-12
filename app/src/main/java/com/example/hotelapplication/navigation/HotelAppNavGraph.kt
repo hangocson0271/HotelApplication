@@ -7,8 +7,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.hotelapplication.ui.features.booking.BookingConfirmScreen
 import com.example.hotelapplication.ui.features.login.LoginScreen
-import com.example.hotelapplication.ui.features.main.CancellationPolicyScreen
+import com.example.hotelapplication.ui.features.booking.CancellationPolicyScreen
 import com.example.hotelapplication.ui.features.main.MainScreen
 import com.example.hotelapplication.ui.features.signup.SignupScreen
 import com.example.hotelapplication.ui.features.splash.SplashScreen
@@ -28,6 +29,7 @@ fun HotelAppNavGraph() {
             composable(Route.SplashScreen.route) { SplashScreen(navController) }
             composable(Route.LoginScreen.route) { LoginScreen(navController) }
             composable(Route.SignupScreen.route) { SignupScreen(navController) }
+            composable(Route.BookingConfirmScreen.route) { BookingConfirmScreen() }
         }
     }
 }
