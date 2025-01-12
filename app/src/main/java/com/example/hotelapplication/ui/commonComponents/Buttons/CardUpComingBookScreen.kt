@@ -207,7 +207,8 @@ fun CardUpComingBookScreen(
                         Text(
                             text = stringResource(R.string.txt_booking_cancel),
                             color = Color.Red,
-                            modifier = Modifier.align(Center)
+                            modifier = Modifier.align(Center),
+                            fontSize = 12.sp
                         )
                     }
                 }
