@@ -11,6 +11,7 @@ import com.example.hotelapplication.ui.features.booking.BookingConfirmScreen
 import com.example.hotelapplication.ui.features.login.LoginScreen
 import com.example.hotelapplication.ui.features.booking.CancellationPolicyScreen
 import com.example.hotelapplication.ui.features.main.MainScreen
+import com.example.hotelapplication.ui.features.searchScreen.SearchScreen
 import com.example.hotelapplication.ui.features.signup.SignupScreen
 import com.example.hotelapplication.ui.features.splash.SplashScreen
 
@@ -24,12 +25,13 @@ fun HotelAppNavGraph() {
             startDestination = Route.SplashScreen.route,
             modifier = Modifier.padding(it)
         ) {
-            composable(Route.MainScreen.route) { MainScreen() }
+            composable(Route.MainScreen.route) { MainScreen(navController = navController) }
             composable(Route.CancellationPolicyScreen.route) { CancellationPolicyScreen() }
             composable(Route.SplashScreen.route) { SplashScreen(navController) }
             composable(Route.LoginScreen.route) { LoginScreen(navController) }
             composable(Route.SignupScreen.route) { SignupScreen(navController) }
             composable(Route.BookingConfirmScreen.route) { BookingConfirmScreen() }
+            composable(Route.SearchScreen.route) { SearchScreen(navController) }
         }
     }
 }
