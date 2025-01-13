@@ -75,4 +75,7 @@
     <string name="txt_have_breakfast">Breakfast Included</string>
     <string name="txt_no_breakfast">No Breakfast Included</string>
     <string name="txt_book">Book</string>
+    <string name="txt_viewbooking">View Booking</string>
+    <string name="txt_booking_completed">Booking Completed</string>
+    <string name="txt_booking_cancel">You cancelled this hotel booking</string>
 </resources>
