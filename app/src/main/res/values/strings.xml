@@ -10,6 +10,14 @@
     <string name="sign_in">Sign In</string>
     <string name="login">Log In</string>
     <string name="forgot_password">Forgot Password?</string>
+    <string name="new_credit_debit_card">New credit/Debit Card</string>
+    <string name="paypal">Paypal</string>
+    <string name="apple_pay">Apple Pay</string>
+    <string name="google_pay">Google Pay</string>
+    <string name="_continue">Continue</string>
+    <string name="other_payment_method">Other Payment Method</string>
+    <string name="my_card">My Card</string>
+    <string name="edit_card">Edit Card</string>
     <string name="remember_me">Remember Me</string>
     <string name="txt_or">or</string>
     <string name="txt_username">Username</string>
@@ -26,4 +34,5 @@
     <string name="txt_ok">OK</string>
     <string name="txt_cancel">Cancel</string>
     <string name="txt_edit_profile">Edit Profile</string>
+
 </resources>

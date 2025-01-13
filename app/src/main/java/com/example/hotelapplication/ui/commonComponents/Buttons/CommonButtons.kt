@@ -28,7 +28,8 @@ fun CommonButton(
         shape = RoundedCornerShape(20),
         colors = ButtonDefaults.buttonColors(
             containerColor = bgColor
-        )
+        ),
+
     ) {
         Text(
             text = title,
