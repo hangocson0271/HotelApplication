@@ -1,5 +1,6 @@
 package com.example.hotelapplication.ui.features.main
 
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -20,14 +21,21 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.hotelapplication.R
+import com.example.hotelapplication.navigation.Route
 import com.example.hotelapplication.ui.commonComponents.Buttons.ElevatedCardHomeScreen
 import com.example.hotelapplication.ui.commonComponents.Images.UserAvatar
 import com.example.hotelapplication.ui.commonComponents.SearchFilters.ButtonFilter
 import com.example.hotelapplication.ui.commonComponents.SearchFilters.LayoutSearch
 
 @Composable
-fun MainScreen(modifier: Modifier = Modifier) {
+fun MainScreen(
+    modifier: Modifier = Modifier,
+    navController: NavController
+) {
+    val TAG = "MainScreen"
     Column(
         Modifier.background(
             colorResource(
@@ -67,7 +75,12 @@ fun MainScreen(modifier: Modifier = Modifier) {
                     modifier = Modifier.padding(horizontal = 10.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    LayoutSearch(isSearchable = true, percentFillWidth = 0.9f)
+                    LayoutSearch(isSearchable = false,
+                        percentFillWidth = 0.9f,
+                        onClick = {
+                            Log.d(TAG, "MainScreen: XXX")
+                            navController.navigate(Route.SearchScreen.route)
+                        })
                     ButtonFilter()
                 }
                 Spacer(
@@ -98,5 +111,5 @@ fun MainScreen(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 fun Prev_Main() {
-    MainScreen()
+    MainScreen(navController = rememberNavController())
 }
