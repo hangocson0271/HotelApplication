@@ -7,10 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
+    <color name="muted_Green_with_Transparency">#238C9826</color>
+    <color name="borderCard_color">#CFC4C4A1</color>
+    <color name="borderCardPaymentButton_color">#238C98</color>
     <color name="main_color">#238C98</color>
     <color name="splash_blur">#7F000000</color>
     <color name="splash_text_color">#F2EDEDED</color>
     <color name="gray">#C6CEDD</color>
     <color name="dark_gray">#837A7A</color>
+    <color name="gray_e3e3e4">#E3E3E4</color>
+    <color name="txt_gray">#B8B8B9</color>
 </resources>

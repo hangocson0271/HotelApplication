@@ -10,11 +10,20 @@
     <string name="sign_in">Sign In</string>
     <string name="login">Log In</string>
     <string name="forgot_password">Forgot Password?</string>
+    <string name="new_credit_debit_card">New credit/Debit Card</string>
+    <string name="paypal">Paypal</string>
+    <string name="apple_pay">Apple Pay</string>
+    <string name="google_pay">Google Pay</string>
+    <string name="_continue">Continue</string>
+    <string name="other_payment_method">Other Payment Method</string>
+    <string name="my_card">My Card</string>
+    <string name="edit_card">Edit Card</string>
     <string name="remember_me">Remember Me</string>
     <string name="txt_or">or</string>
     <string name="txt_username">Username</string>
     <string name="txt_password">Password</string>
     <string name="txt_email">Email</string>
+    <string name="search_hint">Search for hotel</string>
     <string name="enter_username">Enter name</string>
     <string name="txt_phone">Phone</string>
     <string name="enter_phonenumber">Enter phone number</string>
@@ -25,4 +34,60 @@
     <string name="txt_ok">OK</string>
     <string name="txt_cancel">Cancel</string>
     <string name="txt_edit_profile">Edit Profile</string>
+    <string name="txt_accept">Accept</string>
+    <string name="txt_name">Name</string>
+    <string name="txt_confirm_booking">Confirm Booking</string>
+    <string name="txt_check_in">Check in</string>
+    <string name="txt_check_out">Check out</string>
+    <string name="txt_room_type">Room Type</string>
+    <string name="txt_guest">Guest</string>
+    <string name="txt_room_number">Number of rooms</string>
+    <string name="txt_total_price">Total</string>
+    <string name="cancellation_policy_title">Cancellation Policy</string>
+    <string name="cancellation_policy_text">
+        """
+        Thank you for choosing our service. We understand that sometimes plans change, and you may need to cancel or modify your booking. Below, you’ll find the details of our cancellation policy, which has been designed to be fair to both our customers and our business. Please read the following terms carefully before proceeding with any cancellations.
+
+        1. Cancellation Period
+        - You may cancel your booking or subscription up to 24 hours before the scheduled start time to receive a full refund.
+        - Cancellations made within 24 hours of the scheduled start time will be subject to a cancellation fee of 50% of the total amount.
+        - If the cancellation is made less than 2 hours before the scheduled time, no refund will be provided.
+        - For subscription-based services, cancellations can be made at any time during the billing cycle. However, if you cancel your subscription mid-cycle, no pro-rated refund will be issued for the remaining period.
+
+        2. How to Cancel
+        To cancel your booking or subscription, please follow these steps:
+        1. Log into your account on our website or mobile app.
+        2. Navigate to the "My Bookings" or "My Subscriptions" section.
+        3. Select the booking or subscription you wish to cancel.
+        4. Click on the "Cancel" button and confirm your cancellation.
+
+        Alternatively, you can contact our support team by email or phone, and they will assist you with the cancellation process.
+
+        3. Refund Process
+        - Refunds, if applicable, will be processed using the same payment method that was used for the original transaction. Please allow 5-7 business days for the refund to appear in your account, depending on your payment provider.
+        - In case of a cancellation due to exceptional circumstances such as an emergency or illness, please contact our customer service team, and we may offer special consideration on a case-by-case basis.
+
+        4. No-show Policy
+        If you do not show up for your scheduled service and fail to cancel your booking within the specified time, you will not be entitled to a refund, and a no-show fee may apply. The no-show fee will be equivalent to the full cost of the service or booking.
+
+        5. Exceptions to the Cancellation Policy
+        While we have designed our cancellation policy to be fair and straightforward, we recognize that certain situations may warrant exceptions. The following are some cases where our standard cancellation policy may not apply:
+        - Medical emergencies: If you are unable to attend due to a medical emergency, please provide relevant documentation, and we may offer a refund or reschedule at no extra cost.
+        - Force Majeure: In cases of unforeseen events such as natural disasters, government-imposed restrictions, or other extraordinary circumstances beyond our control, we reserve the right to waive the cancellation fee or offer a full refund.
+
+        """
+    </string>
+    <string name="txt_night">Night</string>
+    <string name="txt_single">Single Room</string>
+    <string name="txt_double">Double Room</string>
+    <string name="txt_have_breakfast">Breakfast Included</string>
+    <string name="txt_no_breakfast">No Breakfast Included</string>
+    <string name="txt_book">Book</string>
+
+    <!--Search Screen-->
+    <string name="search_screen_title">Search</string>
+    <string name="hotel_result">Filter (%d hotels)</string>
+    <string name="txt_viewbooking">View Booking</string>
+    <string name="txt_booking_completed">Booking Completed</string>
+    <string name="txt_booking_cancel">You cancelled this hotel booking</string>
 </resources>
