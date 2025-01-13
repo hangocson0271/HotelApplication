@@ -17,4 +17,5 @@
     <color name="dark_gray">#837A7A</color>
     <color name="gray_e3e3e4">#E3E3E4</color>
     <color name="txt_gray">#B8B8B9</color>
+    <color name="background_book_completed">#a7d1d6</color>
 </resources>

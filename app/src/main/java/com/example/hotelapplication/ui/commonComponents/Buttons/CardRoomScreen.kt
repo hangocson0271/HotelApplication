@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
@@ -84,7 +85,7 @@ fun ElevatedCardRoomScreen(
                     .width(198.17.dp)
                     .padding(5.dp)
                     .clip(RoundedCornerShape(18.62.dp))
-                    .border(0.93.dp, Color(0xFFB8B8B9), RoundedCornerShape(18.62.dp)),
+                    .border(0.93.dp, colorResource(R.color.txt_gray), RoundedCornerShape(18.62.dp)),
                 contentScale = ContentScale.Crop,
             )
             Spacer(modifier = Modifier.height(5.dp))
@@ -140,7 +141,7 @@ fun ElevatedCardRoomScreen(
                     text = roomTypeString,
                     textAlign = TextAlign.Start,
                     fontSize = 12.69.sp,
-                    color = Color(0x7D303030),
+                    color = colorResource(R.color.txt_gray),
                     modifier = Modifier.weight(1f)
                 )
             }
@@ -164,7 +165,7 @@ fun ElevatedCardRoomScreen(
                     else stringResource(R.string.txt_no_breakfast),
                     textAlign = TextAlign.Start,
                     fontSize = 12.69.sp,
-                    color = Color(0x7D303030),
+                    color = colorResource(R.color.txt_gray),
                     modifier = Modifier.weight(1f)
                 )
             }
@@ -213,6 +214,7 @@ fun ElevatedCardRoomScreen(
             Row {
                 Button(
                     onClick = { singleClick(onClick) },
+                    colors = ButtonDefaults.buttonColors(colorResource(R.color.main_color)),
                     enabled = isAvailable
                 ) {
                     Text(stringResource(R.string.txt_book))

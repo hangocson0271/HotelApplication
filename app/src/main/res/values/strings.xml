@@ -83,6 +83,8 @@
     <string name="txt_have_breakfast">Breakfast Included</string>
     <string name="txt_no_breakfast">No Breakfast Included</string>
     <string name="txt_book">Book</string>
+    <string name="room_list_screen">Room List Screen</string>
+    <string name="upcoming_book_screen">UpComing Book Screen</string>
 
     <!--Search Screen-->
     <string name="search_screen_title">Search</string>

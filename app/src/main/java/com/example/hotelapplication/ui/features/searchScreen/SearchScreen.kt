@@ -21,6 +21,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.hotelapplication.R
 import com.example.hotelapplication.extentions.hiltViewModel
+import com.example.hotelapplication.navigation.Route
 import com.example.hotelapplication.ui.commonComponents.Buttons.ElevatedCardHomeScreen
 import com.example.hotelapplication.ui.commonComponents.SearchFilters.ButtonFilter
 import com.example.hotelapplication.ui.commonComponents.SearchFilters.LayoutSearch
@@ -68,7 +69,9 @@ fun SearchScreen(
                 Spacer(
                     modifier = Modifier.padding(5.dp)
                 )
-                ElevatedCardHomeScreen {}
+                ElevatedCardHomeScreen {
+                    navController.navigate(Route.RoomListScreen.route)
+                }
                 Spacer(
                     modifier = Modifier.padding(5.dp)
                 )

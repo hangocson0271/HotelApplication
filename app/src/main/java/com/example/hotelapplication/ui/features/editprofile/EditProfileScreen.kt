@@ -1,9 +1,9 @@
 package com.example.hotelapplication.ui.features.editprofile
 
-import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
@@ -17,24 +17,20 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -50,11 +46,14 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.hotelapplication.R
+import com.example.hotelapplication.ui.commonComponents.Texts.HeaderLabelScreen
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -71,8 +70,10 @@ enum class IconChoose{
 }
 
 @Composable
-fun EditProfileScreen(focusManager: FocusManager) {
-    Header(stringResource(R.string.txt_edit_profile))
+fun EditProfileScreen(focusManager: FocusManager = LocalFocusManager.current
+                      ,navController: NavController
+) {
+    HeaderLabelScreen(stringResource(R.string.txt_edit_profile), navController)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -109,33 +110,6 @@ fun EditProfileScreen(focusManager: FocusManager) {
     }
 }
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun Header(title: String) {
-    CenterAlignedTopAppBar(
-        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            titleContentColor = MaterialTheme.colorScheme.primary,
-        ),
-        title = {
-            Text(
-                title,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-        },
-        navigationIcon = {
-            IconButton(onClick = { /* do something */ }) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = ""
-                )
-            }
-        }
-    )
-}
-
 @Composable
 fun UserInfoInput(label: String,
                   textInput: String,
@@ -158,6 +132,13 @@ fun UserInfoInput(label: String,
                     onGetFocus()
                 }
             },
+        colors = TextFieldDefaults.colors(
+            focusedContainerColor = colorResource(id = android.R.color.transparent),
+            unfocusedContainerColor = colorResource(id = android.R.color.transparent),
+            cursorColor = colorResource(id = R.color.main_color),
+            focusedIndicatorColor = colorResource(id = R.color.main_color),
+            unfocusedIndicatorColor = colorResource(id = R.color.gray)
+        ),
         value = inputString,
         onValueChange = {inputString = it },
         label = {Text(text = label,color = Color.Gray)},
@@ -281,7 +262,11 @@ fun ButtonFade(changeVisible: Boolean, iconChoose: IconChoose, onClick:() -> Uni
         ElevatedButton(onClick = {
             onClick()
         }) {
-            Icon(getIconChoose, "")
+            Icon(
+                getIconChoose,
+                "",
+                tint = colorResource(R.color.main_color)
+            )
         }
     }
 }
