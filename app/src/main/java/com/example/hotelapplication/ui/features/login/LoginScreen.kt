@@ -40,12 +40,19 @@ import com.example.hotelapplication.ui.commonComponents.Buttons.LoginButton
 import com.example.hotelapplication.ui.commonComponents.Buttons.OutLineImageButton
 import com.example.hotelapplication.ui.commonComponents.TextField.TextFieldCommon
 import com.example.hotelapplication.ui.commonComponents.Texts.TextLoginTitle
+import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordDialog
+import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordResultDialog
+import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordStep3Dialog
 
 @Composable
 fun LoginScreen(
     navController: NavController
 ) {
     var isRememberChecked by rememberSaveable { mutableStateOf(false) }
+    var isShowForgotPassword by rememberSaveable { mutableStateOf(false) }
+    var forgotPasswordStep2 by rememberSaveable { mutableStateOf(false) }
+    var forgotPasswordStep3 by rememberSaveable { mutableStateOf(false) }
+    var forgotPasswordStepEnd by rememberSaveable { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -93,7 +100,7 @@ fun LoginScreen(
                 }
                 TextButton(
                     onClick = {
-                        navController.navigate(Route.ForgotPasswordScreen.route)
+                        isShowForgotPassword = true
                     }
                 ) {
                     Text(
@@ -156,6 +163,45 @@ fun LoginScreen(
                 },
                 modifier = Modifier.padding(16.dp, 0.dp, 0.dp, 0.dp)
             )
+        }
+        if (isShowForgotPassword) {
+            ForgotPasswordDialog(
+                title = stringResource(R.string.enter_phone_email_title),
+                placeHolder = stringResource(R.string.txt_phone_email),
+                onDismiss = {
+                    isShowForgotPassword = !isShowForgotPassword
+                },
+                onConfirm = {
+                    isShowForgotPassword = !isShowForgotPassword
+                    forgotPasswordStep2 = true
+                }
+            )
+        }
+
+        if (forgotPasswordStep2) {
+            ForgotPasswordDialog(
+                title = stringResource(R.string.txt_enter_verification_code),
+                placeHolder = "",
+                onDismiss = { forgotPasswordStep2 = !forgotPasswordStep2 },
+                onConfirm = {
+                    forgotPasswordStep2 = !forgotPasswordStep2
+                    forgotPasswordStep3 = true
+                }
+            )
+        }
+        if (forgotPasswordStep3) {
+            ForgotPasswordStep3Dialog(
+                onDismiss = { forgotPasswordStep3 = !forgotPasswordStep3 },
+                onConfirm = {
+                    forgotPasswordStep3 = !forgotPasswordStep3
+                    forgotPasswordStepEnd = true
+                }
+            )
+        }
+        if (forgotPasswordStepEnd) {
+            ForgotPasswordResultDialog(stringResource(R.string.txt_success)) {
+                forgotPasswordStepEnd = !forgotPasswordStepEnd
+            }
         }
     }
 }
