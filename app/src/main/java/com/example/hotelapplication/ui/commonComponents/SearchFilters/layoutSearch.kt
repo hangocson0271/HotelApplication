@@ -1,5 +1,6 @@
 package com.example.hotelapplication.ui.commonComponents.SearchFilters
 
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -54,15 +55,11 @@ fun LayoutSearch(
         var text by remember { mutableStateOf("") }
 
         BasicTextField(
-            enabled = isSearchable,
-            value = text,
-            onValueChange = {
+            enabled = isSearchable, value = text, onValueChange = {
                 text = it
-            },
-            textStyle = LocalTextStyle.current.copy(
+            }, textStyle = LocalTextStyle.current.copy(
                 fontSize = 16.sp
-            ),
-            decorationBox = { innerTextField ->
+            ), decorationBox = { innerTextField ->
                 if (text.isEmpty()) {
                     Text(
                         text = stringResource(R.string.search_hint),
@@ -71,8 +68,7 @@ fun LayoutSearch(
                     )
                 }
                 innerTextField()
-            },
-            singleLine = true
+            }, singleLine = true
         )
         Image(
             painter = painterResource(R.drawable.ic_search),
@@ -88,14 +84,16 @@ fun LayoutSearch(
 
 @Composable
 fun ButtonFilter(onClick: () -> Unit = {}) {
-    Image(
-        painter = painterResource(R.drawable.ic_filter),
+    Image(painter = painterResource(R.drawable.ic_filter),
         contentDescription = "",
         modifier = Modifier
+            .clickable(enabled = true, onClick = {
+                Log.d("ButtonFilter", "ButtonFilter: XXX")
+                onClick()
+            })
             .padding(5.dp)
             .border(
-                BorderStroke(0.5.dp, Color.Gray),
-                RectangleShape
+                BorderStroke(0.5.dp, Color.Gray), RectangleShape
             )
             .padding(5.dp)
     )

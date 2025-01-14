@@ -36,6 +36,7 @@ animationGraphicsAndroid = "1.7.5"
 
 threeTenAbp = "1.4.8"
 androidComposeRunTime = "1.7.6"
+composeMaterial = "1.4.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -85,6 +86,7 @@ androidx-window = { module = "androidx.window:window", version.ref = "androidx-w
 androidx-multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
 android-compose-runtime = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "androidComposeRunTime" }
 threeTen-abp = { group = "com.jakewharton.threetenabp", name = "threetenabp", version.ref = "threeTenAbp" }
+androidx-compose-material = { group = "androidx.wear.compose", name = "compose-material", version.ref = "composeMaterial" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
