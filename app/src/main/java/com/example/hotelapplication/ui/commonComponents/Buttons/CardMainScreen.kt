@@ -53,7 +53,7 @@ fun ElevatedCardHomeScreen(
             containerColor = colorResource(R.color.white)
         ),
         onClick = singleClick(onClick), elevation = CardDefaults.cardElevation(
-            defaultElevation = 10.dp // Tăng độ nổi
+            defaultElevation = 10.dp
         ), modifier = Modifier
             .padding(10.dp)
             .size(
@@ -152,7 +152,7 @@ fun ElevatedCardHomeScreen(
                     text = "NGN $price/night",
                     style = androidx.compose.ui.text.TextStyle(
                         fontSize = 9.87.sp,
-                        lineHeight = 10.81.sp // Điều chỉnh khoảng cách dòng
+                        lineHeight = 10.81.sp
                     ),
                     color = Color.Black,
                     fontWeight = FontWeight.Bold,

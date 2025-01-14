@@ -74,7 +74,8 @@ fun MainScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     UserAvatar {
-                        //Todo: action open user profile
+                        Log.d(TAG, "MainScreen: To Edit Profile")
+                        navController.navigate(Route.EditProfileScreen.route)
                     }
                     Spacer(
                         modifier = Modifier.padding(5.dp)
@@ -123,7 +124,10 @@ fun MainScreen(
                 Spacer(
                     modifier = Modifier.padding(5.dp)
                 )
-                ElevatedCardHomeScreen {}
+                ElevatedCardHomeScreen {
+                    Log.d(TAG, "MainScreen: To Room list")
+                    navController.navigate(Route.RoomListScreen.route)
+                }
                 Spacer(
                     modifier = Modifier.padding(5.dp)
                 )
