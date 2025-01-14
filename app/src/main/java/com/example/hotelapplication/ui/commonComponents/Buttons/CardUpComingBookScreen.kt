@@ -82,7 +82,7 @@ fun CardUpComingBookScreen(
                         .width(198.17.dp)
                         .padding(5.dp)
                         .clip(RoundedCornerShape(18.62.dp))
-                        .border(0.93.dp, Color(0xFFB8B8B9), RoundedCornerShape(18.62.dp)),
+                        .border(0.93.dp, colorResource(R.color.txt_gray), RoundedCornerShape(18.62.dp)),
                     contentScale = ContentScale.Crop,
                 )
                 Column(
@@ -136,13 +136,13 @@ fun CardUpComingBookScreen(
                             imageVector = Icons.Filled.LocationOn,
                             contentDescription = "",
                             modifier = Modifier.size(16.dp),
-                            tint = Color(0xFF238C98)
+                            tint = colorResource(R.color.borderCardPaymentButton_color)
                         )
                         Text(
                             text = location,
                             textAlign = TextAlign.Start,
                             fontSize = 12.69.sp,
-                            color = Color(0x7D303030),
+                            color = colorResource(R.color.txt_gray),
                             modifier = Modifier.weight(1f)
                         )
                     }
@@ -189,10 +189,10 @@ fun CardUpComingBookScreen(
                         .height(50.dp)
                         .align(CenterHorizontally)
                         .clip(RoundedCornerShape(10.dp))
-                        .background(color = Color(0xFFa7d1d6))
+                        .background(color = colorResource(R.color.background_book_completed))
                     ){
                         Text(text = stringResource(R.string.txt_booking_completed),
-                            color = Color(0xFF238C98),
+                            color = colorResource(R.color.borderCardPaymentButton_color),
                             modifier = Modifier.align(Center))
                     }
                 }
