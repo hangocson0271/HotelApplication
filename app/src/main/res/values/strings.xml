@@ -42,7 +42,7 @@
     <string name="txt_room_type">Room Type</string>
     <string name="txt_guest">Guest</string>
     <string name="txt_room_number">Number of rooms</string>
-    <string name="txt_total_price">Total</string>
+    <string name="txt_total_price">Total%1$s</string>
     <string name="cancellation_policy_title">Cancellation Policy</string>
     <string name="cancellation_policy_text">
         """

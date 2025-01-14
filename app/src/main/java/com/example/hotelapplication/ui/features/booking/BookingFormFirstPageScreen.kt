@@ -93,13 +93,13 @@ fun BookingFormFirstPageScreen(navController: NavController) {
             ) {
 
                 Text(
-                    text = stringResource(id = R.string.txt_total_price) + ":",
+                    text = stringResource(id = R.string.txt_total_price, ":"),
                     style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold),
                     modifier = Modifier.align(Alignment.CenterVertically)
                 )
 
                 Text(
-                    text = "NGN" + stringResource(id = R.string.txt_total_price),
+                    text = stringResource(id = R.string.txt_total_price, "VND"),
                     style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold),
                     modifier = Modifier.align(Alignment.CenterVertically)
                 )

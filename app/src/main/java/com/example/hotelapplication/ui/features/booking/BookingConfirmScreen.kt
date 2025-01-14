@@ -255,13 +255,13 @@ fun BookingConfirmScreen(navController: NavController) {
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
-                                text = stringResource(id = R.string.txt_total_price),
+                                text = stringResource(id = R.string.txt_total_price, ""),
                                 style = MaterialTheme.typography.titleMedium,
                                 textAlign = TextAlign.Start
                             )
 
                             Text(
-                                text = stringResource(id = R.string.txt_total_price),
+                                text = stringResource(id = R.string.txt_total_price, ""),
                                 style = MaterialTheme.typography.titleLarge,
                                 textAlign = TextAlign.End
                             )
