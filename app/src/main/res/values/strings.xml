@@ -105,6 +105,19 @@
     <string name="txt_enter_verification_code">Enter verification code:</string>
     <string name="txt_success">Success!</string>
     <string name="txt_error_change_pw">Error! Cannot change the password!</string>
+
+
+    <!--Notifications Screen-->
+    <string name="txt_subject_password_change">Password Changed Successfully</string>
+    <string name="txt_content_password_change">Your password has been updated successfully.</string>
+
+    <string name="txt_subject_order_placed_successfully">Your order has been placed successfully.</string>
+    <string name="txt_content_order_placed_successfully">Password Changed Successfully</string>
+
+    <string name="txt_subject_payment_successfully">Payment Successful.</string>
+    <string name="txt_content_payment_successfully">Your payment has been processed successfully.</string>
+
+    <string name="txt_title_screen_notifications">Notification</string>
   
     <!--Booking Form Screen-->
     <string name="txt_select_date">Select date</string>

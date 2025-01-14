@@ -1,5 +1,6 @@
 package com.example.hotelapplication.ui.commonComponents.Scene
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -57,7 +58,7 @@ fun BaseScene(navController: NavController, titleScene: String, content: @Compos
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(it), contentAlignment = Alignment.Center
+                .padding(it)
         ) {
             // Render the passed content
             content()
