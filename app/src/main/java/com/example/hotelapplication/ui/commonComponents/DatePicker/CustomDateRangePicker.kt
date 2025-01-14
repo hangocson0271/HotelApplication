@@ -65,13 +65,13 @@ fun CustomDateRangePicker() {
 
     }
 
-    Column(modifier = Modifier.padding(18.dp)) {
+    Column(modifier = Modifier.padding(start = 18.dp, end = 18.dp, top = 5.dp)) {
         Card {
             DateRangePicker(
                 state = dateRangePickerState,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(430.dp),
+                    .height(410.dp),
                 title = {
                     Text(
                         text = stringResource(id = R.string.select_date),
@@ -94,18 +94,18 @@ fun CustomDateRangePicker() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(20.dp),
+                .padding(5.dp),
             horizontalArrangement = Arrangement.Absolute.SpaceBetween,
         ) {
             Text(
                 text = stringResource(id = R.string.txt_check_in),
-                style = MaterialTheme.typography.titleLarge,
+                style = MaterialTheme.typography.titleMedium,
                 textAlign = TextAlign.Start
             )
 
             Text(
                 text = stringResource(id = R.string.txt_check_out),
-                style = MaterialTheme.typography.titleLarge,
+                style = MaterialTheme.typography.titleMedium,
                 textAlign = TextAlign.End
             )
         }
