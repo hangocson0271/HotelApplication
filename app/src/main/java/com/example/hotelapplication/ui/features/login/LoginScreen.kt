@@ -40,12 +40,19 @@ import com.example.hotelapplication.ui.commonComponents.Buttons.LoginButton
 import com.example.hotelapplication.ui.commonComponents.Buttons.OutLineImageButton
 import com.example.hotelapplication.ui.commonComponents.TextField.TextFieldCommon
 import com.example.hotelapplication.ui.commonComponents.Texts.TextLoginTitle
+import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordDialog
+import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordResultDialog
+import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordStep
+import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordStep3Dialog
+import kotlin.random.Random
 
 @Composable
 fun LoginScreen(
     navController: NavController
 ) {
     var isRememberChecked by rememberSaveable { mutableStateOf(false) }
+    var forgotPasswordState by rememberSaveable { mutableStateOf(ForgotPasswordStep.NONE) }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -93,7 +100,7 @@ fun LoginScreen(
                 }
                 TextButton(
                     onClick = {
-                        navController.navigate(Route.ForgotPasswordScreen.route)
+                        forgotPasswordState = ForgotPasswordStep.ENTER_ACCOUNT
                     }
                 ) {
                     Text(
@@ -156,6 +163,59 @@ fun LoginScreen(
                 },
                 modifier = Modifier.padding(16.dp, 0.dp, 0.dp, 0.dp)
             )
+        }
+
+        when (forgotPasswordState) {
+            ForgotPasswordStep.ENTER_ACCOUNT -> {
+                ForgotPasswordDialog(
+                    title = stringResource(R.string.enter_phone_email_title),
+                    placeHolder = stringResource(R.string.txt_phone_email),
+                    onDismiss = {
+                        forgotPasswordState = ForgotPasswordStep.NONE
+                    },
+                    onConfirm = {
+                        forgotPasswordState = ForgotPasswordStep.VERIFY_CODE
+                    }
+                )
+            }
+            ForgotPasswordStep.VERIFY_CODE -> {
+                ForgotPasswordDialog(
+                    title = stringResource(R.string.txt_enter_verification_code),
+                    placeHolder = "",
+                    onDismiss = {
+                        forgotPasswordState = ForgotPasswordStep.NONE
+                    },
+                    onConfirm = {
+                        forgotPasswordState = ForgotPasswordStep.ENTER_NEW_PW
+                    }
+                )
+            }
+            ForgotPasswordStep.ENTER_NEW_PW -> {
+                ForgotPasswordStep3Dialog(
+                    onDismiss = {
+                        forgotPasswordState = ForgotPasswordStep.NONE
+                    },
+                    onConfirm = {
+                        if (Random.nextBoolean()) {
+                            forgotPasswordState = ForgotPasswordStep.RESULT_OK
+                        } else {
+                            forgotPasswordState = ForgotPasswordStep.ERROR
+                        }
+
+                    }
+                )
+            }
+            ForgotPasswordStep.RESULT_OK -> {
+                ForgotPasswordResultDialog(stringResource(R.string.txt_success)) {
+                    forgotPasswordState = ForgotPasswordStep.NONE
+                }
+            }
+            ForgotPasswordStep.ERROR -> {
+                ForgotPasswordResultDialog(stringResource(R.string.txt_error_change_pw)) {
+                    forgotPasswordState = ForgotPasswordStep.NONE
+                }
+            }
+            ForgotPasswordStep.NONE -> {}
         }
     }
 }

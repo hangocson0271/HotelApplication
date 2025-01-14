@@ -3,9 +3,12 @@ package com.example.hotelapplication.ui.commonComponents.TextField
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -19,8 +22,10 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.hotelapplication.R
+import com.example.hotelapplication.ui.commonComponents.Buttons.ElevatedCardHomeScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -63,4 +68,14 @@ fun TextFieldCommon(
             unfocusedIndicatorColor = colorResource(id = R.color.gray)
         ),
     )
+}
+@Preview
+@Composable
+fun TextFieldCommonPreview() {
+    MaterialTheme {
+        TextFieldCommon(
+            label = "Enter location",
+            leadingIcon = R.drawable.ic_location
+        )
+    }
 }
