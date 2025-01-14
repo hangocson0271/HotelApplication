@@ -105,4 +105,8 @@
     <string name="txt_enter_verification_code">Enter verification code:</string>
     <string name="txt_success">Success!</string>
     <string name="txt_error_change_pw">Error! Cannot change the password!</string>
+  
+    <!--Booking Form Screen-->
+    <string name="txt_select_date">Select date</string>
+    <string name="txt_continue">Continue</string>
 </resources>

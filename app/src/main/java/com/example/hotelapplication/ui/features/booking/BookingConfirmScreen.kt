@@ -27,13 +27,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.hotelapplication.R
 import com.example.hotelapplication.ui.commonComponents.Buttons.ElevatedCardHomeScreen
 import com.example.hotelapplication.ui.theme.HotelApplicationTheme
 import com.example.hotelapplication.ui.theme.MainColor
 
 @Composable
-fun BookingConfirmScreen() {
+fun BookingConfirmScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -300,6 +302,6 @@ fun BookingConfirmScreen() {
 @Composable
 fun BookingConfirmPreview() {
     HotelApplicationTheme {
-        BookingConfirmScreen()
+        BookingConfirmScreen(navController = rememberNavController())
     }
 }
