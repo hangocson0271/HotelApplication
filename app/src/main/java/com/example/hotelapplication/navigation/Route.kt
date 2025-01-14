@@ -12,4 +12,5 @@ sealed class Route(
     object SceneSelectPayment : Route("SceneSelectPayment")
     object BookingConfirmScreen: Route("BookingConfirmScreen")
     object SearchScreen : Route("SearchScreen")
+    object NotificationsScreen : Route("NotificationsScreen")
 }

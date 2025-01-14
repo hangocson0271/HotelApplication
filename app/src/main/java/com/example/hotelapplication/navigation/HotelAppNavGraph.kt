@@ -11,6 +11,7 @@ import com.example.hotelapplication.ui.features.booking.BookingConfirmScreen
 import com.example.hotelapplication.ui.features.login.LoginScreen
 import com.example.hotelapplication.ui.features.booking.CancellationPolicyScreen
 import com.example.hotelapplication.ui.features.main.MainScreen
+import com.example.hotelapplication.ui.features.notifications.NotificationsScreen
 import com.example.hotelapplication.ui.features.payment.SceneSelectPayment
 import com.example.hotelapplication.ui.features.payment.components.PaymentMethodSelector
 import com.example.hotelapplication.ui.features.searchScreen.SearchScreen
@@ -35,6 +36,7 @@ fun HotelAppNavGraph() {
             composable(Route.SceneSelectPayment.route) { SceneSelectPayment(navController) }
             composable(Route.BookingConfirmScreen.route) { BookingConfirmScreen() }
             composable(Route.SearchScreen.route) { SearchScreen(navController) }
+            composable(Route.NotificationsScreen.route) { NotificationsScreen(navController) }
         }
     }
 }
