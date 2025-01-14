@@ -13,7 +13,6 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
@@ -35,7 +34,6 @@ import com.example.hotelapplication.R
 import com.example.hotelapplication.navigation.Route
 import com.example.hotelapplication.ui.commonComponents.Buttons.ElevatedCardHomeScreen
 import com.example.hotelapplication.ui.commonComponents.Images.UserAvatar
-import com.example.hotelapplication.ui.commonComponents.SearchFilters.BottomSheet
 import com.example.hotelapplication.ui.commonComponents.SearchFilters.ButtonFilter
 import com.example.hotelapplication.ui.commonComponents.SearchFilters.LayoutSearch
 import com.example.hotelapplication.ui.commonComponents.SearchFilters.SortAndFilterBottomSheet
@@ -131,20 +129,15 @@ fun MainScreen(
                 )
             }
         }
-        BottomSheet(
+
+        SortAndFilterBottomSheet(
+            isBottomSheetVisible = isBottomSheetVisible,
+            sheetState = sheetState,
             onDismiss = {
                 scope.launch { sheetState.hide() }
                     .invokeOnCompletion { isBottomSheetVisible = false }
             }
-            )
-//        SortAndFilterBottomSheet(
-//            isBottomSheetVisible = isBottomSheetVisible,
-//            sheetState = sheetState,
-//            onDismiss = {
-//                scope.launch { sheetState.hide() }
-//                    .invokeOnCompletion { isBottomSheetVisible = false }
-//            }
-//        )
+        )
     }
 }
 
