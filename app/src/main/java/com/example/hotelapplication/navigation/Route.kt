@@ -13,4 +13,7 @@ sealed class Route(
     object BookingConfirmScreen: Route("BookingConfirmScreen")
     object SearchScreen : Route("SearchScreen")
     object NotificationsScreen : Route("NotificationsScreen")
+    object BookingFormFirstPageScreen : Route("BookingFormFirstPageScreen")
+    object EditProfileScreen : Route("EditProfileScreen")
+    object RoomListScreen : Route("RoomListScreen")
 }

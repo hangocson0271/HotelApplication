@@ -83,6 +83,8 @@
     <string name="txt_have_breakfast">Breakfast Included</string>
     <string name="txt_no_breakfast">No Breakfast Included</string>
     <string name="txt_book">Book</string>
+    <string name="room_list_screen">Room List Screen</string>
+    <string name="upcoming_book_screen">UpComing Book Screen</string>
 
     <!--Search Screen-->
     <string name="search_screen_title">Search</string>
@@ -104,6 +106,7 @@
     <string name="txt_success">Success!</string>
     <string name="txt_error_change_pw">Error! Cannot change the password!</string>
 
+
     <!--Notifications Screen-->
     <string name="txt_subject_password_change">Password Changed Successfully</string>
     <string name="txt_content_password_change">Your password has been updated successfully.</string>
@@ -115,4 +118,8 @@
     <string name="txt_content_payment_successfully">Your payment has been processed successfully.</string>
 
     <string name="txt_title_screen_notifications">Notification</string>
+  
+    <!--Booking Form Screen-->
+    <string name="txt_select_date">Select date</string>
+    <string name="txt_continue">Continue</string>
 </resources>
