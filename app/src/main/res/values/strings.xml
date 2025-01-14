@@ -108,5 +108,4 @@
   
     <!--Booking Form Screen-->
     <string name="txt_select_date">Select date</string>
-    <string name="txt_continue">Continue</string>
 </resources>
