@@ -36,12 +36,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.hotelapplication.R
 import com.example.hotelapplication.ui.theme.HotelApplicationTheme
 import com.example.hotelapplication.ui.theme.MainColor
 
 @Composable
-fun CancellationPolicyScreen() {
+fun CancellationPolicyScreen(navController: NavController) {
 
     val scrollState = rememberScrollState()
     var isChecked by remember { mutableStateOf(false) }
@@ -143,6 +145,6 @@ fun CancellationPolicyScreen() {
 @Composable
 fun GreetingPreview() {
     HotelApplicationTheme {
-        CancellationPolicyScreen()
+        CancellationPolicyScreen(navController = rememberNavController())
     }
 }

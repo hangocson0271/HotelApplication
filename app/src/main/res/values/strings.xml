@@ -82,4 +82,6 @@
     <string name="txt_viewbooking">View Booking</string>
     <string name="txt_booking_completed">Booking Completed</string>
     <string name="txt_booking_cancel">You cancelled this hotel booking</string>
+    <string name="txt_select_date">Select date</string>
+    <string name="txt_continue">Continue</string>
 </resources>
