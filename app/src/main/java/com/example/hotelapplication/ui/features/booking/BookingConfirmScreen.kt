@@ -31,156 +31,30 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.hotelapplication.R
 import com.example.hotelapplication.ui.commonComponents.Buttons.ElevatedCardHomeScreen
+import com.example.hotelapplication.ui.commonComponents.Scene.BaseScene
 import com.example.hotelapplication.ui.theme.HotelApplicationTheme
 import com.example.hotelapplication.ui.theme.MainColor
 
 @Composable
 fun BookingConfirmScreen(navController: NavController) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(14.dp),
-    ) {
-
-        /* Upper card information */
-        ElevatedCard(
+    BaseScene (navController = navController, titleScene = stringResource(id = R.string.title_booking_summary)) {
+        Column(
             modifier = Modifier
-                .fillMaxHeight(0.2f)
-                .fillMaxWidth(),
-            elevation = CardDefaults.cardElevation(
-                defaultElevation = 2.dp
-            ),
-            shape = RoundedCornerShape(15.dp),
-            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLowest)
+                .fillMaxSize()
+                .padding(14.dp),
         ) {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.SpaceEvenly
+
+            /* Upper card information */
+            ElevatedCard(
+                modifier = Modifier
+                    .fillMaxHeight(0.2f)
+                    .fillMaxWidth(),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 2.dp
+                ),
+                shape = RoundedCornerShape(15.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLowest)
             ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 15.dp, end = 15.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.txt_name),
-                        style = MaterialTheme.typography.titleMedium,
-                        textAlign = TextAlign.Start
-                    )
-
-                    Text(
-                        text = stringResource(id = R.string.txt_name),
-                        style = MaterialTheme.typography.titleLarge,
-                        textAlign = TextAlign.End
-                    )
-                }
-
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 15.dp, end = 15.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.txt_email),
-                        style = MaterialTheme.typography.titleMedium,
-                        textAlign = TextAlign.Start
-                    )
-
-                    Text(
-                        text = stringResource(id = R.string.txt_email),
-                        style = MaterialTheme.typography.titleLarge,
-                        textAlign = TextAlign.End
-                    )
-                }
-
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 15.dp, end = 15.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.txt_phone),
-                        style = MaterialTheme.typography.titleMedium,
-                        textAlign = TextAlign.Start
-                    )
-
-                    Text(
-                        text = stringResource(id = R.string.txt_phone),
-                        style = MaterialTheme.typography.titleLarge,
-                        textAlign = TextAlign.End
-                    )
-                }
-            }
-        }
-
-        Spacer(modifier = Modifier.height(18.dp))
-
-
-        /* Center card information */
-        ElevatedCard(
-            modifier = Modifier
-                .fillMaxHeight(0.85f)
-                .fillMaxWidth(),
-            elevation = CardDefaults.cardElevation(
-                defaultElevation = 2.dp
-            ),
-            shape = RoundedCornerShape(15.dp),
-            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLowest)
-        ) {
-            Column {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    ElevatedCardHomeScreen { }
-                }
-
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(20.dp),
-                    horizontalArrangement = Arrangement.Absolute.SpaceAround,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.txt_check_in),
-                        style = MaterialTheme.typography.titleLarge,
-                        textAlign = TextAlign.Center
-                    )
-
-                    Text(
-                        text = stringResource(id = R.string.txt_check_out),
-                        style = MaterialTheme.typography.titleLarge,
-                        textAlign = TextAlign.Center
-                    )
-                }
-
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Absolute.SpaceAround,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = "01/01/2025",
-                        style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.SemiBold),
-                        textAlign = TextAlign.Center
-                    )
-
-                    Text(
-                        text = "28/01/2025",
-                        style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.SemiBold),
-                        textAlign = TextAlign.Center
-                    )
-                }
-
                 Column(
                     modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.SpaceEvenly
@@ -193,13 +67,13 @@ fun BookingConfirmScreen(navController: NavController) {
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = stringResource(id = R.string.txt_room_type),
+                            text = stringResource(id = R.string.txt_name),
                             style = MaterialTheme.typography.titleMedium,
                             textAlign = TextAlign.Start
                         )
 
                         Text(
-                            text = stringResource(id = R.string.txt_room_type),
+                            text = stringResource(id = R.string.txt_name),
                             style = MaterialTheme.typography.titleLarge,
                             textAlign = TextAlign.End
                         )
@@ -213,13 +87,13 @@ fun BookingConfirmScreen(navController: NavController) {
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = stringResource(id = R.string.txt_guest),
+                            text = stringResource(id = R.string.txt_email),
                             style = MaterialTheme.typography.titleMedium,
                             textAlign = TextAlign.Start
                         )
 
                         Text(
-                            text = stringResource(id = R.string.txt_guest),
+                            text = stringResource(id = R.string.txt_email),
                             style = MaterialTheme.typography.titleLarge,
                             textAlign = TextAlign.End
                         )
@@ -233,66 +107,195 @@ fun BookingConfirmScreen(navController: NavController) {
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = stringResource(id = R.string.txt_room_number),
+                            text = stringResource(id = R.string.txt_phone),
                             style = MaterialTheme.typography.titleMedium,
                             textAlign = TextAlign.Start
                         )
 
                         Text(
-                            text = stringResource(id = R.string.txt_room_number),
-                            style = MaterialTheme.typography.titleLarge,
-                            textAlign = TextAlign.End
-                        )
-                    }
-
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = 15.dp, end = 15.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = stringResource(id = R.string.txt_total_price),
-                            style = MaterialTheme.typography.titleMedium,
-                            textAlign = TextAlign.Start
-                        )
-
-                        Text(
-                            text = stringResource(id = R.string.txt_total_price),
+                            text = stringResource(id = R.string.txt_phone),
                             style = MaterialTheme.typography.titleLarge,
                             textAlign = TextAlign.End
                         )
                     }
                 }
             }
-        }
+
+            Spacer(modifier = Modifier.height(18.dp))
 
 
-
-        /* Confirm button */
-        Spacer(modifier = Modifier.height(18.dp))
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(20.dp),
-            horizontalArrangement = Arrangement.SpaceAround,
-        ) {
-            Button(
-                onClick = { /* TODO: Handle button click*/ },
+            /* Center card information */
+            ElevatedCard(
                 modifier = Modifier
-                    .padding(horizontal = 4.dp)
-                    .width(250.dp)
-                    .height(50.dp)
-                    .align(Alignment.CenterVertically),
-                shape = RoundedCornerShape(16.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MainColor
+                    .fillMaxHeight(0.85f)
+                    .fillMaxWidth(),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 2.dp
                 ),
+                shape = RoundedCornerShape(15.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLowest)
             ) {
+                Column {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        ElevatedCardHomeScreen { }
+                    }
 
-                Text(text = stringResource(id = R.string.txt_confirm_booking))
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(20.dp),
+                        horizontalArrangement = Arrangement.Absolute.SpaceAround,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.txt_check_in),
+                            style = MaterialTheme.typography.titleLarge,
+                            textAlign = TextAlign.Center
+                        )
+
+                        Text(
+                            text = stringResource(id = R.string.txt_check_out),
+                            style = MaterialTheme.typography.titleLarge,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Absolute.SpaceAround,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "01/01/2025",
+                            style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.SemiBold),
+                            textAlign = TextAlign.Center
+                        )
+
+                        Text(
+                            text = "28/01/2025",
+                            style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.SemiBold),
+                            textAlign = TextAlign.Center
+                        )
+                    }
+
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 15.dp, end = 15.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.txt_room_type),
+                                style = MaterialTheme.typography.titleMedium,
+                                textAlign = TextAlign.Start
+                            )
+
+                            Text(
+                                text = stringResource(id = R.string.txt_room_type),
+                                style = MaterialTheme.typography.titleLarge,
+                                textAlign = TextAlign.End
+                            )
+                        }
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 15.dp, end = 15.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.txt_guest),
+                                style = MaterialTheme.typography.titleMedium,
+                                textAlign = TextAlign.Start
+                            )
+
+                            Text(
+                                text = stringResource(id = R.string.txt_guest),
+                                style = MaterialTheme.typography.titleLarge,
+                                textAlign = TextAlign.End
+                            )
+                        }
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 15.dp, end = 15.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.txt_room_number),
+                                style = MaterialTheme.typography.titleMedium,
+                                textAlign = TextAlign.Start
+                            )
+
+                            Text(
+                                text = stringResource(id = R.string.txt_room_number),
+                                style = MaterialTheme.typography.titleLarge,
+                                textAlign = TextAlign.End
+                            )
+                        }
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 15.dp, end = 15.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.txt_total_price),
+                                style = MaterialTheme.typography.titleMedium,
+                                textAlign = TextAlign.Start
+                            )
+
+                            Text(
+                                text = stringResource(id = R.string.txt_total_price),
+                                style = MaterialTheme.typography.titleLarge,
+                                textAlign = TextAlign.End
+                            )
+                        }
+                    }
+                }
+            }
+
+
+
+            /* Confirm button */
+            Spacer(modifier = Modifier.height(18.dp))
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp),
+                horizontalArrangement = Arrangement.SpaceAround,
+            ) {
+                Button(
+                    onClick = { /* TODO: Handle button click*/ },
+                    modifier = Modifier
+                        .padding(horizontal = 4.dp)
+                        .width(250.dp)
+                        .height(50.dp)
+                        .align(Alignment.CenterVertically),
+                    shape = RoundedCornerShape(16.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MainColor
+                    ),
+                ) {
+
+                    Text(text = stringResource(id = R.string.txt_confirm_booking))
+                }
             }
         }
     }

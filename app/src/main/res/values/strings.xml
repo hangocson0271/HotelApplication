@@ -108,5 +108,10 @@
   
     <!--Booking Form Screen-->
     <string name="txt_select_date">Select date</string>
-    <string name="txt_continue">Continue</string>
+    <string name="title_booking_form">Booking Form</string>
+    <string name="title_booking_summary">Booking Summary</string>
+    <string name="txt_first_name">First Name</string>
+    <string name="txt_surname">Surname</string>
+    <string name="txt_id_card_passport">ID Card/Passport</string>
+    <string name="txt_notes">Notes</string>
 </resources>
