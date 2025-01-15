@@ -1,16 +1,19 @@
-package com.example.hotelapplication.ui.features.main
+package com.example.hotelapplication.ui.features.roomList
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.hotelapplication.R
+import com.example.hotelapplication.extentions.hiltViewModel
+import com.example.hotelapplication.navigation.Route
 import com.example.hotelapplication.ui.commonComponents.Buttons.ElevatedCardRoomScreen
 import com.example.hotelapplication.ui.commonComponents.Texts.HeaderLabelScreen
 
@@ -21,6 +24,8 @@ fun RoomListScreen(
     hotelId: Int,
 ) {
     val TAG = "RoomListScreen"
+    val viewModel = hiltViewModel<RoomListScreenViewModel>()
+    val rooms = viewModel.getRoomByHotelId(hotelId).collectAsState()
     Column(
         Modifier.background(
             colorResource(
@@ -41,8 +46,22 @@ fun RoomListScreen(
                     )
                 )
         ) {
-            items(10) {
-                ElevatedCardRoomScreen {}
+            if (rooms.value.isNotEmpty()){
+                items(rooms.value.size) { index ->
+                    ElevatedCardRoomScreen(
+                        roomName = rooms.value[index].room_name,
+                        roomType = rooms.value[index].room_type,
+                        price = rooms.value[index].price,
+                        isAvailable = rooms.value[index].is_available,
+                        isHaveWifi = rooms.value[index].wifi,
+                        isHavePool = rooms.value[index].pool,
+                        isHaveBreakfast = rooms.value[index].breakfast,
+                        isHaveGym = rooms.value[index].gym,
+                        isHaveBar = rooms.value[index].bar,
+                    ) {
+                        navController.navigate(Route.BookingFormFirstPageScreen.route)
+                    }
+                }
             }
         }
     }

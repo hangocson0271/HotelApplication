@@ -82,7 +82,7 @@ fun EditProfileScreen(focusManager: FocusManager = LocalFocusManager.current
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         var visibleEdit by remember{mutableStateOf(true)}
-        UserInfoInput(label = stringResource(R.string.txt_username),
+        UserInfoInput(
             textInput = stringResource(R.string.enter_username),
             KeyBoardChoose.TEXT){
             visibleEdit = false
@@ -90,12 +90,12 @@ fun EditProfileScreen(focusManager: FocusManager = LocalFocusManager.current
         DatePickerFieldToModal{
             visibleEdit = false
         }
-        UserInfoInput(label = stringResource(R.string.txt_phone),
+        UserInfoInput(
             textInput = stringResource(R.string.enter_phonenumber),
             KeyBoardChoose.PHONE){
             visibleEdit = false
         }
-        UserInfoInput(label = stringResource(R.string.txt_email),
+        UserInfoInput(
             textInput = stringResource(R.string.enter_email),
             KeyBoardChoose.MAIL){
             visibleEdit = false
@@ -111,8 +111,7 @@ fun EditProfileScreen(focusManager: FocusManager = LocalFocusManager.current
 }
 
 @Composable
-fun UserInfoInput(label: String,
-                  textInput: String,
+fun UserInfoInput(textInput: String,
                   keyType: KeyBoardChoose,
                   onGetFocus:() -> Unit) {
     val focusRequester = remember{ FocusRequester() }
@@ -141,7 +140,6 @@ fun UserInfoInput(label: String,
         ),
         value = inputString,
         onValueChange = {inputString = it },
-        label = {Text(text = label,color = Color.Gray)},
         placeholder = {Text(textInput)},
         keyboardOptions = KeyboardOptions.Default.copy(
             keyboardType = keyBoardUse
