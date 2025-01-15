@@ -1,5 +1,6 @@
 package com.example.hotelapplication.ui.features.booking
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,6 +19,8 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -30,13 +33,30 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.hotelapplication.R
+import com.example.hotelapplication.extentions.hiltViewModel
+import com.example.hotelapplication.navigation.Route
 import com.example.hotelapplication.ui.commonComponents.Buttons.ElevatedCardHomeScreen
 import com.example.hotelapplication.ui.commonComponents.Scene.BaseScene
+import com.example.hotelapplication.ui.features.main.MainScreenViewModel
 import com.example.hotelapplication.ui.theme.HotelApplicationTheme
 import com.example.hotelapplication.ui.theme.MainColor
 
 @Composable
 fun BookingConfirmScreen(navController: NavController) {
+
+    val bookingViewModel = hiltViewModel<BookingScreenViewModel>()
+    val bookings = bookingViewModel.bookings.collectAsState()
+    val insertedUserId = bookingViewModel.insertedBookingId.value
+
+    LaunchedEffect(insertedUserId) {
+        Log.i("duongnbh", "onClick bookingId $insertedUserId")
+        if(insertedUserId != -1) {
+            navController.navigate("${Route.SceneSelectPayment.route}/${insertedUserId}")
+            bookingViewModel.resetInsertedBookingId()
+        }
+    }
+
+
     BaseScene (navController = navController, titleScene = stringResource(id = R.string.title_booking_summary)) {
         Column(
             modifier = Modifier
@@ -282,7 +302,10 @@ fun BookingConfirmScreen(navController: NavController) {
                 horizontalArrangement = Arrangement.SpaceAround,
             ) {
                 Button(
-                    onClick = { /* TODO: Handle button click*/ },
+                    onClick = {
+                        /* TODO implement to pass correct booking data for adding new booking */
+                        bookingViewModel.addNewBooking()
+                    },
                     modifier = Modifier
                         .padding(horizontal = 4.dp)
                         .width(250.dp)
@@ -293,7 +316,6 @@ fun BookingConfirmScreen(navController: NavController) {
                         containerColor = MainColor
                     ),
                 ) {
-
                     Text(text = stringResource(id = R.string.txt_confirm_booking))
                 }
             }
