@@ -12,3 +12,6 @@ val Pink40 = Color(0xFF7D5260)
 
 val MainColor = Color(0xFF238C98)
 val SecondaryColor = Color(0xffa7d1d5)
+val SecondColor = Color(0xFFCFE2E5)
+val TextSecondColor = Color(0xFF468A96)
+val DisableSecondColor = Color(0xFFECECEC)

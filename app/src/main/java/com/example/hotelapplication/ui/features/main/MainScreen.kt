@@ -12,8 +12,15 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.White
@@ -29,13 +36,22 @@ import com.example.hotelapplication.ui.commonComponents.Buttons.ElevatedCardHome
 import com.example.hotelapplication.ui.commonComponents.Images.UserAvatar
 import com.example.hotelapplication.ui.commonComponents.SearchFilters.ButtonFilter
 import com.example.hotelapplication.ui.commonComponents.SearchFilters.LayoutSearch
+import com.example.hotelapplication.ui.commonComponents.SearchFilters.SortAndFilterBottomSheet
+import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
     navController: NavController
 ) {
     val TAG = "MainScreen"
+    var isBottomSheetVisible by rememberSaveable { mutableStateOf(false) }
+    val sheetState = rememberModalBottomSheetState(
+        skipPartiallyExpanded = true
+    )
+    val scope = rememberCoroutineScope()
+
     Column(
         Modifier.background(
             colorResource(
@@ -82,7 +98,15 @@ fun MainScreen(
                             Log.d(TAG, "MainScreen: XXX")
                             navController.navigate(Route.SearchScreen.route)
                         })
-                    ButtonFilter()
+                    ButtonFilter(
+                        onClick = {
+                            scope.launch {
+                                isBottomSheetVisible = true
+                                sheetState.expand()
+                            }
+                            Log.d(TAG, "MainScreen: XXX")
+                        }
+                    )
                 }
                 Spacer(
                     modifier = Modifier
@@ -109,6 +133,15 @@ fun MainScreen(
                 )
             }
         }
+
+        SortAndFilterBottomSheet(
+            isBottomSheetVisible = isBottomSheetVisible,
+            sheetState = sheetState,
+            onDismiss = {
+                scope.launch { sheetState.hide() }
+                    .invokeOnCompletion { isBottomSheetVisible = false }
+            }
+        )
     }
 }
 

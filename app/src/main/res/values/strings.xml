@@ -118,7 +118,7 @@
     <string name="txt_content_payment_successfully">Your payment has been processed successfully.</string>
 
     <string name="txt_title_screen_notifications">Notification</string>
-  
+
     <!--Booking Form Screen-->
     <string name="txt_select_date">Select date</string>
     <string name="title_booking_form">Booking Form</string>
@@ -127,4 +127,16 @@
     <string name="txt_surname">Surname</string>
     <string name="txt_id_card_passport">ID Card/Passport</string>
     <string name="txt_notes">Notes</string>
+
+    <!--Sort/ Filter Screen-->
+    <string name="sort_filter_title">Filter</string>
+    <string name="reset_label">Reset</string>
+    <string name="apply_label">Apply</string>
+    <string name="sortBy_label">Sort by</string>
+    <string name="see_all_label">See All</string>
+    <string name="sort_result_by_label">Sort results by</string>
+    <string name="star_rating_label">Star Rating</string>
+    <string name="facilities_label">Facilities</string>
+    <string name="wifi_label">Wifi</string>
+
 </resources>
