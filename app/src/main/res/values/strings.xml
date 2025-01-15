@@ -136,7 +136,7 @@
     <string name="see_all_label">See All</string>
     <string name="sort_result_by_label">Sort results by</string>
     <string name="star_rating_label">Star Rating</string>
-    <string name="facilities_label">Star Rating</string>
+    <string name="facilities_label">Facilities</string>
     <string name="wifi_label">Wifi</string>
 
 </resources>

@@ -3,46 +3,30 @@ package com.example.hotelapplication.ui.commonComponents.SearchFilters
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RangeSlider
 import androidx.compose.material3.SheetState
-import androidx.compose.material3.SliderColors
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -63,7 +47,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.wear.compose.material.MaterialTheme.colors
 import com.example.hotelapplication.R
 import com.example.hotelapplication.ui.commonComponents.Buttons.CommonButton
 import com.example.hotelapplication.ui.commonComponents.Buttons.CommonButtonsState
@@ -91,6 +74,10 @@ fun SortAndFilterBottomSheet(
         val rowItemsSample = listOf(
             "Item No 1", "Item No 2",
             "Item No 3", "Item No 4"
+        )
+
+        val rowItemsFacilities = listOf(
+            "Item No 1", "Item No 2", "Item No 3"
         )
         val colors = SliderDefaults.colors(
             activeTrackColor = colorResource(R.color.main_color),
@@ -195,31 +182,6 @@ fun SortAndFilterBottomSheet(
                         modifier = Modifier
                             .height(10.dp)
                     )
-
-                    Text(
-                        text = stringResource(R.string.sort_result_by_label),
-                        fontWeight = FontWeight.Bold
-                    )
-                    Spacer(
-                        modifier = Modifier
-                            .height(10.dp)
-                    )
-                }
-
-                items(rowItemsSample.chunked(3)) { items ->
-                    Row {
-                        for ((index, item) in items.withIndex()) {
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxWidth(1f / (3 - index)),
-                            ) {
-                                ItemSort(
-                                    title = item,
-                                    isSelected = index % 2 == 0
-                                )
-                            }
-                        }
-                    }
                 }
 
                 item {
@@ -292,7 +254,7 @@ fun SortAndFilterBottomSheet(
                             .height(10.dp)
                     )
                 }
-                items(rowItemsSample.chunked(3)) { items ->
+                items(rowItemsFacilities.chunked(3)) { items ->
                     Row {
                         for ((index, item) in items.withIndex()) {
                             Box(modifier = Modifier.fillMaxWidth(1f / (3 - index))) {
@@ -372,9 +334,11 @@ fun PreviewSortAndFilterBottomSheet() {
     val scope = rememberCoroutineScope()
     var isBottomSheetVisible by rememberSaveable { mutableStateOf(false) }
 
-    scope.launch {
-        isBottomSheetVisible = true
-        sheetState.expand()
+    LaunchedEffect(key1 = null) {
+        scope.launch {
+            isBottomSheetVisible = true
+            sheetState.expand()
+        }
     }
     SortAndFilterBottomSheet(
         isBottomSheetVisible = isBottomSheetVisible,

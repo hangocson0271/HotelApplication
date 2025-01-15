@@ -36,6 +36,7 @@ fun ItemSort(
 
     if (selectedState) {
         Button(
+            shape = RoundedCornerShape(10.dp),
             onClick = {
                 selectedState = !selectedState
             },
@@ -65,7 +66,7 @@ fun ItemSort(
         OutlinedButton(
             onClick = { selectedState = !selectedState },
             border = BorderStroke(1.dp, colorResource(R.color.main_color)),
-            shape = RoundedCornerShape(50),
+            shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.outlinedButtonColors(contentColor = colorResource(R.color.main_color)),
             modifier = Modifier
                 .wrapContentSize()
