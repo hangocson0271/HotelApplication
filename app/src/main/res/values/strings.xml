@@ -4,12 +4,20 @@
     <string name="splash_screen_description">Discover the best hotels at great prices when you search with Otel</string>
     <string name="splash_screen_subcontent">Search through 10,234 hotels in VietNam</string>
     <string name="btn_get_started">Get started</string>
+
+    <!-- Login / Signup Screen -->
     <string name="dont_have_an_account">Don\'t have an account?</string>
     <string name="sign_up">Sign Up</string>
     <string name="have_any_account">Already have an account ?</string>
     <string name="sign_in">Sign In</string>
     <string name="login">Log In</string>
     <string name="forgot_password">Forgot Password?</string>
+    <string name="txt_password_policy">Password policy</string>
+    <string name="txt_email_wrong_format">Email wrong format</string>
+    <string name="txt_username_should_not_null">Username null</string>
+    <string name="txt_unknow_error">Unknow Error</string>
+    <string name="txt_register_done">Register Done!</string>
+
     <string name="new_credit_debit_card">New credit/Debit Card</string>
     <string name="paypal">Paypal</string>
     <string name="apple_pay">Apple Pay</string>
@@ -138,5 +146,6 @@
     <string name="star_rating_label">Star Rating</string>
     <string name="facilities_label">Facilities</string>
     <string name="wifi_label">Wifi</string>
+    <string name="txt_incorrect_username_password">The Username or Password is Incorrect!</string>
 
 </resources>
