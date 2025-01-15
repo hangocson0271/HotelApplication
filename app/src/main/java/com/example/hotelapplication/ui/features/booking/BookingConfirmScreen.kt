@@ -46,12 +46,12 @@ fun BookingConfirmScreen(navController: NavController) {
 
     val bookingViewModel = hiltViewModel<BookingScreenViewModel>()
     val bookings = bookingViewModel.bookings.collectAsState()
-    val insertedUserId = bookingViewModel.insertedBookingId.value
+    val insertedBookingId = bookingViewModel.insertedBookingId.value
 
-    LaunchedEffect(insertedUserId) {
-        Log.i("duongnbh", "onClick bookingId $insertedUserId")
-        if(insertedUserId != -1) {
-            navController.navigate("${Route.SceneSelectPayment.route}/${insertedUserId}")
+    LaunchedEffect(insertedBookingId) {
+        Log.i("TAG", "onClick bookingId $insertedBookingId")
+        if(insertedBookingId != -1) {
+            navController.navigate("${Route.SceneSelectPayment.route}/${insertedBookingId}")
             bookingViewModel.resetInsertedBookingId()
         }
     }
