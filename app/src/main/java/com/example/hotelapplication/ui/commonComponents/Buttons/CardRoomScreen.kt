@@ -33,10 +33,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.hotelapplication.R
-import com.example.hotelapplication.extentions.singleClick
 
-enum class RoomType{
-    SINGLE,DOUBLE,SUITE
+enum class RoomTypes(val value: Int) {
+    SINGLE(0),
+    DOUBLE(1),
+    SUITE(2);
 }
 @Composable
 fun ElevatedCardRoomScreen(
@@ -53,15 +54,15 @@ fun ElevatedCardRoomScreen(
     onClick: () -> Unit
 ) {
     val roomTypeString = when (roomType) {
-        0 -> stringResource(R.string.txt_single)
-        1 -> stringResource(R.string.txt_double)
-        2 -> stringResource(R.string.txt_suite)
+        RoomTypes.SINGLE.value -> stringResource(R.string.txt_single)
+        RoomTypes.DOUBLE.value -> stringResource(R.string.txt_double)
+        RoomTypes.SUITE.value -> stringResource(R.string.txt_suite)
         else -> {stringResource(R.string.txt_single)}
     }
     val roomTypeIcon = when (roomType) {
-        0 -> R.drawable.ic_single_bed
-        1 -> R.drawable.ic_double_bed
-        2 -> R.drawable.ic_suite
+        RoomTypes.SINGLE.value  -> R.drawable.ic_single_bed
+        RoomTypes.DOUBLE.value  -> R.drawable.ic_double_bed
+        RoomTypes.SUITE.value -> R.drawable.ic_suite
         else -> {R.drawable.ic_single_bed}
     }
     ElevatedCard(

@@ -13,6 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class RoomListScreenViewModel @Inject constructor(roomRepository: RoomRepository) : BaseViewModel(){
     private val _rooms = MutableStateFlow<List<Room>>(emptyList())
+    val rooms: StateFlow<List<Room>> = _rooms
     private val roomRes = roomRepository
 
     private fun getAllRooms() {
@@ -22,12 +23,11 @@ class RoomListScreenViewModel @Inject constructor(roomRepository: RoomRepository
             }
         }
     }
-    fun getRoomByHotelId(hotelId: Int): StateFlow<List<Room>> {
+    fun getRoomByHotelId(hotelId: Int){
         viewModelScope.launch {
             roomRes.getRoomByHotelId(hotelId).collect { rooms ->
                 _rooms.value = rooms
             }
         }
-        return _rooms
     }
 }
