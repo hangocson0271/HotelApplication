@@ -9,7 +9,11 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -32,7 +36,8 @@ fun SearchScreen(
     navController: NavController
 ) {
     val viewModel = hiltViewModel<SearchViewModel>()
-    val resultSearch = viewModel.resultSearch.observeAsState()
+    val resultSearch = viewModel.hotelsResultSearch.collectAsState()
+    var querySearch by remember { mutableStateOf("") }
 
     Column(
         Modifier.background(
@@ -49,27 +54,34 @@ fun SearchScreen(
             modifier = Modifier.padding(horizontal = 10.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            LayoutSearch(isSearchable = true, percentFillWidth = 0.9f)
+            LayoutSearch(isSearchable = true,
+                percentFillWidth = 0.9f,
+                contentSearch = querySearch,
+                onQueryChanged = { newQuery -> querySearch = newQuery },
+                onClick = {
+                    viewModel.searchHotelWithName(querySearch)
+                })
             ButtonFilter()
         }
 
-        resultSearch.value?.let {
-            Text(
-                modifier = Modifier
-                    .padding(10.dp),
-                fontWeight = FontWeight.Bold,
-                text = stringResource(R.string.hotel_result, it)
+        Text(
+            modifier = Modifier.padding(10.dp), fontWeight = FontWeight.Bold, text = stringResource(
+                R.string.hotel_result, resultSearch.value.size
             )
-        }
+        )
 
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
         ) {
-            items(100) { index ->
+            items(resultSearch.value.size) { index ->
                 Spacer(
                     modifier = Modifier.padding(5.dp)
                 )
-                ElevatedCardHomeScreen {
+                ElevatedCardHomeScreen(
+                    hotelName = resultSearch.value[index].hotel_name,
+                    rating = resultSearch.value[index].rate_star,
+                    price = resultSearch.value[index].total_rate,
+                ) {
                     navController.navigate(Route.RoomListScreen.route)
                 }
                 Spacer(

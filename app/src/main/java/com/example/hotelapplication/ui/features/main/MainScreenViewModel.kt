@@ -13,10 +13,10 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class MainScreenViewModel @Inject constructor(hotelRepository: HotelsRepository) : BaseViewModel() {
 
+    private val hotelRes = hotelRepository
+
     private val _hotels = MutableStateFlow<List<Hotel>>(emptyList())
     val hotels: StateFlow<List<Hotel>> = _hotels
-
-    private val hotelRes = hotelRepository
 
     init {
         getAllHotels()
