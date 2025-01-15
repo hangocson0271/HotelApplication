@@ -1,7 +1,6 @@
 package com.example.hotelapplication.ui.commonComponents.Buttons
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -42,9 +41,9 @@ import com.example.hotelapplication.extentions.singleClick
 @Composable
 fun ElevatedCardHomeScreen(
     hotelName: String = "The Pheels",
-    rating: String = "4.5",
+    rating: Long? = 4L,
     location: String = "Ajah, Lagos",
-    price: String = "25,000",
+    price: Int? = 25000,
     imageResource: Int = R.drawable.screen,
     onClick: () -> Unit
 ) {
@@ -59,7 +58,7 @@ fun ElevatedCardHomeScreen(
             .size(
                 width = 206.85.dp, height = 171.dp
             )
-            //.background(color = Color(0x6B86B340))
+        //.background(color = Color(0x6B86B340))
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -110,7 +109,7 @@ fun ElevatedCardHomeScreen(
                 )
                 //rating
                 Text(
-                    text = rating,
+                    text = rating.toString(),
                     modifier = Modifier.padding(end = 10.dp),
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold,

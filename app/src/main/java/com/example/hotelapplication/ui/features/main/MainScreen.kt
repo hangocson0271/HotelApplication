@@ -16,6 +16,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
@@ -31,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.hotelapplication.R
+import com.example.hotelapplication.extentions.hiltViewModel
 import com.example.hotelapplication.navigation.Route
 import com.example.hotelapplication.ui.commonComponents.Buttons.ElevatedCardHomeScreen
 import com.example.hotelapplication.ui.commonComponents.Images.UserAvatar
@@ -52,6 +54,8 @@ fun MainScreen(
     )
     val scope = rememberCoroutineScope()
 
+    val viewModel = hiltViewModel<MainScreenViewModel>()
+    val hotels = viewModel.hotels.collectAsState()
     Column(
         Modifier.background(
             colorResource(
@@ -120,17 +124,25 @@ fun MainScreen(
             modifier = Modifier
                 .padding(5.dp)
         ) {
-            items(100) { index ->
-                Spacer(
-                    modifier = Modifier.padding(5.dp)
-                )
-                ElevatedCardHomeScreen {
-                    Log.d(TAG, "MainScreen: To Room list")
-                    navController.navigate(Route.RoomListScreen.route)
+            if (hotels.value.isNotEmpty()) {
+                items(hotels.value.size) { index ->
+                    Spacer(
+                        modifier = Modifier.padding(5.dp)
+                    )
+
+                    ElevatedCardHomeScreen(
+                        hotelName = hotels.value[index].hotel_name,
+                        rating = hotels.value[index].rate_star,
+                        price = hotels.value[index].total_rate,
+                    ) {
+                        navController.navigate(
+                            "${Route.RoomListScreen.route}/${hotels.value[index].hotel_id}"
+                        )
+                    }
+                    Spacer(
+                        modifier = Modifier.padding(5.dp)
+                    )
                 }
-                Spacer(
-                    modifier = Modifier.padding(5.dp)
-                )
             }
         }
 

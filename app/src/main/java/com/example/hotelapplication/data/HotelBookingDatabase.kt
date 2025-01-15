@@ -44,6 +44,7 @@ abstract class HotelBookingDatabase : RoomDatabase() {
                     HotelBookingDatabase::class.java,
                     "hotel_database"
                 )
+                    .allowMainThreadQueries()
                     .createFromAsset("databases/hotelbooking.db")
                     .fallbackToDestructiveMigration()
                     .build()
