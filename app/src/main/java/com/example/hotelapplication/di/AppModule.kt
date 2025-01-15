@@ -3,6 +3,8 @@ package com.example.hotelapplication.di
 
 import android.app.Application
 import com.example.hotelapplication.data.HotelBookingDatabase
+import com.example.hotelapplication.data.hotel.HotelRepositoryImpl
+import com.example.hotelapplication.data.hotel.HotelsRepository
 import com.example.hotelapplication.data.user.UserRepository
 import com.example.hotelapplication.data.user.UserRepositoryImpl
 import dagger.Module
@@ -24,5 +26,11 @@ object AppModule {
     @Singleton
     fun provideUserRepository(hotelBookingDatabase: HotelBookingDatabase): UserRepository {
         return UserRepositoryImpl(hotelBookingDatabase.userDao())
+    }
+
+    @Provides
+    @Singleton
+    fun provideHotelRepository(hotelBookingDatabase: HotelBookingDatabase): HotelsRepository {
+        return HotelRepositoryImpl(hotelBookingDatabase.hotelDao())
     }
 }
