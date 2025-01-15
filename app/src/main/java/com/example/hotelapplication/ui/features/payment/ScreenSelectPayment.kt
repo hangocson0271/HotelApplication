@@ -31,7 +31,7 @@ import com.example.hotelapplication.ui.commonComponents.Buttons.PaymentButton
 import com.example.hotelapplication.ui.features.payment.components.PaymentMethodSelector
 
 @Composable
-fun SceneSelectPayment(navController: NavHostController, titleScene: String = "Payment") {
+fun SceneSelectPayment(navController: NavHostController, bookingId: Int, titleScene: String = "Payment") {
     BaseScene(navController = navController, titleScene = titleScene) {
         Column(modifier = Modifier.fillMaxSize()) {
             Row(
@@ -106,5 +106,5 @@ fun SceneSelectPayment(navController: NavHostController, titleScene: String = "P
 @Composable
 fun SceneSelectPaymentPreview() {
     val navController = rememberNavController()
-    SceneSelectPayment(navController = navController, titleScene = "Payment")
+    SceneSelectPayment(navController = navController, bookingId = 0,  titleScene = "Payment")
 }

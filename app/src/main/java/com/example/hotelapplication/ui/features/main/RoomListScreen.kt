@@ -11,6 +11,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.hotelapplication.R
+import com.example.hotelapplication.navigation.Route
 import com.example.hotelapplication.ui.commonComponents.Buttons.ElevatedCardRoomScreen
 import com.example.hotelapplication.ui.commonComponents.Texts.HeaderLabelScreen
 
@@ -42,7 +43,9 @@ fun RoomListScreen(
                 )
         ) {
             items(10) {
-                ElevatedCardRoomScreen {}
+                ElevatedCardRoomScreen {
+                    navController.navigate(Route.BookingFormFirstPageScreen.route)
+                }
             }
         }
     }

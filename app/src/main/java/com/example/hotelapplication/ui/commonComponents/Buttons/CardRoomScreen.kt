@@ -213,7 +213,7 @@ fun ElevatedCardRoomScreen(
             Spacer(modifier = Modifier.weight(1f))
             Row {
                 Button(
-                    onClick = { singleClick(onClick) },
+                    onClick = { onClick() },
                     colors = ButtonDefaults.buttonColors(colorResource(R.color.main_color)),
                     enabled = isAvailable
                 ) {
