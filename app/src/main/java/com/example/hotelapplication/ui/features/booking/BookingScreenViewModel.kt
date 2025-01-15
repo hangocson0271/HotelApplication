@@ -63,7 +63,7 @@ class BookingScreenViewModel @Inject constructor(bookingRepository: BookingRepos
 
         viewModelScope.launch {
             val newId = bookingRes.insertBooking(newBooking)
-            Log.i("duongnbh", "return added bookingId $newId")
+            Log.i("TAG", "return added bookingId $newId")
             _insertedBookingId.intValue = newId.toInt()
         }
 
