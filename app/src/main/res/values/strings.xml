@@ -42,7 +42,7 @@
     <string name="txt_room_type">Room Type</string>
     <string name="txt_guest">Guest</string>
     <string name="txt_room_number">Number of rooms</string>
-    <string name="txt_total_price">Total</string>
+    <string name="txt_total_price">Total%1$s</string>
     <string name="cancellation_policy_title">Cancellation Policy</string>
     <string name="cancellation_policy_text">
         """
@@ -105,7 +105,26 @@
     <string name="txt_enter_verification_code">Enter verification code:</string>
     <string name="txt_success">Success!</string>
     <string name="txt_error_change_pw">Error! Cannot change the password!</string>
+
+
+    <!--Notifications Screen-->
+    <string name="txt_subject_password_change">Password Changed Successfully</string>
+    <string name="txt_content_password_change">Your password has been updated successfully.</string>
+
+    <string name="txt_subject_order_placed_successfully">Your order has been placed successfully.</string>
+    <string name="txt_content_order_placed_successfully">Password Changed Successfully</string>
+
+    <string name="txt_subject_payment_successfully">Payment Successful.</string>
+    <string name="txt_content_payment_successfully">Your payment has been processed successfully.</string>
+
+    <string name="txt_title_screen_notifications">Notification</string>
   
     <!--Booking Form Screen-->
     <string name="txt_select_date">Select date</string>
+    <string name="title_booking_form">Booking Form</string>
+    <string name="title_booking_summary">Booking Summary</string>
+    <string name="txt_first_name">First Name</string>
+    <string name="txt_surname">Surname</string>
+    <string name="txt_id_card_passport">ID Card/Passport</string>
+    <string name="txt_notes">Notes</string>
 </resources>

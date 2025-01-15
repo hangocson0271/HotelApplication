@@ -9,10 +9,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.hotelapplication.ui.features.booking.BookingConfirmScreen
 import com.example.hotelapplication.ui.features.booking.BookingFormFirstPageScreen
+import com.example.hotelapplication.ui.features.booking.BookingFormSecondPageScreen
 import com.example.hotelapplication.ui.features.login.LoginScreen
 import com.example.hotelapplication.ui.features.booking.CancellationPolicyScreen
 import com.example.hotelapplication.ui.features.editprofile.EditProfileScreen
 import com.example.hotelapplication.ui.features.main.MainScreen
+import com.example.hotelapplication.ui.features.notifications.NotificationsScreen
 import com.example.hotelapplication.ui.features.main.RoomListScreen
 import com.example.hotelapplication.ui.features.payment.SceneSelectPayment
 import com.example.hotelapplication.ui.features.payment.components.PaymentMethodSelector
@@ -38,7 +40,9 @@ fun HotelAppNavGraph() {
             composable(Route.SceneSelectPayment.route) { SceneSelectPayment(navController) }
             composable(Route.BookingConfirmScreen.route) { BookingConfirmScreen(navController) }
             composable(Route.SearchScreen.route) { SearchScreen(navController) }
+            composable(Route.NotificationsScreen.route) { NotificationsScreen(navController) }
             composable(Route.BookingFormFirstPageScreen.route) { BookingFormFirstPageScreen(navController) }
+            composable(Route.BookingFormSecondPageScreen.route) { BookingFormSecondPageScreen(navController) }
             composable(Route.EditProfileScreen.route) {
                 EditProfileScreen(navController= navController) }
             composable(Route.RoomListScreen.route) { RoomListScreen(navController= navController) }

@@ -1,31 +1,26 @@
 package com.example.hotelapplication.ui.commonComponents.Scene
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonColors
-import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.hotelapplication.R
 
 @Composable
-fun BaseScene(navController: NavHostController, titleScene: String , content: @Composable () -> Unit) {
+fun BaseScene(navController: NavController, titleScene: String, content: @Composable () -> Unit) {
     Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
         Box(
             modifier = Modifier
@@ -35,7 +30,7 @@ fun BaseScene(navController: NavHostController, titleScene: String , content: @C
         ) {
             // Back button, fixed to the left
             IconButton(
-                onClick = { navController.popBackStack() },
+                onClick = { navController.navigateUp() },
                 modifier = Modifier
                     .padding(start = 24.dp)
                     .width(
@@ -63,7 +58,7 @@ fun BaseScene(navController: NavHostController, titleScene: String , content: @C
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(it), contentAlignment = Alignment.Center
+                .padding(it)
         ) {
             // Render the passed content
             content()

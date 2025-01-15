@@ -39,6 +39,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.hotelapplication.R
+import com.example.hotelapplication.navigation.Route
+import com.example.hotelapplication.ui.commonComponents.Scene.BaseScene
 import com.example.hotelapplication.ui.theme.HotelApplicationTheme
 import com.example.hotelapplication.ui.theme.MainColor
 
@@ -53,89 +55,91 @@ fun CancellationPolicyScreen(navController: NavController) {
         isButtonEnabled = isChecked
     }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(6.dp)
-    ) {
-
+    BaseScene (navController = navController, titleScene = stringResource(id = R.string.cancellation_policy_title)) {
         Column(
-            Modifier
-                .fillMaxHeight(0.9f)
-                .verticalScroll(scrollState)
-                .padding(10.dp)
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(6.dp)
         ) {
-            Text(
-                text = stringResource(id = R.string.cancellation_policy_title),
-                style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold),
-                modifier = Modifier.fillMaxWidth(),
-                color = MainColor,
-                textAlign = TextAlign.Center
-            )
+
+            Column(
+                Modifier
+                    .fillMaxHeight(0.9f)
+                    .verticalScroll(scrollState)
+                    .padding(10.dp)
+            ) {
+                Text(
+                    text = stringResource(id = R.string.cancellation_policy_title),
+                    style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold),
+                    modifier = Modifier.fillMaxWidth(),
+                    color = MainColor,
+                    textAlign = TextAlign.Center
+                )
+
+                Spacer(modifier = Modifier.height(18.dp))
+
+                Text(
+                    text = stringResource(id = R.string.cancellation_policy_text).trimIndent(),
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(bottom = 1.dp),
+                    maxLines = Int.MAX_VALUE,
+                    overflow = TextOverflow.Visible
+                )
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Checkbox(
+                        checked = isChecked,
+                        onCheckedChange = {
+                            isChecked = it
+                        },
+                        colors = CheckboxDefaults.colors(
+                            checkedColor = MainColor,
+                            uncheckedColor = MainColor
+                        )
+                    )
+
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = "I accept the cancellation policy",
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                }
+            }
 
             Spacer(modifier = Modifier.height(18.dp))
 
-            Text(
-                text = stringResource(id = R.string.cancellation_policy_text).trimIndent(),
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(bottom = 1.dp),
-                maxLines = Int.MAX_VALUE,
-                overflow = TextOverflow.Visible
-            )
-
             Row(
-                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                Checkbox(
-                    checked = isChecked,
-                    onCheckedChange = {
-                        isChecked = it
-                    },
-                    colors = CheckboxDefaults.colors(
-                        checkedColor = MainColor,
-                        uncheckedColor = MainColor
+                Button(
+                    onClick = { /* TODO: Handle button click */ },
+                    modifier = Modifier
+                        .padding(horizontal = 4.dp)
+                        .width(150.dp),
+                    shape = RoundedCornerShape(16.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MainColor
                     )
-                )
+                ) {
+                    Text(text = stringResource(id = R.string.txt_cancel))
+                }
+                Button(
+                    onClick = { navController.navigate(Route.BookingConfirmScreen.route) },
+                    modifier = Modifier
+                        .padding(horizontal = 4.dp)
+                        .width(150.dp),
+                    shape = RoundedCornerShape(16.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MainColor
+                    ),
+                    enabled = isButtonEnabled
+                ) {
 
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = "I accept the cancellation policy",
-                    style = MaterialTheme.typography.bodyLarge
-                )
-            }
-        }
-
-        Spacer(modifier = Modifier.height(18.dp))
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            Button(
-                onClick = { /* TODO: Handle button click */ },
-                modifier = Modifier
-                    .padding(horizontal = 4.dp)
-                    .width(150.dp),
-                shape = RoundedCornerShape(16.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MainColor
-                )
-            ) {
-                Text(text = stringResource(id = R.string.txt_cancel))
-            }
-            Button(
-                onClick = { /* TODO: Handle button click*/ },
-                modifier = Modifier
-                    .padding(horizontal = 4.dp)
-                    .width(150.dp),
-                shape = RoundedCornerShape(16.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MainColor
-                ),
-                enabled = isButtonEnabled
-            ) {
-
-                Text(text = stringResource(id = R.string.txt_accept))
+                    Text(text = stringResource(id = R.string.txt_accept))
+                }
             }
         }
     }
