@@ -2,6 +2,7 @@ package com.example.hotelapplication.di
 
 
 import android.app.Application
+import android.content.Context
 import com.example.hotelapplication.data.HotelBookingDatabase
 import com.example.hotelapplication.data.payment.PaymentRepository
 import com.example.hotelapplication.data.payment.PaymentRepositoryImpl
@@ -57,5 +58,10 @@ object AppModule {
     @Singleton
     fun provideBookingRepository(hotelBookingDatabase: HotelBookingDatabase): BookingRepository {
         return BookingRepositoryImpl(hotelBookingDatabase.bookingDao())
+    }
+    @Provides
+    @Singleton
+    fun provideContext(application: Application): Context {
+        return application.applicationContext
     }
 }

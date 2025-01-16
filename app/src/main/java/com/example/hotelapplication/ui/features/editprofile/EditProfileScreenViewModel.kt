@@ -1,5 +1,7 @@
 package com.example.hotelapplication.ui.features.editprofile
 
+import android.app.Activity
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.hotelapplication.base.BaseViewModel
@@ -13,10 +15,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
 class EditProfileScreenViewModel @Inject constructor(
+    private val context: Context,
     userRepository: UserRepository,
     private val storeValue: StoreValue
 ) : BaseViewModel() {
@@ -32,19 +36,19 @@ class EditProfileScreenViewModel @Inject constructor(
             user = userRes.getUserById(userId)
             if (user == null) {
                 Log.i("TAG", "Get user null")
-            }
-            else{
+            } else {
                 _viewModelState.update {
                     it.copy(
                         userName = user!!.user_name,
                         phone = user!!.phone,
-                        email = user!!.email?: "",
-                        dateOfBirth = user!!.date_of_birth?: ""
+                        email = user!!.email ?: "",
+                        dateOfBirth = user!!.date_of_birth ?: ""
                     )
                 }
             }
         }
     }
+
     fun setUserName(userName: String) {
         viewModelScope.launch {
             _viewModelState.update {
@@ -52,6 +56,7 @@ class EditProfileScreenViewModel @Inject constructor(
             }
         }
     }
+
     fun setDateOfBirth(dateOfBirth: String) {
         viewModelScope.launch {
             _viewModelState.update {
@@ -59,6 +64,7 @@ class EditProfileScreenViewModel @Inject constructor(
             }
         }
     }
+
     fun setPhone(phone: String) {
         viewModelScope.launch {
             _viewModelState.update {
@@ -66,6 +72,7 @@ class EditProfileScreenViewModel @Inject constructor(
             }
         }
     }
+
     fun setEmail(email: String) {
         viewModelScope.launch {
             _viewModelState.update {
@@ -73,12 +80,29 @@ class EditProfileScreenViewModel @Inject constructor(
             }
         }
     }
-    fun updateUserData(userName: String, dateOfBirth: String, phone: String, email: String){
+
+    fun updateUserData(userName: String, dateOfBirth: String, phone: String, email: String) {
         viewModelScope.launch {
-             user?.copy(user_name = userName,
+            user?.copy(
+                user_name = userName,
                 date_of_birth = dateOfBirth,
                 phone = phone,
-                email = email)?.let { userRes.updateUserData(it) }
+                email = email
+            )?.let { userRes.updateUserData(it) }
+        }
+    }
+
+    fun setAppLanguage(context: Context, languageCode: String) {
+        Log.i("TAG", "setAppLanguage $languageCode")
+
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val config = context.resources.configuration
+        config.setLocale(locale)
+        context.createConfigurationContext(config)
+        context.resources.updateConfiguration(config, context.resources.displayMetrics)
+        if (context is Activity) {
+            context.recreate()
         }
     }
 }
