@@ -39,6 +39,9 @@ enum class RoomTypes(val value: Int) {
     DOUBLE(1),
     SUITE(2);
 }
+fun Int.isAvailable(): Boolean {
+    return this == 1
+}
 @Composable
 fun ElevatedCardRoomScreen(
     roomName: String = "The Royal flush",
@@ -158,7 +161,8 @@ fun ElevatedCardRoomScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
-                    painter = if (isHaveBreakfast == 1) painterResource(R.drawable.ic_have_breakfast)
+                    painter = if (isHaveBreakfast?.isAvailable() == true)
+                        painterResource(R.drawable.ic_have_breakfast)
                     else painterResource(R.drawable.ic_no_breakfast),
                     contentDescription = "",
                     modifier = Modifier.size(16.dp),
@@ -166,7 +170,8 @@ fun ElevatedCardRoomScreen(
                 )
                 Spacer(modifier = Modifier.width(2.dp))
                 Text(
-                    text = if (isHaveBreakfast == 1) stringResource(R.string.txt_have_breakfast)
+                    text = if (isHaveBreakfast?.isAvailable() == true)
+                        stringResource(R.string.txt_have_breakfast)
                     else stringResource(R.string.txt_no_breakfast),
                     textAlign = TextAlign.Start,
                     fontSize = 12.69.sp,
@@ -182,7 +187,7 @@ fun ElevatedCardRoomScreen(
                     .align(Alignment.Start),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                if(isHaveWifi== 1){
+                if(isHaveWifi?.isAvailable() == true){
                     Image(
                         painter = painterResource(R.drawable.ic_wifi),
                         contentDescription = "",
@@ -190,7 +195,7 @@ fun ElevatedCardRoomScreen(
                         contentScale = ContentScale.Crop
                     )
                 }
-                if(isHavePool== 1){
+                if(isHavePool?.isAvailable() == true){
                     Image(
                         painter = painterResource(R.drawable.ic_pool),
                         contentDescription = "",
@@ -198,7 +203,7 @@ fun ElevatedCardRoomScreen(
                         contentScale = ContentScale.Crop
                     )
                 }
-                if(isHaveGym== 1){
+                if(isHaveGym?.isAvailable() == true){
                     Image(
                         painter = painterResource(R.drawable.ic_gym),
                         contentDescription = "",
@@ -206,7 +211,7 @@ fun ElevatedCardRoomScreen(
                         contentScale = ContentScale.Crop
                     )
                 }
-                if(isHaveBar== 1){
+                if(isHaveBar?.isAvailable() == true){
                     Image(
                         painter = painterResource(R.drawable.ic_bar),
                         contentDescription = "",
