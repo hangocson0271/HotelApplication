@@ -74,21 +74,6 @@ fun SceneSelectPayment(navController: NavHostController, bookingId: Int, titleSc
                 onClick = {
                     // Show the confirmation dialog when button is clicked
                     showDialog.value = true
-                    val payment = Payment(
-                        booking_id = 123,
-                        method = 1,
-                        create_time = System.currentTimeMillis(),
-                        pay_time = System.currentTimeMillis(),
-                        status = 2
-                    )
-                    try {
-                        Log.i("TAG", "Before insert in viewModel")
-                        viewModel.insert(payment)
-//                        Log.i("TAG", "Result: $result")
-                    } catch (e: Exception) {
-                        Log.e("TAG", "Error inserting payment: ${e.toString()}")
-                        e.printStackTrace()
-                    }
                 })
             // Dialog for payment confirmation
             if (showDialog.value) {
@@ -104,11 +89,11 @@ fun SceneSelectPayment(navController: NavHostController, bookingId: Int, titleSc
                         TextButton(onClick = {
                             // Perform the payment logic here
                             val payment = Payment(
-                                booking_id = 123,
-                                method = 1,
+                                booking_id = bookingId,
+                                method = selectedOption,
                                 create_time = System.currentTimeMillis(),
                                 pay_time = System.currentTimeMillis(),
-                                status = 2
+                                status = 2 // Sucess
                             )
                             try {
                                 viewModel.insert(payment)
@@ -127,11 +112,11 @@ fun SceneSelectPayment(navController: NavHostController, bookingId: Int, titleSc
                             showDialog.value = false
                             // You can add any other cancel-related logic if needed
                             val payment = Payment(
-                                booking_id = 123,
-                                method = 1,
+                                booking_id = bookingId,
+                                method = selectedOption,
                                 create_time = System.currentTimeMillis(),
                                 pay_time = System.currentTimeMillis(),
-                                status = 0
+                                status = 0// pending
                             )
                             try {
                                 viewModel.insert(payment)
