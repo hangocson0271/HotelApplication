@@ -52,7 +52,6 @@ class BookingScreenViewModel @Inject constructor(
     var email = _email.asStateFlow()
 
     private val currentUserId = storeValue.getIntValue(SharePreferenceConstant.USER_ID_PREF)
-//    var roomId = -1
 
     private val bookingRes = bookingRepository
     private val userRes = userRepository
@@ -62,8 +61,6 @@ class BookingScreenViewModel @Inject constructor(
         getAllBookings()
         viewModelScope.launch {
             val currentUser = userRes.getUserById(currentUserId)
-//            val currentRoom = roomRes.getRoomById(roomId)
-//            Log.i("TAG", "getRoomById id: $roomId ${currentRoom.price}, ${currentRoom.room_type}")
             _userName.value = currentUser?.user_name ?: "Nam"
             _phone.value = currentUser?.phone ?: "None"
             _email.value = currentUser?.email ?: "None"
@@ -133,10 +130,6 @@ class BookingScreenViewModel @Inject constructor(
             storeValue.getStringValue(SharePreferenceConstant.NOTE_PREF).ifEmpty {
                 "None"
             }
-//        _userName.value = storeValue.getStringValue(SharePreferenceConstant.USER_NAME_PREF)
-//        _email.value = storeValue.getStringValue(SharePreferenceConstant.EMAIL_PREF)
-//        _phone.value = storeValue.getStringValue(SharePreferenceConstant.PHONE_PREF)
-//        Log.i("TAG", "getValues ${_userName.value}, ${_email.value}, ${_phone.value}")
     }
 
     fun setNoteValue(notes: String) {

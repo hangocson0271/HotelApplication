@@ -21,11 +21,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableLongStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -42,7 +37,6 @@ import com.example.hotelapplication.extentions.hiltViewModel
 import com.example.hotelapplication.navigation.Route
 import com.example.hotelapplication.ui.commonComponents.Buttons.ElevatedCardHomeScreen
 import com.example.hotelapplication.ui.commonComponents.Scene.BaseScene
-import com.example.hotelapplication.ui.features.main.MainScreenViewModel
 import com.example.hotelapplication.ui.theme.HotelApplicationTheme
 import com.example.hotelapplication.ui.theme.MainColor
 
@@ -51,8 +45,6 @@ fun BookingConfirmScreen(navController: NavController) {
 
     val bookingViewModel = hiltViewModel<BookingScreenViewModel>()
     val insertedBookingId = bookingViewModel.insertedBookingId.value
-
-//    val userViewModel = hiltViewModel<User>()
 
     LaunchedEffect(insertedBookingId) {
         Log.i("TAG", "onClick bookingId $insertedBookingId")
@@ -234,26 +226,6 @@ fun BookingConfirmScreen(navController: NavController) {
                                 textAlign = TextAlign.End
                             )
                         }
-
-//                        Row(
-//                            modifier = Modifier
-//                                .fillMaxWidth()
-//                                .padding(start = 15.dp, end = 15.dp),
-//                            horizontalArrangement = Arrangement.SpaceBetween,
-//                            verticalAlignment = Alignment.CenterVertically
-//                        ) {
-//                            Text(
-//                                text = stringResource(id = R.string.txt_guest),
-//                                style = MaterialTheme.typography.titleMedium,
-//                                textAlign = TextAlign.Start
-//                            )
-//
-//                            Text(
-//                                text = stringResource(id = R.string.txt_guest),
-//                                style = MaterialTheme.typography.titleLarge,
-//                                textAlign = TextAlign.End
-//                            )
-//                        }
 
                         Row(
                             modifier = Modifier

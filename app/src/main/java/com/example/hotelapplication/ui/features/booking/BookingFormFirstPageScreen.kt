@@ -74,33 +74,6 @@ fun BookingFormFirstPageScreen(navController: NavController, roomId: Int = 0) {
                 }
             )
 
-//            Row(
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .padding(start = 18.dp, end = 18.dp),
-//                horizontalArrangement = Arrangement.SpaceBetween,
-//            ) {
-//                Column {
-//                    Text(
-//                        text = stringResource(id = R.string.txt_room_type),
-//                        style = MaterialTheme.typography.titleMedium,
-//                        textAlign = TextAlign.Start,
-//                        modifier = Modifier.padding(bottom = 5.dp)
-//                    )
-//                    DropDownTextField(dropDownList = roomTypeList)
-//                }
-//
-//                Column {
-//                    Text(
-//                        text = stringResource(id = R.string.txt_room_number),
-//                        style = MaterialTheme.typography.titleMedium,
-//                        textAlign = TextAlign.Start,
-//                        modifier = Modifier.padding(bottom = 5.dp)
-//                    )
-//                    NumericTextField()
-//                }
-//            }
-
 
             Column(modifier = Modifier
                     .fillMaxWidth()
@@ -114,7 +87,6 @@ fun BookingFormFirstPageScreen(navController: NavController, roomId: Int = 0) {
                     modifier = Modifier
                         .padding(bottom = 5.dp)
                 )
-//                DropDownTextField(dropDownList = roomTypeList)
                 OutlinedTextField(
                     value = stringResource(R.string.txt_single),
                     onValueChange = {},

@@ -55,12 +55,7 @@ fun BookingFormSecondPageScreen(navController: NavController) {
                 .scrollable(state = rememberScrollState(), orientation = Orientation.Vertical),
             verticalArrangement = Arrangement.SpaceBetween
         ){
-//            Row(
-//                modifier = Modifier
-//                    .fillMaxWidth(),
-//                horizontalArrangement = Arrangement.SpaceBetween,
-//            ) {
-                // Username
+
             Column {
                 Text(
                     text = stringResource(id = R.string.txt_username),
@@ -80,27 +75,6 @@ fun BookingFormSecondPageScreen(navController: NavController) {
 
             }
 
-                // Surname
-//                Column {
-//                    Text(
-//                        text = stringResource(id = R.string.txt_surname),
-//                        style = MaterialTheme.typography.titleMedium,
-//                        textAlign = TextAlign.Start,
-//                        modifier = Modifier.padding(bottom = 5.dp)
-//                    )
-//                    OutlinedTextField(
-//                        value = surnameInput,
-//                        onValueChange = {
-//                            surnameInput = it
-//                        },
-//                        modifier = Modifier
-//                            .width(150.dp),
-//                        singleLine = true,
-//                    )
-//                }
-//            }
-
-            // Email
             Column {
                 Text(
                     text = stringResource(id = R.string.txt_email),
