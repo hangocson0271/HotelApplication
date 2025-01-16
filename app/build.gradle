@@ -43,7 +43,7 @@ android {
         kotlinCompilerExtensionVersion '1.5.13'
     }
 
-    hilt{
+    hilt {
         enableAggregatingTask = false
     }
 
@@ -54,7 +54,7 @@ android {
     }
 
     configurations { implementation.exclude group: 'org.jetbrains', module: 'annotations' }
-    packagingOptions{
+    packagingOptions {
         exclude("META-INF/jersey-module-version")
         exclude("META-INF/INDEX.LIST")
         exclude("META-INF/AL2.0")
@@ -104,6 +104,8 @@ dependencies {
     implementation libs.material3.window.size.className
     implementation libs.accompanist.navigation.animation
     implementation libs.hilt.android.gradle.plugin
+    implementation libs.android.compose.runtime
+    implementation libs.androidx.compose.material
 
     ksp libs.hilt.compiler
     ksp libs.androidx.room.compiler
