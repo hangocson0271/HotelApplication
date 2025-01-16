@@ -1,26 +1,36 @@
 <resources>
     <string name="app_name">Hotel Application</string>
-    <string name="splash_screen_title">Tìm khách sạn lý tưởng của bạn để ở</string>
-    <string name="splash_screen_description">Khám phá những khách sạn tốt nhất với giá tuyệt vời khi bạn tìm kiếm với Otel</string>
-    <string name="splash_screen_subcontent">Tìm kiếm qua 10.234 khách sạn ở Việt Nam</string>
+    <string name="splash_screen_title">Tìm khách sạn lý tưởng để ở</string>
+    <string name="splash_screen_description">Khám phá những khách sạn tốt nhất với giá cả tuyệt vời khi bạn tìm kiếm với Otel</string>
+    <string name="splash_screen_subcontent">Tìm kiếm qua 10.234 khách sạn tại Việt Nam</string>
     <string name="btn_get_started">Bắt đầu</string>
+
+    <!-- Login / Signup Screen -->
     <string name="dont_have_an_account">Bạn chưa có tài khoản?</string>
     <string name="sign_up">Đăng ký</string>
-    <string name="have_any_account">Đã có tài khoản?</string>
+    <string name="have_any_account">Bạn đã có tài khoản chưa?</string>
     <string name="sign_in">Đăng nhập</string>
     <string name="login">Đăng nhập</string>
     <string name="forgot_password">Quên mật khẩu?</string>
-    <string name="new_credit_debit_card">Thẻ tín dụng/thẻ ghi nợ mới</string>
+    <string name="txt_password_policy">Mật khẩu phải có ít nhất 8 ký tự, 1 chữ hoa, 1 chữ thường, 1 số và 1 ký hiệu\n(như abc1234!A)</string>
+    <string name="txt_email_wrong_format">Định dạng email không đúng</string>
+    <string name="txt_username_should_not_null">Định dạng số điện thoại không đúng</string>
+    <string name="txt_unknow_error">Định dạng email không đúng</string>
+    <string name="txt_register_done">Đăng ký thành công!</string>
+    <string name="txt_default_username">0987654321</string>
+    <string name="txt_default_password">abc1234!</string>
+
+    <string name="new_credit_debit_card">Thẻ tín dụng/ghi nợ mới</string>
     <string name="paypal">Paypal</string>
     <string name="apple_pay">Apple Pay</string>
     <string name="google_pay">Google Pay</string>
     <string name="_continue">Tiếp tục</string>
     <string name="other_payment_method">Phương thức thanh toán khác</string>
     <string name="my_card">Thẻ của tôi</string>
-    <string name="edit_card">Chỉnh sửa thẻ</string>
-    <string name="remember_me">Ghi nhớ tôi</string>
+    <string name="edit_card">Sửa thẻ</string>
+    <string name="remember_me">Nhớ tôi</string>
     <string name="txt_or">hoặc</string>
-    <string name="txt_username">Tên người dùng</string>
+    <string name="txt_username">Tên đăng nhập</string>
     <string name="txt_password">Mật khẩu</string>
     <string name="txt_email">Email</string>
     <string name="search_hint">Tìm kiếm khách sạn</string>
@@ -32,69 +42,71 @@
     <string name="txt_format_dob">MM/dd/yyyy</string>
     <string name="select_date">Chọn ngày</string>
     <string name="txt_ok">OK</string>
-    <string name="txt_cancel">Hủy</string>
+    <string name="txt_cancel">Hủy bỏ</string>
     <string name="txt_edit_profile">Chỉnh sửa hồ sơ</string>
     <string name="txt_accept">Chấp nhận</string>
     <string name="txt_name">Tên</string>
-    <string name="txt_confirm_booking">Xác nhận đặt chỗ</string>
+    <string name="txt_confirm_booking">Xác nhận đặt phòng</string>
     <string name="txt_check_in">Nhận phòng</string>
     <string name="txt_check_out">Trả phòng</string>
     <string name="txt_room_type">Loại phòng</string>
     <string name="txt_guest">Khách</string>
-    <string name="txt_room_number">Số lượng phòng</string>
+    <string name="txt_room_number">Số phòng</string>
     <string name="txt_total_price">Tổng cộng %1$s</string>
     <string name="cancellation_policy_title">Chính sách hủy bỏ</string>
+
     <string name="cancellation_policy_text">
         """
-        Cảm ơn bạn đã chọn dịch vụ của chúng tôi. Chúng tôi hiểu rằng đôi khi kế hoạch có thể thay đổi, và bạn có thể cần hủy bỏ hoặc điều chỉnh đặt chỗ của mình. Dưới đây, bạn sẽ tìm thấy chi tiết về chính sách hủy bỏ của chúng tôi, được thiết kế để công bằng cả cho khách hàng và doanh nghiệp của chúng tôi. Vui lòng đọc kỹ các điều khoản sau trước khi thực hiện bất kỳ sự hủy bỏ nào.
+        Cảm ơn bạn đã chọn dịch vụ của chúng tôi. Chúng tôi hiểu rằng đôi khi kế hoạch có thể thay đổi, và bạn có thể cần hủy hoặc điều chỉnh việc đặt phòng. Dưới đây là chi tiết về chính sách hủy bỏ của chúng tôi, được thiết kế để công bằng cho cả khách hàng và doanh nghiệp của chúng tôi. Xin vui lòng đọc các điều khoản sau cẩn thận trước khi tiến hành bất kỳ việc hủy bỏ nào.
 
         1. Thời gian hủy bỏ
-        - Bạn có thể hủy bỏ đặt chỗ hoặc đăng ký của mình lên đến 24 giờ trước thời gian bắt đầu đã lên lịch để nhận lại toàn bộ tiền.
-        - Các hủy bỏ được thực hiện trong vòng 24 giờ trước thời gian bắt đầu sẽ bị tính phí hủy bỏ 50% tổng số tiền.
-        - Nếu việc hủy bỏ được thực hiện ít hơn 2 giờ trước thời gian đã lên lịch, sẽ không được hoàn tiền.
-        - Đối với các dịch vụ đăng ký, việc hủy bỏ có thể được thực hiện bất kỳ lúc nào trong chu kỳ thanh toán. Tuy nhiên, nếu bạn hủy bỏ đăng ký giữa chu kỳ, sẽ không có hoàn trả tỷ lệ cho khoảng thời gian còn lại.
+        - Bạn có thể hủy đặt phòng hoặc đăng ký của mình lên tới 24 giờ trước thời gian bắt đầu đã lên lịch để nhận lại toàn bộ khoản tiền.
+        - Các hủy bỏ thực hiện trong vòng 24 giờ trước thời gian bắt đầu đã lên lịch sẽ phải chịu phí hủy bỏ là 50% tổng số tiền.
+        - Nếu việc hủy bỏ được thực hiện dưới 2 giờ trước thời gian đã lên lịch, sẽ không được hoàn tiền.
+        - Đối với các dịch vụ dựa trên đăng ký, việc hủy bỏ có thể được thực hiện bất kỳ lúc nào trong chu kỳ thanh toán. Tuy nhiên, nếu bạn hủy đăng ký giữa chu kỳ, sẽ không có khoản hoàn lại theo tỷ lệ cho khoảng thời gian còn lại.
 
-        2. Cách hủy bỏ
-        Để hủy bỏ đặt chỗ hoặc đăng ký của bạn, vui lòng làm theo các bước sau:
+        2. Cách để hủy bỏ
+        Để hủy đặt phòng hoặc đăng ký của bạn, vui lòng làm theo các bước sau:
         1. Đăng nhập vào tài khoản của bạn trên trang web hoặc ứng dụng di động của chúng tôi.
-        2. Chuyển đến phần "Đặt chỗ của tôi" hoặc "Đăng ký của tôi".
-        3. Chọn đặt chỗ hoặc đăng ký mà bạn muốn hủy bỏ.
-        4. Nhấn nút "Hủy bỏ" và xác nhận hủy bỏ của bạn.
+        2. Điều hướng đến mục "Đặt phòng của tôi" hoặc "Đăng ký của tôi".
+        3. Chọn đặt phòng hoặc đăng ký mà bạn muốn hủy.
+        4. Nhấn nút "Hủy bỏ" và xác nhận việc hủy bỏ của bạn.
 
-        Ngoài ra, bạn có thể liên hệ với đội ngũ hỗ trợ của chúng tôi qua email hoặc điện thoại, và họ sẽ hỗ trợ bạn với quy trình hủy bỏ.
+        Ngoài ra, bạn có thể liên hệ với đội ngũ hỗ trợ của chúng tôi qua email hoặc điện thoại, và họ sẽ giúp bạn với quá trình hủy bỏ.
 
         3. Quy trình hoàn tiền
-        - Hoàn tiền, nếu có, sẽ được xử lý bằng phương thức thanh toán giống như phương thức đã được sử dụng cho giao dịch ban đầu. Vui lòng cho phép 5-7 ngày làm việc để tiền hoàn trả xuất hiện trong tài khoản của bạn, tùy thuộc vào nhà cung cấp thanh toán của bạn.
-        - Trong trường hợp hủy bỏ do các tình huống đặc biệt như sự cố khẩn cấp hoặc bệnh tật, vui lòng liên hệ với bộ phận dịch vụ khách hàng của chúng tôi, và chúng tôi có thể xem xét đặc biệt trên cơ sở từng trường hợp.
+        - Khoản hoàn tiền, nếu có, sẽ được xử lý bằng phương thức thanh toán giống như phương thức đã sử dụng cho giao dịch ban đầu. Xin vui lòng chờ 5-7 ngày làm việc để khoản hoàn tiền hiển thị trong tài khoản của bạn, tùy thuộc vào nhà cung cấp thanh toán của bạn.
+        - Trong trường hợp hủy bỏ do hoàn cảnh đặc biệt như tình huống khẩn cấp hoặc bệnh tật, vui lòng liên hệ với đội ngũ dịch vụ khách hàng của chúng tôi, và chúng tôi có thể xem xét một cách đặc biệt theo từng trường hợp.
 
-        4. Chính sách không xuất hiện
-        Nếu bạn không xuất hiện cho dịch vụ đã lên lịch và không hủy bỏ đặt chỗ của bạn trong thời gian quy định, bạn sẽ không được hoàn tiền, và có thể áp dụng phí không xuất hiện. Phí không xuất hiện sẽ tương đương với toàn bộ chi phí của dịch vụ hoặc đặt chỗ.
+        4. Chính sách không hiển diện
+        Nếu bạn không đến dịch vụ đã lên lịch của bạn và không hủy bỏ đặt phòng của bạn trong khoảng thời gian quy định, bạn sẽ không có quyền nhận lại tiền, và phí không hiển diện có thể áp dụng. Phí không hiển diện sẽ tương đương với toàn bộ chi phí của dịch vụ hoặc đặt phòng.
 
-        5. Các ngoại lệ cho chính sách hủy bỏ
-        Mặc dù chúng tôi đã thiết kế chính sách hủy bỏ của mình theo cách công bằng và đơn giản, chúng tôi nhận thức rằng một số tình huống có thể cần ngoại lệ. Các trường hợp sau đây là một số trường hợp mà chính sách hủy bỏ chuẩn của chúng tôi có thể không áp dụng:
-        - Khẩn cấp y tế: Nếu bạn không thể tham dự do khẩn cấp y tế, vui lòng cung cấp tài liệu liên quan, và chúng tôi có thể đề nghị hoàn tiền hoặc đặt lại mà không mất phí.
-        - Sự kiện bất khả kháng: Trong các trường hợp xảy ra sự kiện không lường trước được như thiên tai, hạn chế của chính phủ hoặc các hoàn cảnh đặc biệt khác nằm ngoài sự kiểm soát của chúng tôi, chúng tôi bảo lưu quyền từ chối phí hủy bỏ hoặc đề nghị hoàn tiền toàn bộ.
+        5. Những ngoại lệ trong chính sách hủy bỏ
+        Trong khi chúng tôi đã thiết kế chính sách hủy bỏ của mình để công bằng và đơn giản, chúng tôi nhận ra rằng một số tình huống có thể yêu cầu ngoại lệ. Dưới đây là một số trường hợp mà chính sách hủy bỏ tiêu chuẩn của chúng tôi có thể không áp dụng:
+        - Tình huống khẩn cấp y tế: Nếu bạn không thể tham dự do tình huống khẩn cấp y tế, vui lòng cung cấp tài liệu liên quan, và chúng tôi có thể cung cấp hoàn lại tiền hoặc sắp xếp lại mà không có thêm chi phí.
+        - Bất khả kháng: Trong các trường hợp sự kiện bất ngờ như thảm họa thiên nhiên, các hạn chế do chính phủ áp đặt, hoặc các hoàn cảnh đặc biệt khác bên ngoài tầm kiểm soát của chúng tôi, chúng tôi có quyền miễn phí hủy bỏ hoặc cung cấp hoàn lại tiền đầy đủ.
 
         """
     </string>
+
     <string name="txt_night">Đêm</string>
     <string name="txt_single">Phòng đơn</string>
     <string name="txt_double">Phòng đôi</string>
     <string name="txt_suite">Phòng suite</string>
     <string name="txt_have_breakfast">Bao gồm bữa sáng</string>
     <string name="txt_no_breakfast">Không bao gồm bữa sáng</string>
-    <string name="txt_book">Đặt</string>
+    <string name="txt_book">Đặt phòng</string>
     <string name="room_list_screen">Màn hình danh sách phòng</string>
-    <string name="upcoming_book_screen">Màn hình Đặt chỗ Sắp tới</string>
+    <string name="upcoming_book_screen">Màn hình đặt phòng sắp tới</string>
 
-    <!--Search Screen-->
+    <!-- Search Screen -->
     <string name="search_screen_title">Tìm kiếm</string>
     <string name="hotel_result">Lọc (%d khách sạn)</string>
-    <string name="txt_viewbooking">Xem đặt chỗ</string>
-    <string name="txt_booking_completed">Đặt chỗ thành công</string>
-    <string name="txt_booking_cancel">Bạn đã hủy đặt chỗ khách sạn này</string>
+    <string name="txt_viewbooking">Xem Booking</string>
+    <string name="txt_booking_completed">Đặt phòng hoàn tất</string>
+    <string name="txt_booking_cancel">Bạn đã hủy đặt phòng khách sạn này</string>
 
-    <!--Forgot Password Screen-->
+    <!-- Forgot Password Screen -->
     <string name="txt_continue">Tiếp tục</string>
     <string name="txt_confirm">Xác nhận</string>
     <string name="re_enter_password">Nhập lại mật khẩu mới</string>
@@ -107,28 +119,28 @@
     <string name="txt_success">Thành công!</string>
     <string name="txt_error_change_pw">Lỗi! Không thể thay đổi mật khẩu!</string>
 
-    <!--Notifications Screen-->
+    <!-- Notifications Screen -->
     <string name="txt_subject_password_change">Mật khẩu đã được thay đổi thành công</string>
     <string name="txt_content_password_change">Mật khẩu của bạn đã được cập nhật thành công.</string>
 
     <string name="txt_subject_order_placed_successfully">Đơn hàng của bạn đã được đặt thành công.</string>
-    <string name="txt_content_order_placed_successfully">Mật khẩu đã được thay đổi thành công.</string>
+    <string name="txt_content_order_placed_successfully">Mật khẩu đã được thay đổi thành công</string>
 
     <string name="txt_subject_payment_successfully">Thanh toán thành công.</string>
-    <string name="txt_content_payment_successfully">Thanh toán của bạn đã được xử lý thành công.</string>
+    <string name="txt_content_payment_successfully">Khoản thanh toán của bạn đã được xử lý thành công.</string>
 
     <string name="txt_title_screen_notifications">Thông báo</string>
 
-    <!--Booking Form Screen-->
+    <!-- Booking Form Screen -->
     <string name="txt_select_date">Chọn ngày</string>
-    <string name="title_booking_form">Mẫu Đặt chỗ</string>
-    <string name="title_booking_summary">Tóm tắt Đặt chỗ</string>
+    <string name="title_booking_form">Mẫu Đặt phòng</string>
+    <string name="title_booking_summary">Tóm tắt Đặt phòng</string>
     <string name="txt_first_name">Tên</string>
     <string name="txt_surname">Họ</string>
     <string name="txt_id_card_passport">CMND/Hộ chiếu</string>
     <string name="txt_notes">Ghi chú</string>
 
-    <!--Sort/ Filter Screen-->
+    <!-- Sort/Filter Screen -->
     <string name="sort_filter_title">Lọc</string>
     <string name="reset_label">Đặt lại</string>
     <string name="apply_label">Áp dụng</string>
@@ -139,10 +151,9 @@
     <string name="facilities_label">Tiện nghi</string>
     <string name="wifi_label">Wifi</string>
 
-    <!--Sort drop down-->
-    <string name="price_increase_title">Tăng giá</string>
-    <string name="price_decrease_title">Giảm giá</string>
-    <string name="rate_increase_title">Đánh giá giảm dần</string>
-    <string name="rate_decrease_title">Đánh giá tăng dần</string>
-    <string name="all_title">Tất cả</string>
+    <!-- Forgot Password -->
+    <string name="txt_incorrect_username_password">Tên đăng nhập hoặc mật khẩu không đúng!</string>
+    <string name="txt_incorrect_verify_code">Mã xác minh không đúng!</string>
+    <string name="txt_password_not_equals">Mật khẩu không khớp</string>
+    <string name="txt_invalid_account">Định dạng số điện thoại hoặc email không đúng</string>
 </resources>

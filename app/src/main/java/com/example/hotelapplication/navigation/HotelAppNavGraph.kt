@@ -21,7 +21,6 @@ import com.example.hotelapplication.ui.features.notifications.NotificationsScree
 import com.example.hotelapplication.ui.features.payment.SceneSelectPayment
 import com.example.hotelapplication.ui.features.searchScreen.SearchScreen
 import com.example.hotelapplication.ui.features.signup.SignupScreen
-import com.example.hotelapplication.ui.features.splash.SplashScreen
 
 @Composable
 fun HotelAppNavGraph() {
@@ -30,7 +29,7 @@ fun HotelAppNavGraph() {
     Scaffold() {
         NavHost(
             navController = navController,
-            startDestination = Route.SplashScreen.route,
+            startDestination = Route.LoginScreen.route,
             modifier = Modifier.padding(it)
         ) {
             composable(Route.MainScreen.route) { MainScreen(navController = navController) }
@@ -39,10 +38,19 @@ fun HotelAppNavGraph() {
                     navController
                 )
             }
-            composable(Route.SplashScreen.route) { SplashScreen(navController) }
             composable(Route.LoginScreen.route) { LoginScreen(navController) }
             composable(Route.SignupScreen.route) { SignupScreen(navController) }
-            composable(Route.SceneSelectPayment.route) { SceneSelectPayment(navController) }
+            composable(
+                route = Route.SceneSelectPayment.route + "/{bookingId}",
+                arguments = listOf(
+                    navArgument("bookingId") {
+                        type = NavType.IntType
+                    }
+                )
+            ) { entry ->
+                SceneSelectPayment(navController,
+                    bookingId = entry.arguments?.getInt("bookingId") ?: 0)
+            }
             composable(Route.BookingConfirmScreen.route) { BookingConfirmScreen(navController) }
             composable(Route.SearchScreen.route) { SearchScreen(navController) }
             composable(Route.NotificationsScreen.route) { NotificationsScreen(navController) }

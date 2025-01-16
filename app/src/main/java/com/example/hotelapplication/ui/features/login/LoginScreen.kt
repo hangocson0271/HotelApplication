@@ -17,10 +17,8 @@ import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -32,26 +30,36 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.hotelapplication.R
+import com.example.hotelapplication.extentions.hiltViewModel
 import com.example.hotelapplication.navigation.Route
 import com.example.hotelapplication.ui.commonComponents.Buttons.LoginButton
 import com.example.hotelapplication.ui.commonComponents.Buttons.OutLineImageButton
+import com.example.hotelapplication.ui.commonComponents.Progress.CircleProgressDialog
 import com.example.hotelapplication.ui.commonComponents.TextField.TextFieldCommon
 import com.example.hotelapplication.ui.commonComponents.Texts.TextLoginTitle
 import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordDialog
 import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordResultDialog
 import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordStep
 import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordStep3Dialog
-import kotlin.random.Random
 
 @Composable
 fun LoginScreen(
     navController: NavController
 ) {
-    var isRememberChecked by rememberSaveable { mutableStateOf(false) }
-    var forgotPasswordState by rememberSaveable { mutableStateOf(ForgotPasswordStep.NONE) }
+    val viewModel = hiltViewModel<LoginViewModel>()
+    val uiState by viewModel.loginUiState.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = uiState) {
+        viewModel.checkAndAutoLogin()
+
+        if (uiState.isLoginSuccessful) {
+            navController.navigate(Route.MainScreen.route)
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -70,8 +78,25 @@ fun LoginScreen(
         }
 
         Column {
-            TextFieldCommon(stringResource(R.string.txt_username), R.drawable.message)
-            TextFieldCommon(stringResource(R.string.txt_password), R.drawable.lock, R.drawable.hide)
+            TextFieldCommon(
+                value = uiState.username,
+                onChangeValue = { value ->
+                    viewModel.setUserName(value)
+                },
+                label = stringResource(R.string.txt_username),
+                leadingIcon = R.drawable.message,
+                placeholder = stringResource(R.string.txt_default_username)
+            )
+            TextFieldCommon(
+                value = uiState.password,
+                onChangeValue = { value ->
+                    viewModel.setPassword(value)
+                },
+                stringResource(R.string.txt_password),
+                R.drawable.lock,
+                R.drawable.hide,
+                placeholder = stringResource(R.string.txt_default_password)
+            )
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
@@ -83,9 +108,9 @@ fun LoginScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Checkbox(
-                        checked = isRememberChecked,
+                        checked = uiState.isRememberChecked,
                         onCheckedChange = {
-                            isRememberChecked = !isRememberChecked
+                            viewModel.setIsRememberChecked(!uiState.isRememberChecked)
                         },
                         colors = CheckboxDefaults.colors()
                             .copy(
@@ -100,7 +125,7 @@ fun LoginScreen(
                 }
                 TextButton(
                     onClick = {
-                        forgotPasswordState = ForgotPasswordStep.ENTER_ACCOUNT
+                        viewModel.setForgotPasswordState(ForgotPasswordStep.ENTER_ACCOUNT)
                     }
                 ) {
                     Text(
@@ -113,7 +138,7 @@ fun LoginScreen(
         }
 
         LoginButton(stringResource(R.string.login)) {
-            navController.navigate(Route.MainScreen.route)
+            viewModel.login()
         }
 
         Column(
@@ -158,64 +183,80 @@ fun LoginScreen(
                 ),
                 onClick = {
                     navController.navigate(Route.SignupScreen.route) {
-                        popUpTo(Route.SplashScreen.route)
+                        launchSingleTop = true
                     }
                 },
                 modifier = Modifier.padding(16.dp, 0.dp, 0.dp, 0.dp)
             )
         }
 
-        when (forgotPasswordState) {
+        when (uiState.forgotPasswordStep) {
             ForgotPasswordStep.ENTER_ACCOUNT -> {
                 ForgotPasswordDialog(
                     title = stringResource(R.string.enter_phone_email_title),
                     placeHolder = stringResource(R.string.txt_phone_email),
                     onDismiss = {
-                        forgotPasswordState = ForgotPasswordStep.NONE
+                        viewModel.setForgotPasswordState(ForgotPasswordStep.NONE)
                     },
-                    onConfirm = {
-                        forgotPasswordState = ForgotPasswordStep.VERIFY_CODE
-                    }
+                    onConfirm = { account ->
+                        viewModel.checkForgotAccount(account)
+                    },
+                    isError = uiState.isForgotPassError,
+                    errorMessage = uiState.forgotPassErrorMessage
                 )
             }
+
             ForgotPasswordStep.VERIFY_CODE -> {
                 ForgotPasswordDialog(
                     title = stringResource(R.string.txt_enter_verification_code),
-                    placeHolder = "",
+                    placeHolder = stringResource(R.string.txt_default_password),
                     onDismiss = {
-                        forgotPasswordState = ForgotPasswordStep.NONE
+                        viewModel.setForgotPasswordState(ForgotPasswordStep.NONE)
                     },
-                    onConfirm = {
-                        forgotPasswordState = ForgotPasswordStep.ENTER_NEW_PW
-                    }
+                    onConfirm = { code ->
+                        viewModel.checkForgotVerifyCode(code)
+                    },
+                    isError = uiState.isForgotPassError,
+                    errorMessage = uiState.forgotPassErrorMessage
                 )
             }
+
             ForgotPasswordStep.ENTER_NEW_PW -> {
                 ForgotPasswordStep3Dialog(
+                    isForgotPassError = uiState.isForgotPassError,
+                    errorMessage = uiState.forgotPassErrorMessage,
                     onDismiss = {
-                        forgotPasswordState = ForgotPasswordStep.NONE
+                        viewModel.setForgotPasswordState(ForgotPasswordStep.NONE)
                     },
-                    onConfirm = {
-                        if (Random.nextBoolean()) {
-                            forgotPasswordState = ForgotPasswordStep.RESULT_OK
-                        } else {
-                            forgotPasswordState = ForgotPasswordStep.ERROR
-                        }
-
-                    }
+                    onConfirm = { newPassword, confirmPassword ->
+                        viewModel.checkForgotNewPassword(newPassword, confirmPassword)
+                    },
                 )
             }
+
             ForgotPasswordStep.RESULT_OK -> {
                 ForgotPasswordResultDialog(stringResource(R.string.txt_success)) {
-                    forgotPasswordState = ForgotPasswordStep.NONE
+                    viewModel.setForgotPasswordState(ForgotPasswordStep.NONE)
                 }
             }
+
             ForgotPasswordStep.ERROR -> {
                 ForgotPasswordResultDialog(stringResource(R.string.txt_error_change_pw)) {
-                    forgotPasswordState = ForgotPasswordStep.NONE
+                    viewModel.setForgotPasswordState(ForgotPasswordStep.NONE)
                 }
             }
+
             ForgotPasswordStep.NONE -> {}
+        }
+
+        if (uiState.isError) {
+            ForgotPasswordResultDialog(stringResource(uiState.errorMessage)) {
+                viewModel.isShowError(false)
+            }
+        }
+
+        if (uiState.isLoading) {
+            CircleProgressDialog()
         }
     }
 }
