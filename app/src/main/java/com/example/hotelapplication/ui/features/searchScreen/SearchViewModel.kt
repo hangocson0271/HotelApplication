@@ -25,7 +25,7 @@ class SearchViewModel @Inject constructor(hotelRepository: HotelsRepository) : B
         getAllHotels()
     }
 
-    private fun getAllHotels() {
+    fun getAllHotels() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 delay(800)
@@ -39,6 +39,50 @@ class SearchViewModel @Inject constructor(hotelRepository: HotelsRepository) : B
     fun searchHotelWithName(hotelName: String) {
         viewModelScope.launch {
             hotelRes.searchAllHotelsWithValue(hotelName).collect { hotels ->
+                _hotelsResultSearch.value = hotels
+            }
+        }
+    }
+
+    fun getAllHotelWithPriceIncrease() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                delay(800)
+            }
+            hotelRes.getAllHotelWithPriceIncrease().collect { hotels ->
+                _hotelsResultSearch.value = hotels
+            }
+        }
+    }
+
+    fun getAllHotelWithPriceDecrease() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                delay(800)
+            }
+            hotelRes.getAllHotelWithPriceDecrease().collect { hotels ->
+                _hotelsResultSearch.value = hotels
+            }
+        }
+    }
+
+    fun getAllHotelWithRateIncrease() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                delay(800)
+            }
+            hotelRes.getAllHotelWithRateIncrease().collect { hotels ->
+                _hotelsResultSearch.value = hotels
+            }
+        }
+    }
+
+    fun getAllHotelWithRateDecrease() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                delay(800)
+            }
+            hotelRes.getAllHotelWithRateDecrease().collect { hotels ->
                 _hotelsResultSearch.value = hotels
             }
         }

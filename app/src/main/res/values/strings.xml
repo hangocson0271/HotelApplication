@@ -1,143 +1,148 @@
 <resources>
     <string name="app_name">Hotel Application</string>
-    <string name="splash_screen_title">Find your ideal \nHotel to stay</string>
-    <string name="splash_screen_description">Discover the best hotels at great prices when you search with Otel</string>
-    <string name="splash_screen_subcontent">Search through 10,234 hotels in VietNam</string>
-    <string name="btn_get_started">Get started</string>
-    <string name="dont_have_an_account">Don\'t have an account?</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="have_any_account">Already have an account ?</string>
-    <string name="sign_in">Sign In</string>
-    <string name="login">Log In</string>
-    <string name="forgot_password">Forgot Password?</string>
-    <string name="new_credit_debit_card">New credit/Debit Card</string>
+    <string name="splash_screen_title">Tìm khách sạn lý tưởng của bạn để ở</string>
+    <string name="splash_screen_description">Khám phá những khách sạn tốt nhất với giá tuyệt vời khi bạn tìm kiếm với Otel</string>
+    <string name="splash_screen_subcontent">Tìm kiếm qua 10.234 khách sạn ở Việt Nam</string>
+    <string name="btn_get_started">Bắt đầu</string>
+    <string name="dont_have_an_account">Bạn chưa có tài khoản?</string>
+    <string name="sign_up">Đăng ký</string>
+    <string name="have_any_account">Đã có tài khoản?</string>
+    <string name="sign_in">Đăng nhập</string>
+    <string name="login">Đăng nhập</string>
+    <string name="forgot_password">Quên mật khẩu?</string>
+    <string name="new_credit_debit_card">Thẻ tín dụng/thẻ ghi nợ mới</string>
     <string name="paypal">Paypal</string>
     <string name="apple_pay">Apple Pay</string>
     <string name="google_pay">Google Pay</string>
-    <string name="_continue">Continue</string>
-    <string name="other_payment_method">Other Payment Method</string>
-    <string name="my_card">My Card</string>
-    <string name="edit_card">Edit Card</string>
-    <string name="remember_me">Remember Me</string>
-    <string name="txt_or">or</string>
-    <string name="txt_username">Username</string>
-    <string name="txt_password">Password</string>
+    <string name="_continue">Tiếp tục</string>
+    <string name="other_payment_method">Phương thức thanh toán khác</string>
+    <string name="my_card">Thẻ của tôi</string>
+    <string name="edit_card">Chỉnh sửa thẻ</string>
+    <string name="remember_me">Ghi nhớ tôi</string>
+    <string name="txt_or">hoặc</string>
+    <string name="txt_username">Tên người dùng</string>
+    <string name="txt_password">Mật khẩu</string>
     <string name="txt_email">Email</string>
-    <string name="search_hint">Search for hotel</string>
-    <string name="enter_username">Enter name</string>
-    <string name="txt_phone">Phone</string>
-    <string name="enter_phonenumber">Enter phone number</string>
-    <string name="enter_email">Enter email</string>
-    <string name="txt_dob">Date of Birth</string>
+    <string name="search_hint">Tìm kiếm khách sạn</string>
+    <string name="enter_username">Nhập tên</string>
+    <string name="txt_phone">Điện thoại</string>
+    <string name="enter_phonenumber">Nhập số điện thoại</string>
+    <string name="enter_email">Nhập email</string>
+    <string name="txt_dob">Ngày sinh</string>
     <string name="txt_format_dob">MM/dd/yyyy</string>
-    <string name="select_date">Select date</string>
+    <string name="select_date">Chọn ngày</string>
     <string name="txt_ok">OK</string>
-    <string name="txt_cancel">Cancel</string>
-    <string name="txt_edit_profile">Edit Profile</string>
-    <string name="txt_accept">Accept</string>
-    <string name="txt_name">Name</string>
-    <string name="txt_confirm_booking">Confirm Booking</string>
-    <string name="txt_check_in">Check in</string>
-    <string name="txt_check_out">Check out</string>
-    <string name="txt_room_type">Room Type</string>
-    <string name="txt_guest">Guest</string>
-    <string name="txt_room_number">Number of rooms</string>
-    <string name="txt_total_price">Total%1$s</string>
-    <string name="cancellation_policy_title">Cancellation Policy</string>
+    <string name="txt_cancel">Hủy</string>
+    <string name="txt_edit_profile">Chỉnh sửa hồ sơ</string>
+    <string name="txt_accept">Chấp nhận</string>
+    <string name="txt_name">Tên</string>
+    <string name="txt_confirm_booking">Xác nhận đặt chỗ</string>
+    <string name="txt_check_in">Nhận phòng</string>
+    <string name="txt_check_out">Trả phòng</string>
+    <string name="txt_room_type">Loại phòng</string>
+    <string name="txt_guest">Khách</string>
+    <string name="txt_room_number">Số lượng phòng</string>
+    <string name="txt_total_price">Tổng cộng %1$s</string>
+    <string name="cancellation_policy_title">Chính sách hủy bỏ</string>
     <string name="cancellation_policy_text">
         """
-        Thank you for choosing our service. We understand that sometimes plans change, and you may need to cancel or modify your booking. Below, you’ll find the details of our cancellation policy, which has been designed to be fair to both our customers and our business. Please read the following terms carefully before proceeding with any cancellations.
+        Cảm ơn bạn đã chọn dịch vụ của chúng tôi. Chúng tôi hiểu rằng đôi khi kế hoạch có thể thay đổi, và bạn có thể cần hủy bỏ hoặc điều chỉnh đặt chỗ của mình. Dưới đây, bạn sẽ tìm thấy chi tiết về chính sách hủy bỏ của chúng tôi, được thiết kế để công bằng cả cho khách hàng và doanh nghiệp của chúng tôi. Vui lòng đọc kỹ các điều khoản sau trước khi thực hiện bất kỳ sự hủy bỏ nào.
 
-        1. Cancellation Period
-        - You may cancel your booking or subscription up to 24 hours before the scheduled start time to receive a full refund.
-        - Cancellations made within 24 hours of the scheduled start time will be subject to a cancellation fee of 50% of the total amount.
-        - If the cancellation is made less than 2 hours before the scheduled time, no refund will be provided.
-        - For subscription-based services, cancellations can be made at any time during the billing cycle. However, if you cancel your subscription mid-cycle, no pro-rated refund will be issued for the remaining period.
+        1. Thời gian hủy bỏ
+        - Bạn có thể hủy bỏ đặt chỗ hoặc đăng ký của mình lên đến 24 giờ trước thời gian bắt đầu đã lên lịch để nhận lại toàn bộ tiền.
+        - Các hủy bỏ được thực hiện trong vòng 24 giờ trước thời gian bắt đầu sẽ bị tính phí hủy bỏ 50% tổng số tiền.
+        - Nếu việc hủy bỏ được thực hiện ít hơn 2 giờ trước thời gian đã lên lịch, sẽ không được hoàn tiền.
+        - Đối với các dịch vụ đăng ký, việc hủy bỏ có thể được thực hiện bất kỳ lúc nào trong chu kỳ thanh toán. Tuy nhiên, nếu bạn hủy bỏ đăng ký giữa chu kỳ, sẽ không có hoàn trả tỷ lệ cho khoảng thời gian còn lại.
 
-        2. How to Cancel
-        To cancel your booking or subscription, please follow these steps:
-        1. Log into your account on our website or mobile app.
-        2. Navigate to the "My Bookings" or "My Subscriptions" section.
-        3. Select the booking or subscription you wish to cancel.
-        4. Click on the "Cancel" button and confirm your cancellation.
+        2. Cách hủy bỏ
+        Để hủy bỏ đặt chỗ hoặc đăng ký của bạn, vui lòng làm theo các bước sau:
+        1. Đăng nhập vào tài khoản của bạn trên trang web hoặc ứng dụng di động của chúng tôi.
+        2. Chuyển đến phần "Đặt chỗ của tôi" hoặc "Đăng ký của tôi".
+        3. Chọn đặt chỗ hoặc đăng ký mà bạn muốn hủy bỏ.
+        4. Nhấn nút "Hủy bỏ" và xác nhận hủy bỏ của bạn.
 
-        Alternatively, you can contact our support team by email or phone, and they will assist you with the cancellation process.
+        Ngoài ra, bạn có thể liên hệ với đội ngũ hỗ trợ của chúng tôi qua email hoặc điện thoại, và họ sẽ hỗ trợ bạn với quy trình hủy bỏ.
 
-        3. Refund Process
-        - Refunds, if applicable, will be processed using the same payment method that was used for the original transaction. Please allow 5-7 business days for the refund to appear in your account, depending on your payment provider.
-        - In case of a cancellation due to exceptional circumstances such as an emergency or illness, please contact our customer service team, and we may offer special consideration on a case-by-case basis.
+        3. Quy trình hoàn tiền
+        - Hoàn tiền, nếu có, sẽ được xử lý bằng phương thức thanh toán giống như phương thức đã được sử dụng cho giao dịch ban đầu. Vui lòng cho phép 5-7 ngày làm việc để tiền hoàn trả xuất hiện trong tài khoản của bạn, tùy thuộc vào nhà cung cấp thanh toán của bạn.
+        - Trong trường hợp hủy bỏ do các tình huống đặc biệt như sự cố khẩn cấp hoặc bệnh tật, vui lòng liên hệ với bộ phận dịch vụ khách hàng của chúng tôi, và chúng tôi có thể xem xét đặc biệt trên cơ sở từng trường hợp.
 
-        4. No-show Policy
-        If you do not show up for your scheduled service and fail to cancel your booking within the specified time, you will not be entitled to a refund, and a no-show fee may apply. The no-show fee will be equivalent to the full cost of the service or booking.
+        4. Chính sách không xuất hiện
+        Nếu bạn không xuất hiện cho dịch vụ đã lên lịch và không hủy bỏ đặt chỗ của bạn trong thời gian quy định, bạn sẽ không được hoàn tiền, và có thể áp dụng phí không xuất hiện. Phí không xuất hiện sẽ tương đương với toàn bộ chi phí của dịch vụ hoặc đặt chỗ.
 
-        5. Exceptions to the Cancellation Policy
-        While we have designed our cancellation policy to be fair and straightforward, we recognize that certain situations may warrant exceptions. The following are some cases where our standard cancellation policy may not apply:
-        - Medical emergencies: If you are unable to attend due to a medical emergency, please provide relevant documentation, and we may offer a refund or reschedule at no extra cost.
-        - Force Majeure: In cases of unforeseen events such as natural disasters, government-imposed restrictions, or other extraordinary circumstances beyond our control, we reserve the right to waive the cancellation fee or offer a full refund.
+        5. Các ngoại lệ cho chính sách hủy bỏ
+        Mặc dù chúng tôi đã thiết kế chính sách hủy bỏ của mình theo cách công bằng và đơn giản, chúng tôi nhận thức rằng một số tình huống có thể cần ngoại lệ. Các trường hợp sau đây là một số trường hợp mà chính sách hủy bỏ chuẩn của chúng tôi có thể không áp dụng:
+        - Khẩn cấp y tế: Nếu bạn không thể tham dự do khẩn cấp y tế, vui lòng cung cấp tài liệu liên quan, và chúng tôi có thể đề nghị hoàn tiền hoặc đặt lại mà không mất phí.
+        - Sự kiện bất khả kháng: Trong các trường hợp xảy ra sự kiện không lường trước được như thiên tai, hạn chế của chính phủ hoặc các hoàn cảnh đặc biệt khác nằm ngoài sự kiểm soát của chúng tôi, chúng tôi bảo lưu quyền từ chối phí hủy bỏ hoặc đề nghị hoàn tiền toàn bộ.
 
         """
     </string>
-    <string name="txt_night">Night</string>
-    <string name="txt_single">Single Room</string>
-    <string name="txt_double">Double Room</string>
-    <string name="txt_suite">Suite Room</string>
-    <string name="txt_have_breakfast">Breakfast Included</string>
-    <string name="txt_no_breakfast">No Breakfast Included</string>
-    <string name="txt_book">Book</string>
-    <string name="room_list_screen">Room List Screen</string>
-    <string name="upcoming_book_screen">UpComing Book Screen</string>
+    <string name="txt_night">Đêm</string>
+    <string name="txt_single">Phòng đơn</string>
+    <string name="txt_double">Phòng đôi</string>
+    <string name="txt_suite">Phòng suite</string>
+    <string name="txt_have_breakfast">Bao gồm bữa sáng</string>
+    <string name="txt_no_breakfast">Không bao gồm bữa sáng</string>
+    <string name="txt_book">Đặt</string>
+    <string name="room_list_screen">Màn hình danh sách phòng</string>
+    <string name="upcoming_book_screen">Màn hình Đặt chỗ Sắp tới</string>
 
     <!--Search Screen-->
-    <string name="search_screen_title">Search</string>
-    <string name="hotel_result">Filter (%d hotels)</string>
-    <string name="txt_viewbooking">View Booking</string>
-    <string name="txt_booking_completed">Booking Completed</string>
-    <string name="txt_booking_cancel">You cancelled this hotel booking</string>
+    <string name="search_screen_title">Tìm kiếm</string>
+    <string name="hotel_result">Lọc (%d khách sạn)</string>
+    <string name="txt_viewbooking">Xem đặt chỗ</string>
+    <string name="txt_booking_completed">Đặt chỗ thành công</string>
+    <string name="txt_booking_cancel">Bạn đã hủy đặt chỗ khách sạn này</string>
 
     <!--Forgot Password Screen-->
-    <string name="txt_continue">Continue</string>
-    <string name="txt_confirm">Confirm</string>
-    <string name="re_enter_password">Re-enter new password</string>
-    <string name="txt_new_password">New password</string>
-    <string name="enter_new_password">Enter new password:</string>
-    <string name="txt_done">Done</string>
-    <string name="enter_phone_email_title">Enter phone number / email:</string>
-    <string name="txt_phone_email">Phone/email</string>
-    <string name="txt_enter_verification_code">Enter verification code:</string>
-    <string name="txt_success">Success!</string>
-    <string name="txt_error_change_pw">Error! Cannot change the password!</string>
-
+    <string name="txt_continue">Tiếp tục</string>
+    <string name="txt_confirm">Xác nhận</string>
+    <string name="re_enter_password">Nhập lại mật khẩu mới</string>
+    <string name="txt_new_password">Mật khẩu mới</string>
+    <string name="enter_new_password">Nhập mật khẩu mới:</string>
+    <string name="txt_done">Xong</string>
+    <string name="enter_phone_email_title">Nhập số điện thoại / email:</string>
+    <string name="txt_phone_email">Điện thoại/email</string>
+    <string name="txt_enter_verification_code">Nhập mã xác minh:</string>
+    <string name="txt_success">Thành công!</string>
+    <string name="txt_error_change_pw">Lỗi! Không thể thay đổi mật khẩu!</string>
 
     <!--Notifications Screen-->
-    <string name="txt_subject_password_change">Password Changed Successfully</string>
-    <string name="txt_content_password_change">Your password has been updated successfully.</string>
+    <string name="txt_subject_password_change">Mật khẩu đã được thay đổi thành công</string>
+    <string name="txt_content_password_change">Mật khẩu của bạn đã được cập nhật thành công.</string>
 
-    <string name="txt_subject_order_placed_successfully">Your order has been placed successfully.</string>
-    <string name="txt_content_order_placed_successfully">Password Changed Successfully</string>
+    <string name="txt_subject_order_placed_successfully">Đơn hàng của bạn đã được đặt thành công.</string>
+    <string name="txt_content_order_placed_successfully">Mật khẩu đã được thay đổi thành công.</string>
 
-    <string name="txt_subject_payment_successfully">Payment Successful.</string>
-    <string name="txt_content_payment_successfully">Your payment has been processed successfully.</string>
+    <string name="txt_subject_payment_successfully">Thanh toán thành công.</string>
+    <string name="txt_content_payment_successfully">Thanh toán của bạn đã được xử lý thành công.</string>
 
-    <string name="txt_title_screen_notifications">Notification</string>
+    <string name="txt_title_screen_notifications">Thông báo</string>
 
     <!--Booking Form Screen-->
-    <string name="txt_select_date">Select date</string>
-    <string name="title_booking_form">Booking Form</string>
-    <string name="title_booking_summary">Booking Summary</string>
-    <string name="txt_first_name">First Name</string>
-    <string name="txt_surname">Surname</string>
-    <string name="txt_id_card_passport">ID Card/Passport</string>
-    <string name="txt_notes">Notes</string>
+    <string name="txt_select_date">Chọn ngày</string>
+    <string name="title_booking_form">Mẫu Đặt chỗ</string>
+    <string name="title_booking_summary">Tóm tắt Đặt chỗ</string>
+    <string name="txt_first_name">Tên</string>
+    <string name="txt_surname">Họ</string>
+    <string name="txt_id_card_passport">CMND/Hộ chiếu</string>
+    <string name="txt_notes">Ghi chú</string>
 
     <!--Sort/ Filter Screen-->
-    <string name="sort_filter_title">Filter</string>
-    <string name="reset_label">Reset</string>
-    <string name="apply_label">Apply</string>
-    <string name="sortBy_label">Sort by</string>
-    <string name="see_all_label">See All</string>
-    <string name="sort_result_by_label">Sort results by</string>
-    <string name="star_rating_label">Star Rating</string>
-    <string name="facilities_label">Facilities</string>
+    <string name="sort_filter_title">Lọc</string>
+    <string name="reset_label">Đặt lại</string>
+    <string name="apply_label">Áp dụng</string>
+    <string name="sortBy_label">Sắp xếp theo</string>
+    <string name="see_all_label">Xem tất cả</string>
+    <string name="sort_result_by_label">Sắp xếp kết quả theo</string>
+    <string name="star_rating_label">Xếp hạng sao</string>
+    <string name="facilities_label">Tiện nghi</string>
     <string name="wifi_label">Wifi</string>
 
+    <!--Sort drop down-->
+    <string name="price_increase_title">Tăng giá</string>
+    <string name="price_decrease_title">Giảm giá</string>
+    <string name="rate_increase_title">Đánh giá giảm dần</string>
+    <string name="rate_decrease_title">Đánh giá tăng dần</string>
+    <string name="all_title">Tất cả</string>
 </resources>
