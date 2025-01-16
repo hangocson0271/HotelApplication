@@ -33,32 +33,37 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.hotelapplication.R
-import com.example.hotelapplication.extentions.singleClick
 
-enum class RoomType{
-    SINGLE,DOUBLE
+enum class RoomTypes(val value: Int) {
+    SINGLE(0),
+    DOUBLE(1),
+    SUITE(2);
 }
 @Composable
 fun ElevatedCardRoomScreen(
     roomName: String = "The Royal flush",
-    price: String = "25,000",
+    price: Long? = 25000,
     imageResource: Int = R.drawable.screen,
-    roomType: RoomType = RoomType.SINGLE,
-    isAvailable: Boolean = true,
-    isHaveWifi: Boolean = true,
-    isHavePool: Boolean = true,
-    isHaveBreakfast: Boolean = true,
-    isHaveGym: Boolean = true,
-    isHaveBar: Boolean = true,
+    roomType: Int? = 0,
+    isAvailable: Int? = 1,
+    isHaveWifi: Int? = 1,
+    isHavePool: Int? = 1,
+    isHaveBreakfast: Int? = 1,
+    isHaveGym: Int? = 1,
+    isHaveBar: Int? = 1,
     onClick: () -> Unit
 ) {
     val roomTypeString = when (roomType) {
-        RoomType.SINGLE -> stringResource(R.string.txt_single)
-        RoomType.DOUBLE -> stringResource(R.string.txt_double)
+        RoomTypes.SINGLE.value -> stringResource(R.string.txt_single)
+        RoomTypes.DOUBLE.value -> stringResource(R.string.txt_double)
+        RoomTypes.SUITE.value -> stringResource(R.string.txt_suite)
+        else -> {stringResource(R.string.txt_single)}
     }
     val roomTypeIcon = when (roomType) {
-        RoomType.SINGLE -> R.drawable.ic_single_bed
-        RoomType.DOUBLE -> R.drawable.ic_double_bed
+        RoomTypes.SINGLE.value  -> R.drawable.ic_single_bed
+        RoomTypes.DOUBLE.value  -> R.drawable.ic_double_bed
+        RoomTypes.SUITE.value -> R.drawable.ic_suite
+        else -> {R.drawable.ic_single_bed}
     }
     ElevatedCard(
         colors = CardDefaults.cardColors(
@@ -111,7 +116,7 @@ fun ElevatedCardRoomScreen(
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 Text(
-                    text = "$price/$/${stringResource(R.string.txt_night)}",
+                    text = "$price$/${stringResource(R.string.txt_night)}",
                     style = androidx.compose.ui.text.TextStyle(
                         fontSize = 9.87.sp,
                         lineHeight = 10.81.sp
@@ -153,7 +158,7 @@ fun ElevatedCardRoomScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
-                    painter = if (isHaveBreakfast) painterResource(R.drawable.ic_have_breakfast)
+                    painter = if (isHaveBreakfast == 1) painterResource(R.drawable.ic_have_breakfast)
                     else painterResource(R.drawable.ic_no_breakfast),
                     contentDescription = "",
                     modifier = Modifier.size(16.dp),
@@ -161,7 +166,7 @@ fun ElevatedCardRoomScreen(
                 )
                 Spacer(modifier = Modifier.width(2.dp))
                 Text(
-                    text = if (isHaveBreakfast) stringResource(R.string.txt_have_breakfast)
+                    text = if (isHaveBreakfast == 1) stringResource(R.string.txt_have_breakfast)
                     else stringResource(R.string.txt_no_breakfast),
                     textAlign = TextAlign.Start,
                     fontSize = 12.69.sp,
@@ -177,7 +182,7 @@ fun ElevatedCardRoomScreen(
                     .align(Alignment.Start),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                if(isHaveWifi){
+                if(isHaveWifi== 1){
                     Image(
                         painter = painterResource(R.drawable.ic_wifi),
                         contentDescription = "",
@@ -185,7 +190,7 @@ fun ElevatedCardRoomScreen(
                         contentScale = ContentScale.Crop
                     )
                 }
-                if(isHavePool){
+                if(isHavePool== 1){
                     Image(
                         painter = painterResource(R.drawable.ic_pool),
                         contentDescription = "",
@@ -193,7 +198,7 @@ fun ElevatedCardRoomScreen(
                         contentScale = ContentScale.Crop
                     )
                 }
-                if(isHaveGym){
+                if(isHaveGym== 1){
                     Image(
                         painter = painterResource(R.drawable.ic_gym),
                         contentDescription = "",
@@ -201,7 +206,7 @@ fun ElevatedCardRoomScreen(
                         contentScale = ContentScale.Crop
                     )
                 }
-                if(isHaveBar){
+                if(isHaveBar== 1){
                     Image(
                         painter = painterResource(R.drawable.ic_bar),
                         contentDescription = "",
@@ -213,9 +218,9 @@ fun ElevatedCardRoomScreen(
             Spacer(modifier = Modifier.weight(1f))
             Row {
                 Button(
-                    onClick = { singleClick(onClick) },
+                    onClick = { onClick() },
                     colors = ButtonDefaults.buttonColors(colorResource(R.color.main_color)),
-                    enabled = isAvailable
+                    enabled = (isAvailable == 1)
                 ) {
                     Text(stringResource(R.string.txt_book))
                 }
