@@ -32,11 +32,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.hotelapplication.R
+import com.example.hotelapplication.constant.EMPTY_STRING
 import com.example.hotelapplication.extentions.hiltViewModel
 import com.example.hotelapplication.navigation.Route
 import com.example.hotelapplication.ui.commonComponents.Buttons.ElevatedCardHomeScreen
 import com.example.hotelapplication.ui.commonComponents.Images.UserAvatar
-import com.example.hotelapplication.ui.commonComponents.SearchFilters.ButtonFilter
 import com.example.hotelapplication.ui.commonComponents.SearchFilters.LayoutSearch
 import com.example.hotelapplication.ui.commonComponents.SearchFilters.SortAndFilterBottomSheet
 import kotlinx.coroutines.launch
@@ -98,21 +98,20 @@ fun MainScreen(
                 ) {
                     LayoutSearch(
                         isSearchable = false,
-                        percentFillWidth = 0.9f,
+                        percentFillWidth = 1f,
                         onQueryChanged = {},
                         onClick = {
-                            Log.d(TAG, "MainScreen: XXX")
                             navController.navigate(Route.SearchScreen.route)
                         })
-                    ButtonFilter(
-                        onClick = {
-                            scope.launch {
-                                isBottomSheetVisible = true
-                                sheetState.expand()
-                            }
-                            Log.d(TAG, "MainScreen: XXX")
-                        }
-                    )
+//                    ButtonFilter(
+//                        onClick = {
+//                            scope.launch {
+//                                isBottomSheetVisible = true
+//                                sheetState.expand()
+//                            }
+//                            Log.d(TAG, "MainScreen: XXX")
+//                        }
+//                    )
                 }
                 Spacer(
                     modifier = Modifier
@@ -136,6 +135,7 @@ fun MainScreen(
                         hotelName = hotels.value[index].hotel_name,
                         rating = hotels.value[index].rate_star,
                         price = hotels.value[index].total_rate,
+                        location = hotels.value[index].address ?: EMPTY_STRING
                     ) {
                         navController.navigate(
                             "${Route.RoomListScreen.route}/${hotels.value[index].hotel_id}"

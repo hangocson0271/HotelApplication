@@ -21,7 +21,6 @@ import com.example.hotelapplication.ui.features.notifications.NotificationsScree
 import com.example.hotelapplication.ui.features.payment.SceneSelectPayment
 import com.example.hotelapplication.ui.features.searchScreen.SearchScreen
 import com.example.hotelapplication.ui.features.signup.SignupScreen
-import com.example.hotelapplication.ui.features.splash.SplashScreen
 
 @Composable
 fun HotelAppNavGraph() {
@@ -30,7 +29,7 @@ fun HotelAppNavGraph() {
     Scaffold() {
         NavHost(
             navController = navController,
-            startDestination = Route.SplashScreen.route,
+            startDestination = Route.LoginScreen.route,
             modifier = Modifier.padding(it)
         ) {
             composable(Route.MainScreen.route) { MainScreen(navController = navController) }
@@ -39,7 +38,6 @@ fun HotelAppNavGraph() {
                     navController
                 )
             }
-            composable(Route.SplashScreen.route) { SplashScreen(navController) }
             composable(Route.LoginScreen.route) { LoginScreen(navController) }
             composable(Route.SignupScreen.route) { SignupScreen(navController) }
             composable(
@@ -56,9 +54,17 @@ fun HotelAppNavGraph() {
             composable(Route.BookingConfirmScreen.route) { BookingConfirmScreen(navController) }
             composable(Route.SearchScreen.route) { SearchScreen(navController) }
             composable(Route.NotificationsScreen.route) { NotificationsScreen(navController) }
-            composable(Route.BookingFormFirstPageScreen.route) {
+            composable(
+                route = Route.BookingFormFirstPageScreen.route + "/{roomId}",
+                arguments = listOf(
+                    navArgument("roomId") {
+                        type = NavType.IntType
+                    }
+                )
+            ) { entry ->
                 BookingFormFirstPageScreen(
-                    navController
+                    navController,
+                    roomId = entry.arguments?.getInt("roomId") ?: 0
                 )
             }
             composable(Route.BookingFormSecondPageScreen.route) {

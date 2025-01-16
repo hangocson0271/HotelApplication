@@ -136,7 +136,8 @@ fun SignupScreen(navController: NavController) {
                 ),
                 onClick = {
                     navController.navigate(Route.LoginScreen.route) {
-                        popUpTo(Route.SplashScreen.route)
+                        popUpTo(Route.SignupScreen.route) { inclusive = true }
+                        launchSingleTop = true
                     }
                 },
                 modifier = Modifier.padding(16.dp, 0.dp, 0.dp, 0.dp)

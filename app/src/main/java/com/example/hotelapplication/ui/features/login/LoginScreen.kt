@@ -183,7 +183,7 @@ fun LoginScreen(
                 ),
                 onClick = {
                     navController.navigate(Route.SignupScreen.route) {
-                        popUpTo(Route.SplashScreen.route)
+                        launchSingleTop = true
                     }
                 },
                 modifier = Modifier.padding(16.dp, 0.dp, 0.dp, 0.dp)
@@ -200,7 +200,9 @@ fun LoginScreen(
                     },
                     onConfirm = { account ->
                         viewModel.checkForgotAccount(account)
-                    }
+                    },
+                    isError = uiState.isForgotPassError,
+                    errorMessage = uiState.forgotPassErrorMessage
                 )
             }
 

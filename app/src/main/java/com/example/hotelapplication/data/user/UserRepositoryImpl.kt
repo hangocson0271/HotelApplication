@@ -24,4 +24,11 @@ class UserRepositoryImpl(private val userDao: UserDao) : UserRepository {
     override suspend fun updatePassword(user: User): Int {
         return userDao.updateUser(user)
     }
+
+    override suspend fun getUserById(userId: Int): User? {
+        return userDao.getUserById(userId)
+    }
+    override suspend fun updateUserData(user: User) {
+        userDao.updateUser(user)
+    }
 }

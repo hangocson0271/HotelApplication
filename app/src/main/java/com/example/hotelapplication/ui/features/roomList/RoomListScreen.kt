@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
@@ -26,7 +27,7 @@ fun RoomListScreen(
 ) {
     val TAG = "RoomListScreen"
     val viewModel = hiltViewModel<RoomListScreenViewModel>()
-    SideEffect {
+    LaunchedEffect(Unit) {
         viewModel.getRoomByHotelId(hotelId)
     }
     val rooms = viewModel.rooms.collectAsState()
@@ -63,7 +64,7 @@ fun RoomListScreen(
                         isHaveGym = rooms.value[index].gym,
                         isHaveBar = rooms.value[index].bar,
                     ) {
-                        navController.navigate(Route.BookingFormFirstPageScreen.route)
+                        navController.navigate("${Route.BookingFormFirstPageScreen.route}/${rooms.value[index].room_id}")
                     }
                 }
             }

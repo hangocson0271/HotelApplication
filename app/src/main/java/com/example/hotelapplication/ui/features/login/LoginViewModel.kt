@@ -1,5 +1,6 @@
 package com.example.hotelapplication.ui.features.login
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.hotelapplication.R
 import com.example.hotelapplication.base.BaseViewModel
@@ -159,8 +160,22 @@ class LoginViewModel @Inject constructor(
 
     fun checkForgotAccount(account: String) {
         viewModelScope.launch {
-            forgotUser = userRepository.getUserByAccount(account)
-            setForgotPasswordState(ForgotPasswordStep.VERIFY_CODE)
+            if (!checkValidInput(account)) {
+                _viewModelState.update {
+                    it.copy(
+                        isForgotPassError = true,
+                        forgotPassErrorMessage = R.string.txt_incorrect_username_password
+                    )
+                }
+            } else {
+                forgotUser = userRepository.getUserByAccount(account)
+                _viewModelState.update {
+                    it.copy(
+                        isForgotPassError = false,
+                        forgotPasswordStep = ForgotPasswordStep.VERIFY_CODE
+                    )
+                }
+            }
         }
     }
 
