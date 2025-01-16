@@ -54,9 +54,17 @@ fun HotelAppNavGraph() {
             composable(Route.BookingConfirmScreen.route) { BookingConfirmScreen(navController) }
             composable(Route.SearchScreen.route) { SearchScreen(navController) }
             composable(Route.NotificationsScreen.route) { NotificationsScreen(navController) }
-            composable(Route.BookingFormFirstPageScreen.route) {
+            composable(
+                route = Route.BookingFormFirstPageScreen.route + "/{roomId}",
+                arguments = listOf(
+                    navArgument("roomId") {
+                        type = NavType.IntType
+                    }
+                )
+            ) { entry ->
                 BookingFormFirstPageScreen(
-                    navController
+                    navController,
+                    roomId = entry.arguments?.getInt("roomId") ?: 0
                 )
             }
             composable(Route.BookingFormSecondPageScreen.route) {

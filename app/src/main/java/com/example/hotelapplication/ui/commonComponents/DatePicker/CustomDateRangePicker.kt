@@ -37,14 +37,19 @@ import androidx.compose.ui.unit.sp
 import com.example.hotelapplication.R
 import com.example.hotelapplication.ui.theme.MainColor
 import com.example.hotelapplication.ui.theme.SecondaryColor
+import org.threeten.bp.Instant
 import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 import java.util.Date
 import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomDateRangePicker() {
+fun CustomDateRangePicker(onValueChange: (String, String, Long) -> Unit) {
+
+    val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
 
     val todayOnwardDates: SelectableDates = object : SelectableDates {
         override fun isSelectableDate(utcTimeMillis: Long): Boolean {
@@ -56,13 +61,23 @@ fun CustomDateRangePicker() {
         }
     }
     val dateRangePickerState = rememberDateRangePickerState(selectableDates = todayOnwardDates)
-    val checkInDate = remember { mutableStateOf<Long?>(null) }
-    val checkOutDate = remember { mutableStateOf<Long?>(null) }
 
     LaunchedEffect(dateRangePickerState.selectedStartDateMillis, dateRangePickerState.selectedEndDateMillis) {
-        checkInDate.value = dateRangePickerState.selectedStartDateMillis
-        checkOutDate.value = dateRangePickerState.selectedEndDateMillis
-
+        val startDate = longToDateString(dateRangePickerState.selectedStartDateMillis)
+        val endDate = longToDateString(dateRangePickerState.selectedEndDateMillis)
+        var daysBetween: Long = 0
+        if(startDate.isNotEmpty() && endDate.isNotEmpty()) {
+            val checkIn = LocalDate.parse(
+                startDate,
+                formatter
+            )
+            val checkOut = LocalDate.parse(
+                endDate,
+                formatter
+            )
+            daysBetween = ChronoUnit.DAYS.between(checkIn, checkOut)
+        }
+        onValueChange(startDate, endDate, daysBetween)
     }
 
     Column(modifier = Modifier.padding(start = 18.dp, end = 18.dp, top = 5.dp)) {
@@ -114,7 +129,7 @@ fun CustomDateRangePicker() {
             horizontalArrangement = Arrangement.SpaceBetween) {
             TextField(
                 modifier = Modifier.width(150.dp),
-                value = TextFieldValue(longToDateString(checkInDate.value)),
+                value = TextFieldValue(longToDateString(dateRangePickerState.selectedStartDateMillis)),
                 onValueChange = {},
                 readOnly = true,
                 trailingIcon = { Icon(imageVector = Icons.Default.DateRange, contentDescription = "calendar") }
@@ -128,7 +143,7 @@ fun CustomDateRangePicker() {
 
             TextField(
                 modifier = Modifier.width(150.dp),
-                value = TextFieldValue(longToDateString(checkOutDate.value)),
+                value = TextFieldValue(longToDateString(dateRangePickerState.selectedEndDateMillis)),
                 onValueChange = {},
                 readOnly = true,
                 trailingIcon = { Icon(imageVector = Icons.Default.DateRange, contentDescription = "calendar") }
