@@ -37,11 +37,9 @@ import com.example.hotelapplication.ui.features.payment.components.PaymentMethod
 import com.example.hotelapplication.ui.features.payment.components.PaymentMethodViewModel
 
 @Composable
-fun SceneSelectPayment(navController: NavHostController, titleScene: String = "Payment") {
-
+fun SceneSelectPayment(navController: NavHostController, bookingId: Int, titleScene: String = "Payment") {
     val viewModel = hiltViewModel<PaymentMethodViewModel>()
     val selectedOption by viewModel.selectedOption.collectAsState()
-
     BaseScene(navController = navController, titleScene = titleScene) {
         Column(modifier = Modifier.fillMaxSize()) {
             TitleWithAction()
@@ -145,5 +143,5 @@ fun PaymentImage(selectedOption: Int) {
 @Composable
 fun SceneSelectPaymentPreview() {
     val navController = rememberNavController()
-    SceneSelectPayment(navController = navController, titleScene = "Payment")
+    SceneSelectPayment(navController = navController, bookingId = 0,  titleScene = "Payment")
 }

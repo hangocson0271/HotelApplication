@@ -5,6 +5,8 @@ import android.app.Application
 import com.example.hotelapplication.data.HotelBookingDatabase
 import com.example.hotelapplication.data.payment.PaymentRepository
 import com.example.hotelapplication.data.payment.PaymentRepositoryImpl
+import com.example.hotelapplication.data.booking.BookingRepository
+import com.example.hotelapplication.data.booking.BookingRepositoryImpl
 import com.example.hotelapplication.data.hotel.HotelRepositoryImpl
 import com.example.hotelapplication.data.hotel.HotelsRepository
 import com.example.hotelapplication.data.room.RoomRepository
@@ -49,5 +51,11 @@ object AppModule {
     fun provideRoomRepository(hotelBookingDatabase: HotelBookingDatabase): RoomRepository {
         return RoomRepositoryImpl(hotelBookingDatabase.roomDao())
 
+    }
+
+    @Provides
+    @Singleton
+    fun provideBookingRepository(hotelBookingDatabase: HotelBookingDatabase): BookingRepository {
+        return BookingRepositoryImpl(hotelBookingDatabase.bookingDao())
     }
 }
