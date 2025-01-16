@@ -76,12 +76,13 @@ class LoginViewModel @Inject constructor(
             )
 
             if (user != null) {
+                storeValue.setIntValue(
+                    SharePreferenceConstant.USER_ID_PREF,
+                    user.user_id
+                )
+
                 if (loginUiState.value.isRememberChecked) {
                     /* Save user info to SharePreference */
-                    storeValue.setIntValue(
-                        SharePreferenceConstant.USER_ID_PREF,
-                        user.user_id
-                    )
                     storeValue.setStringValue(
                         SharePreferenceConstant.USER_NAME_PREF,
                         loginAccount

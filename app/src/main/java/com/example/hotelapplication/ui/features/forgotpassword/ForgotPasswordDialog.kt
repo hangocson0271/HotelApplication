@@ -29,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.hotelapplication.R
 import com.example.hotelapplication.constant.EMPTY_STRING
+import com.example.hotelapplication.ui.commonComponents.Texts.TextPlaceholder
 import com.example.hotelapplication.ui.theme.MainColor
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -63,8 +64,9 @@ fun ForgotPasswordDialog(
                     value = accountValue,
                     onValueChange = {
                         accountValue = it
-                    }, placeholder = {
-                        Text(placeHolder)
+                    },
+                    placeholder = {
+                        TextPlaceholder(placeHolder)
                     },
                     colors = OutlinedTextFieldDefaults.colors().copy(
                         cursorColor = MainColor,
@@ -75,7 +77,7 @@ fun ForgotPasswordDialog(
                         if (isError == true) {
                             Text(errorMessage?.let { stringResource(it) } ?: EMPTY_STRING)
                         }
-                    }
+                    },
                 )
                 Row(
                     modifier = Modifier

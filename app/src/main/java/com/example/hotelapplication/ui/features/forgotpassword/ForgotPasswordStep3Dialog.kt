@@ -14,8 +14,6 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -28,7 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.hotelapplication.R
-import com.example.hotelapplication.constant.EMPTY_STRING
+import com.example.hotelapplication.ui.commonComponents.TextField.PasswordInputTextField
 import com.example.hotelapplication.ui.theme.MainColor
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -55,38 +53,25 @@ fun ForgotPasswordStep3Dialog(
                     modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 8.dp),
                     text = stringResource(R.string.enter_new_password)
                 )
-                OutlinedTextField(
-                    modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 16.dp),
+                PasswordInputTextField(
                     value = newPassword,
-                    onValueChange = { newPassword = it },
-                    placeholder = {
-                        Text(stringResource(R.string.txt_new_password))
+                    onValueChange = { value ->
+                        newPassword = value
                     },
-                    colors = OutlinedTextFieldDefaults.colors().copy(
-                        cursorColor = MainColor,
-                        focusedIndicatorColor = MainColor,
-                    )
+                    placeholder = stringResource(R.string.txt_new_password)
                 )
                 Text(
                     modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 8.dp),
                     text = stringResource(R.string.re_enter_password)
                 )
-                OutlinedTextField(
+                PasswordInputTextField(
                     value = confirmPassword,
-                    onValueChange = { confirmPassword = it },
-                    placeholder = {
-                        Text(stringResource(R.string.txt_confirm))
+                    onValueChange = { value ->
+                        confirmPassword = value
                     },
-                    colors = OutlinedTextFieldDefaults.colors().copy(
-                        cursorColor = MainColor,
-                        focusedIndicatorColor = MainColor,
-                    ),
-                    isError = isForgotPassError ?: false,
-                    supportingText = {
-                        if (isForgotPassError == true) {
-                            Text(errorMessage?.let { stringResource(it) } ?: EMPTY_STRING)
-                        }
-                    }
+                    placeholder = stringResource(R.string.txt_confirm),
+                    isError = isForgotPassError,
+                    errorMessage = errorMessage
                 )
                 Row(
                     modifier = Modifier

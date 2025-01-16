@@ -17,6 +17,8 @@
     <string name="txt_username_should_not_null">Incorrect phone number format</string>
     <string name="txt_unknow_error">Incorrect email format</string>
     <string name="txt_register_done">Register Done!</string>
+    <string name="txt_default_username">0987654321</string>
+    <string name="txt_default_password">abc1234!</string>
 
     <string name="new_credit_debit_card">New credit/Debit Card</string>
     <string name="paypal">Paypal</string>

@@ -84,7 +84,8 @@ fun LoginScreen(
                     viewModel.setUserName(value)
                 },
                 label = stringResource(R.string.txt_username),
-                leadingIcon = R.drawable.message
+                leadingIcon = R.drawable.message,
+                placeholder = stringResource(R.string.txt_default_username)
             )
             TextFieldCommon(
                 value = uiState.password,
@@ -93,7 +94,8 @@ fun LoginScreen(
                 },
                 stringResource(R.string.txt_password),
                 R.drawable.lock,
-                R.drawable.hide
+                R.drawable.hide,
+                placeholder = stringResource(R.string.txt_default_password)
             )
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -205,7 +207,7 @@ fun LoginScreen(
             ForgotPasswordStep.VERIFY_CODE -> {
                 ForgotPasswordDialog(
                     title = stringResource(R.string.txt_enter_verification_code),
-                    placeHolder = "",
+                    placeHolder = stringResource(R.string.txt_default_password),
                     onDismiss = {
                         viewModel.setForgotPasswordState(ForgotPasswordStep.NONE)
                     },
