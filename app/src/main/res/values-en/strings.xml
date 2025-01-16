@@ -4,12 +4,22 @@
     <string name="splash_screen_description">Discover the best hotels at great prices when you search with Otel</string>
     <string name="splash_screen_subcontent">Search through 10,234 hotels in VietNam</string>
     <string name="btn_get_started">Get started</string>
+
+    <!-- Login / Signup Screen -->
     <string name="dont_have_an_account">Don\'t have an account?</string>
     <string name="sign_up">Sign Up</string>
     <string name="have_any_account">Already have an account ?</string>
     <string name="sign_in">Sign In</string>
     <string name="login">Log In</string>
     <string name="forgot_password">Forgot Password?</string>
+    <string name="txt_password_policy">Password must be at least 8 Characters, 1 uppercase, 1 lowercase, 1 numeric and 1 symbol\n(like abc1234!A)</string>
+    <string name="txt_email_wrong_format">Incorrect email format</string>
+    <string name="txt_username_should_not_null">Incorrect phone number format</string>
+    <string name="txt_unknow_error">Incorrect email format</string>
+    <string name="txt_register_done">Register Done!</string>
+    <string name="txt_default_username">0987654321</string>
+    <string name="txt_default_password">abc1234!</string>
+
     <string name="new_credit_debit_card">New credit/Debit Card</string>
     <string name="paypal">Paypal</string>
     <string name="apple_pay">Apple Pay</string>
@@ -140,10 +150,9 @@
     <string name="facilities_label">Facilities</string>
     <string name="wifi_label">Wifi</string>
 
-    <!--Sort drop down-->
-    <string name="price_increase_title">Price increase</string>
-    <string name="price_decrease_title">Price decrease</string>
-    <string name="rate_increase_title">Rate increase</string>
-    <string name="rate_decrease_title">Rate decrease</string>
-    <string name="all_title">All</string>
+    <!-- Forgot Password -->
+    <string name="txt_incorrect_username_password">The Username or Password is Incorrect!</string>
+    <string name="txt_incorrect_verify_code">Incorrect Verify Code!</string>
+    <string name="txt_password_not_equals">Passwords did not match</string>
+    <string name="txt_invalid_account">Incorrect phone number or email format</string>
 </resources>
