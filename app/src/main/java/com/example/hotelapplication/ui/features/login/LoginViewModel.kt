@@ -24,7 +24,11 @@ class LoginViewModel @Inject constructor(
     private val storeValue: StoreValue
 ) : BaseViewModel() {
 
-    init {
+    private val _viewModelState = MutableStateFlow(LoginUiState())
+    val loginUiState: StateFlow<LoginUiState>
+        get() = _viewModelState.asStateFlow()
+
+    fun checkAndAutoLogin() {
         val username: String = storeValue.getStringValue(SharePreferenceConstant.USER_NAME_PREF)
         val password: String = storeValue.getStringValue(SharePreferenceConstant.PASSWORD_PREF)
 
@@ -33,9 +37,68 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    private val _viewModelState = MutableStateFlow(LoginUiState())
-    val loginUiState: StateFlow<LoginUiState>
-        get() = _viewModelState.asStateFlow()
+    fun login(username: String? = null, password: String? = null) {
+        viewModelScope.launch {
+
+            _viewModelState.update {
+                it.copy(
+                    isLoading = true
+                )
+            }
+
+            /* fake internet connection time */
+            delay(2000)
+
+            val loginAccount: String = username ?: loginUiState.value.username
+            val loginPassword: String = password ?: loginUiState.value.password
+
+            if (!checkValidInput(loginAccount)) {
+                _viewModelState.update {
+                    it.copy(
+                        isLoading = false,
+                        isError = true,
+                        errorMessage = R.string.txt_incorrect_username_password
+                    )
+                }
+                return@launch
+            }
+
+            val user = userRepository.getUser(
+                phone = loginAccount   /*"0987654321"*/,
+                email = loginAccount,
+                password = loginPassword  /*"abc1234!"*/
+            )
+
+            if (user != null) {
+                if (loginUiState.value.isRememberChecked) {
+                    /* Save user info to SharePreference */
+                    storeValue.setIntValue(
+                        SharePreferenceConstant.USER_ID_PREF,
+                        user.user_id
+                    )
+                    storeValue.setStringValue(
+                        SharePreferenceConstant.USER_NAME_PREF,
+                        loginAccount
+                    )
+                    storeValue.setStringValue(
+                        SharePreferenceConstant.PASSWORD_PREF,
+                        loginPassword
+                    )
+                }
+
+                /* update uiState */
+                _viewModelState.update { it.copy(isLoading = false, isLoginSuccessful = true) }
+            } else {
+                _viewModelState.update {
+                    it.copy(
+                        isLoading = false,
+                        isError = true,
+                        errorMessage = R.string.txt_incorrect_username_password
+                    )
+                }
+            }
+        }
+    }
 
     fun setUserName(account: String) {
         viewModelScope.launch {
@@ -76,65 +139,6 @@ class LoginViewModel @Inject constructor(
                     isError = isShow,
                     errorMessage = 0
                 )
-            }
-        }
-    }
-
-    fun login(username: String? = null, password: String? = null) {
-        viewModelScope.launch {
-
-            _viewModelState.update {
-                it.copy(
-                    isLoading = true
-                )
-            }
-
-            /* fake internet connection time */
-            delay(2000)
-
-            val loginAccount: String = username ?: loginUiState.value.username
-            val loginPassword: String = password ?: loginUiState.value.password
-
-            if (!checkValidInput(loginAccount)) {
-                _viewModelState.update {
-                    it.copy(
-                        isLoading = false,
-                        isError = true,
-                        errorMessage = R.string.txt_incorrect_username_password
-                    )
-                }
-                return@launch
-            }
-
-            val user = userRepository.getUser(
-                phone = loginAccount   /*"0987654321"*/,
-                email = loginAccount,
-                password = loginPassword  /*"abc1234!"*/
-            )
-
-            if (user != null) {
-                if (loginUiState.value.isRememberChecked) {
-                    /* Save user info to SharePreference */
-                    storeValue.setStringValue(
-                        SharePreferenceConstant.USER_NAME_PREF,
-                        loginAccount
-                    )
-                    storeValue.setStringValue(
-                        SharePreferenceConstant.PASSWORD_PREF,
-                        loginPassword
-                    )
-                }
-
-                /* update uiState */
-                _viewModelState.update { it.copy(isLoading = false, isLoginSuccessful = true) }
-            } else {
-                _viewModelState.update {
-                    it.copy(
-                        isLoading = false,
-                        isError = true,
-                        errorMessage = R.string.txt_incorrect_username_password
-                    )
-                }
             }
         }
     }

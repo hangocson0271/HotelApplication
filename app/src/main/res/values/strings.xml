@@ -12,10 +12,10 @@
     <string name="sign_in">Sign In</string>
     <string name="login">Log In</string>
     <string name="forgot_password">Forgot Password?</string>
-    <string name="txt_password_policy">Password policy</string>
-    <string name="txt_email_wrong_format">Email wrong format</string>
-    <string name="txt_username_should_not_null">Username null</string>
-    <string name="txt_unknow_error">Unknow Error</string>
+    <string name="txt_password_policy">Password must be at least 8 Characters, 1 uppercase, 1 lowercase, 1 numeric and 1 symbol\n(like abc1234!A)</string>
+    <string name="txt_email_wrong_format">Incorrect phone number format</string>
+    <string name="txt_username_should_not_null">Incorrect phone number format</string>
+    <string name="txt_unknow_error">Incorrect email format</string>
     <string name="txt_register_done">Register Done!</string>
 
     <string name="new_credit_debit_card">New credit/Debit Card</string>

@@ -67,7 +67,7 @@ fun SignupScreen(navController: NavController) {
                 onChangeValue = { newValue ->
                     viewModel.updateUsername(newValue)
                 },
-                label = stringResource(R.string.txt_username),
+                label = stringResource(R.string.txt_phone),
                 leadingIcon = R.drawable.message
             )
             TextFieldCommon(

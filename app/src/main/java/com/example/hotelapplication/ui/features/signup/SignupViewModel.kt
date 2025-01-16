@@ -43,7 +43,7 @@ class SignupViewModel @Inject constructor(
             val email = _signupUiState.value.email
             val password = _signupUiState.value.password
 
-            if (username.isEmpty() || isPhoneNumber(username)) {
+            if (!isPhoneNumber(username)) {
                 updateErrorState(R.string.txt_username_should_not_null)
                 return@launch
             }

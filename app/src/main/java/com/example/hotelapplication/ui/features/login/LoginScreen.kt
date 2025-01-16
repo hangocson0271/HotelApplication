@@ -17,6 +17,7 @@ import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
@@ -55,7 +56,9 @@ fun LoginScreen(
     val viewModel = hiltViewModel<LoginViewModel>()
     val uiState by viewModel.loginUiState.collectAsStateWithLifecycle()
 
-    SideEffect {
+    LaunchedEffect(key1 = uiState) {
+        viewModel.checkAndAutoLogin()
+
         if (uiState.isLoginSuccessful) {
             navController.navigate(Route.MainScreen.route)
         }
