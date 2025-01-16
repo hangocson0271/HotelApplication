@@ -38,7 +38,7 @@ object AppModule {
     @Singleton
     fun providePaymentRepository(hotelBookingDatabase: HotelBookingDatabase): PaymentRepository {
         return PaymentRepositoryImpl(hotelBookingDatabase.paymentDao())
-
+    }
 
     @Provides
     @Singleton
