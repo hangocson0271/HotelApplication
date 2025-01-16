@@ -29,3 +29,6 @@ internal fun isEmail(email: String) : Boolean {
     )
     return EMAIL_ADDRESS_PATTERN.matcher(email).matches()
 }
+fun Int?.isAvailable(): Boolean {
+    return this == 1
+}

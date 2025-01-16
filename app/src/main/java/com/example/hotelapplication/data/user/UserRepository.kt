@@ -5,4 +5,6 @@ interface UserRepository {
     suspend fun getUser(phone: String, email: String, password: String): User?
     suspend fun getUserByAccount(account: String): User?
     suspend fun updatePassword(user: User): Int
+    suspend fun getUserById(userId: Int) : User?
+    suspend fun updateUserData(user: User)
 }

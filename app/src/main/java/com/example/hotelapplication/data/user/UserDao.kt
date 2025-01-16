@@ -18,4 +18,7 @@ interface UserDao {
 
     @Query("SELECT * FROM user WHERE (account LIKE :account OR phone LIKE :account OR email LIKE :account) LIMIT 1")
     suspend fun getUserByAccount(account: String) : User?
+    @Query("SELECT * FROM user WHERE user_id LIKE :userId")
+    suspend fun getUserById(userId: Int) : User?
+
 }
