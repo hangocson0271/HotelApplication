@@ -1,5 +1,6 @@
 package com.example.hotelapplication.ui.features.editprofile
 
+import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -20,6 +21,7 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material3.Button
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ElevatedButton
@@ -47,6 +49,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
@@ -152,6 +155,29 @@ fun EditProfileScreen(focusManager: FocusManager = LocalFocusManager.current
         ){
             visibleEdit = true
             viewModel.updateUserData(userNameChange, dateOfBirthChange, phoneChange, emailChange)
+        }
+        LanguageSelection()
+    }
+}
+@Composable
+fun LanguageSelection() {
+    val context = LocalContext.current
+    val viewModel = hiltViewModel<EditProfileScreenViewModel>()
+
+    Row(
+        modifier = Modifier.padding(16.dp)
+    ) {
+        Button(onClick = {
+            Log.i("TAG" , "set language to English")
+            viewModel.setAppLanguage(context, "en")
+        }) {
+            Text(stringResource(id = R.string.english))
+        }
+        Button(onClick = {
+            Log.i("TAG" , "set language to Vietnamese")
+            viewModel.setAppLanguage(context, "vi")
+        }) {
+            Text(stringResource(id = R.string.vietnamese))
         }
     }
 }

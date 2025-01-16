@@ -1,4 +1,6 @@
 <resources>
+    <string name="english">English</string>
+    <string name="vietnamese">Vietnamese</string>
     <string name="app_name">Hotel Application</string>
     <string name="splash_screen_title">Find your ideal \nHotel to stay</string>
     <string name="splash_screen_description">Discover the best hotels at great prices when you search with Otel</string>
@@ -155,4 +157,11 @@
     <string name="txt_incorrect_verify_code">Incorrect Verify Code!</string>
     <string name="txt_password_not_equals">Passwords did not match</string>
     <string name="txt_invalid_account">Incorrect phone number or email format</string>
+
+    <!-- Sort drop down -->
+    <string name="price_increase_title">Tăng giá</string>
+    <string name="price_decrease_title">Giảm giá</string>
+    <string name="rate_increase_title">DD</string>
+    <string name="rate_decrease_title">Giảm tỷ lệ</string>
+    <string name="all_title">Tất cả</string>
 </resources>
