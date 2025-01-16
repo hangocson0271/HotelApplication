@@ -13,7 +13,7 @@
     <string name="login">Log In</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="txt_password_policy">Password must be at least 8 Characters, 1 uppercase, 1 lowercase, 1 numeric and 1 symbol\n(like abc1234!A)</string>
-    <string name="txt_email_wrong_format">Incorrect phone number format</string>
+    <string name="txt_email_wrong_format">Incorrect email format</string>
     <string name="txt_username_should_not_null">Incorrect phone number format</string>
     <string name="txt_unknow_error">Incorrect email format</string>
     <string name="txt_register_done">Register Done!</string>
@@ -149,8 +149,10 @@
     <string name="star_rating_label">Star Rating</string>
     <string name="facilities_label">Facilities</string>
     <string name="wifi_label">Wifi</string>
+
+    <!-- Forgot Password -->
     <string name="txt_incorrect_username_password">The Username or Password is Incorrect!</string>
     <string name="txt_incorrect_verify_code">Incorrect Verify Code!</string>
     <string name="txt_password_not_equals">Passwords did not match</string>
-
+    <string name="txt_invalid_account">Incorrect phone number or email format</string>
 </resources>
