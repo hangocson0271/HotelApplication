@@ -158,10 +158,13 @@
     <string name="txt_password_not_equals">Passwords did not match</string>
     <string name="txt_invalid_account">Incorrect phone number or email format</string>
 
+    <string name="txt_booking_confirm_message">You have successfully made the payment</string>
+
     <!-- Sort drop down -->
     <string name="price_increase_title">Price increase</string>
     <string name="price_decrease_title">Price decrease</string>
     <string name="rate_increase_title">Rate increase</string>
     <string name="rate_decrease_title">Rate decrease</string>
     <string name="all_title">All</string>
+
 </resources>
