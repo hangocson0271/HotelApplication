@@ -18,9 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -47,7 +45,6 @@ import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordDia
 import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordResultDialog
 import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordStep
 import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordStep3Dialog
-import kotlin.random.Random
 
 @Composable
 fun LoginScreen(
@@ -87,7 +84,8 @@ fun LoginScreen(
                     viewModel.setUserName(value)
                 },
                 label = stringResource(R.string.txt_username),
-                leadingIcon = R.drawable.message
+                leadingIcon = R.drawable.message,
+                placeholder = stringResource(R.string.txt_default_username)
             )
             TextFieldCommon(
                 value = uiState.password,
@@ -96,7 +94,8 @@ fun LoginScreen(
                 },
                 stringResource(R.string.txt_password),
                 R.drawable.lock,
-                R.drawable.hide
+                R.drawable.hide,
+                placeholder = stringResource(R.string.txt_default_password)
             )
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -184,7 +183,7 @@ fun LoginScreen(
                 ),
                 onClick = {
                     navController.navigate(Route.SignupScreen.route) {
-                        popUpTo(Route.SplashScreen.route)
+                        launchSingleTop = true
                     }
                 },
                 modifier = Modifier.padding(16.dp, 0.dp, 0.dp, 0.dp)
@@ -199,38 +198,39 @@ fun LoginScreen(
                     onDismiss = {
                         viewModel.setForgotPasswordState(ForgotPasswordStep.NONE)
                     },
-                    onConfirm = {
-                        viewModel.setForgotPasswordState(ForgotPasswordStep.VERIFY_CODE)
-                    }
+                    onConfirm = { account ->
+                        viewModel.checkForgotAccount(account)
+                    },
+                    isError = uiState.isForgotPassError,
+                    errorMessage = uiState.forgotPassErrorMessage
                 )
             }
 
             ForgotPasswordStep.VERIFY_CODE -> {
                 ForgotPasswordDialog(
                     title = stringResource(R.string.txt_enter_verification_code),
-                    placeHolder = "",
+                    placeHolder = stringResource(R.string.txt_default_password),
                     onDismiss = {
                         viewModel.setForgotPasswordState(ForgotPasswordStep.NONE)
                     },
-                    onConfirm = {
-                        viewModel.setForgotPasswordState(ForgotPasswordStep.ENTER_NEW_PW)
-                    }
+                    onConfirm = { code ->
+                        viewModel.checkForgotVerifyCode(code)
+                    },
+                    isError = uiState.isForgotPassError,
+                    errorMessage = uiState.forgotPassErrorMessage
                 )
             }
 
             ForgotPasswordStep.ENTER_NEW_PW -> {
                 ForgotPasswordStep3Dialog(
+                    isForgotPassError = uiState.isForgotPassError,
+                    errorMessage = uiState.forgotPassErrorMessage,
                     onDismiss = {
                         viewModel.setForgotPasswordState(ForgotPasswordStep.NONE)
                     },
-                    onConfirm = {
-                        if (Random.nextBoolean()) {
-                            viewModel.setForgotPasswordState(ForgotPasswordStep.RESULT_OK)
-                        } else {
-                            viewModel.setForgotPasswordState(ForgotPasswordStep.ERROR)
-                        }
-
-                    }
+                    onConfirm = { newPassword, confirmPassword ->
+                        viewModel.checkForgotNewPassword(newPassword, confirmPassword)
+                    },
                 )
             }
 

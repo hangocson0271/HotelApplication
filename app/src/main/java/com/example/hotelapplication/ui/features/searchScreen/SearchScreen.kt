@@ -1,9 +1,11 @@
 package com.example.hotelapplication.ui.features.searchScreen
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -24,11 +26,12 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.hotelapplication.R
+import com.example.hotelapplication.constant.EMPTY_STRING
 import com.example.hotelapplication.extentions.hiltViewModel
 import com.example.hotelapplication.navigation.Route
 import com.example.hotelapplication.ui.commonComponents.Buttons.ElevatedCardHomeScreen
-import com.example.hotelapplication.ui.commonComponents.SearchFilters.ButtonFilter
 import com.example.hotelapplication.ui.commonComponents.SearchFilters.LayoutSearch
+import com.example.hotelapplication.ui.commonComponents.SearchFilters.SortDropDown
 import com.example.hotelapplication.ui.commonComponents.Texts.HeaderLabelScreen
 
 @Composable
@@ -55,13 +58,12 @@ fun SearchScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             LayoutSearch(isSearchable = true,
-                percentFillWidth = 0.9f,
+                percentFillWidth = 1f,
                 contentSearch = querySearch,
                 onQueryChanged = { newQuery -> querySearch = newQuery },
                 onClick = {
                     viewModel.searchHotelWithName(querySearch)
                 })
-            ButtonFilter()
         }
 
         Text(
@@ -70,6 +72,17 @@ fun SearchScreen(
             )
         )
 
+        Box(
+            modifier = Modifier
+                .fillMaxWidth(),
+        ) {
+            SortDropDown(
+                modifier = Modifier
+                    .padding(end = 10.dp)
+                    .align(Alignment.CenterEnd),
+                viewModel
+            )
+        }
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
         ) {
@@ -81,6 +94,7 @@ fun SearchScreen(
                     hotelName = resultSearch.value[index].hotel_name,
                     rating = resultSearch.value[index].rate_star,
                     price = resultSearch.value[index].total_rate,
+                    location = resultSearch.value[index].address ?: EMPTY_STRING,
                 ) {
                     navController.navigate(Route.RoomListScreen.route)
                 }

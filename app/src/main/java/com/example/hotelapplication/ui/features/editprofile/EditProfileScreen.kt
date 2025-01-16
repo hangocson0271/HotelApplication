@@ -1,9 +1,9 @@
 package com.example.hotelapplication.ui.features.editprofile
 
+import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
@@ -21,6 +21,7 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material3.Button
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ElevatedButton
@@ -33,6 +34,9 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -43,9 +47,9 @@ import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
@@ -53,6 +57,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.hotelapplication.R
+import com.example.hotelapplication.extentions.hiltViewModel
 import com.example.hotelapplication.ui.commonComponents.Texts.HeaderLabelScreen
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -73,6 +78,23 @@ enum class IconChoose{
 fun EditProfileScreen(focusManager: FocusManager = LocalFocusManager.current
                       ,navController: NavController
 ) {
+    val viewModel = hiltViewModel<EditProfileScreenViewModel>()
+    val editProfileUiState by viewModel.editProfileUiState.collectAsState()
+    var userNameChange by remember { mutableStateOf("") }
+    var dateOfBirthChange by remember { mutableStateOf("") }
+    var phoneChange by remember { mutableStateOf("") }
+    var emailChange by remember { mutableStateOf("") }
+
+    LaunchedEffect(Unit) {
+        focusManager.clearFocus()
+        viewModel.getUserById()
+    }
+    SideEffect {
+        userNameChange = editProfileUiState.userName
+        dateOfBirthChange = editProfileUiState.dateOfBirth
+        phoneChange = editProfileUiState.phone
+        emailChange = editProfileUiState.email
+    }
     HeaderLabelScreen(stringResource(R.string.txt_edit_profile), navController)
     Column(
         modifier = Modifier
@@ -83,39 +105,91 @@ fun EditProfileScreen(focusManager: FocusManager = LocalFocusManager.current
     ){
         var visibleEdit by remember{mutableStateOf(true)}
         UserInfoInput(
+            value = editProfileUiState.userName,
             textInput = stringResource(R.string.enter_username),
-            KeyBoardChoose.TEXT){
+            KeyBoardChoose.TEXT,
+            onChangeValue = {
+                viewModel.setUserName(it)
+                userNameChange = it
+            }
+        ){
             visibleEdit = false
         }
-        DatePickerFieldToModal{
+        DatePickerFieldToModal(
+            dateOfBirth = editProfileUiState.dateOfBirth,
+            onDateSelected = {
+                viewModel.setDateOfBirth(convertMillisToDate(it?:0))
+                dateOfBirthChange = convertMillisToDate(it?:0)
+            }
+        ){
             visibleEdit = false
         }
         UserInfoInput(
+            value = editProfileUiState.phone,
             textInput = stringResource(R.string.enter_phonenumber),
-            KeyBoardChoose.PHONE){
+            KeyBoardChoose.PHONE,
+            onChangeValue = {
+                viewModel.setPhone(it)
+                phoneChange = it
+            }
+        ){
             visibleEdit = false
         }
         UserInfoInput(
+            value = editProfileUiState.email,
             textInput = stringResource(R.string.enter_email),
-            KeyBoardChoose.MAIL){
+            KeyBoardChoose.MAIL,
+            onChangeValue = {
+                viewModel.setEmail(it)
+                emailChange = it
+            }
+        ){
             visibleEdit = false
         }
         AllButtonEdit(
             focusManager,
             visibleEdit,
-            onClickEdit = {visibleEdit = false}
+            onClickEdit = {
+                visibleEdit = false
+            }
         ){
             visibleEdit = true
+            viewModel.updateUserData(userNameChange, dateOfBirthChange, phoneChange, emailChange)
+        }
+        LanguageSelection()
+    }
+}
+@Composable
+fun LanguageSelection() {
+    val context = LocalContext.current
+    val viewModel = hiltViewModel<EditProfileScreenViewModel>()
+
+    Row(
+        modifier = Modifier.padding(16.dp)
+    ) {
+        Button(onClick = {
+            Log.i("TAG" , "set language to English")
+            viewModel.setAppLanguage(context, "en")
+        }) {
+            Text(stringResource(id = R.string.english))
+        }
+        Button(onClick = {
+            Log.i("TAG" , "set language to Vietnamese")
+            viewModel.setAppLanguage(context, "vi")
+        }) {
+            Text(stringResource(id = R.string.vietnamese))
         }
     }
 }
 
 @Composable
-fun UserInfoInput(textInput: String,
-                  keyType: KeyBoardChoose,
-                  onGetFocus:() -> Unit) {
+fun UserInfoInput(
+    value: String,
+    textInput: String,
+    keyType: KeyBoardChoose,
+    onChangeValue: (value: String) -> Unit,
+    onGetFocus:() -> Unit) {
     val focusRequester = remember{ FocusRequester() }
-    var inputString by remember{mutableStateOf("")}
     val keyBoardUse = when(keyType){
         KeyBoardChoose.TEXT-> KeyboardType.Text
         KeyBoardChoose.PHONE-> KeyboardType.Phone
@@ -126,8 +200,8 @@ fun UserInfoInput(textInput: String,
             .padding(vertical = 8.dp)
             .fillMaxWidth()
             .focusRequester(focusRequester)
-            .onFocusChanged{
-                if(it.isFocused) {
+            .onFocusChanged {
+                if (it.isFocused) {
                     onGetFocus()
                 }
             },
@@ -138,8 +212,8 @@ fun UserInfoInput(textInput: String,
             focusedIndicatorColor = colorResource(id = R.color.main_color),
             unfocusedIndicatorColor = colorResource(id = R.color.gray)
         ),
-        value = inputString,
-        onValueChange = {inputString = it },
+        value = value,
+        onValueChange = {onChangeValue(it) },
         placeholder = {Text(textInput)},
         keyboardOptions = KeyboardOptions.Default.copy(
             keyboardType = keyBoardUse
@@ -148,12 +222,14 @@ fun UserInfoInput(textInput: String,
 
 @Composable
 fun DatePickerFieldToModal(modifier: Modifier = Modifier,
+                           onDateSelected: (Long?) -> Unit,
+                           dateOfBirth: String,
                            onGetFocus:() -> Unit) {
     var selectedDate by remember{mutableStateOf<Long?>(null)}
     var showModal by remember{mutableStateOf(false)}
 
     OutlinedTextField(
-        value = selectedDate?.let{convertMillisToDate(it)}?:"",
+        value = selectedDate?.let{convertMillisToDate(it)}?:dateOfBirth,
         onValueChange = { },
         label = {Text(stringResource(R.string.txt_dob))},
         placeholder = {Text(stringResource(R.string.txt_format_dob))},
@@ -162,16 +238,17 @@ fun DatePickerFieldToModal(modifier: Modifier = Modifier,
         },
         modifier = modifier
             .fillMaxWidth()
-            .pointerInput(selectedDate){
-                awaitEachGesture{
+            .pointerInput(selectedDate) {
+                awaitEachGesture {
                     awaitFirstDown(pass = PointerEventPass.Initial)
                     val upEvent = waitForUpOrCancellation(pass = PointerEventPass.Initial)
-                    if(upEvent != null) {
+                    if (upEvent != null) {
                         showModal = true
                     }
-                } }
-            .onFocusChanged{
-                if(it.isFocused) {
+                }
+            }
+            .onFocusChanged {
+                if (it.isFocused) {
                     onGetFocus()
                 }
             }
@@ -179,7 +256,9 @@ fun DatePickerFieldToModal(modifier: Modifier = Modifier,
 
     if(showModal) {
         DatePickerModal(
-            onDateSelected = {selectedDate = it },
+            onDateSelected = {
+                selectedDate = it
+                onDateSelected(selectedDate) },
             onDismiss = {showModal = false}
         )
     }
@@ -221,9 +300,10 @@ fun AllButtonEdit(focusManager: FocusManager,
                   visibleEdit: Boolean,
                   onClickEdit:() -> Unit,
                   onClickCheckAndClose:() -> Unit) {
-    Row(Modifier
-        .padding(16.dp)
-        .fillMaxWidth(),
+    Row(
+        Modifier
+            .padding(16.dp)
+            .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceEvenly
     ){
         ButtonFade(!visibleEdit, IconChoose.CLOSE){

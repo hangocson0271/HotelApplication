@@ -14,8 +14,6 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -28,11 +26,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.hotelapplication.R
+import com.example.hotelapplication.ui.commonComponents.TextField.PasswordInputTextField
 import com.example.hotelapplication.ui.theme.MainColor
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ForgotPasswordStep3Dialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
+fun ForgotPasswordStep3Dialog(
+    isForgotPassError: Boolean? = false,
+    errorMessage: Int?,
+    onDismiss: () -> Unit,
+    onConfirm: (newPassword: String, confirmPassword: String) -> Unit
+) {
     var newPassword by rememberSaveable { mutableStateOf("") }
     var confirmPassword by rememberSaveable { mutableStateOf("") }
 
@@ -49,32 +53,25 @@ fun ForgotPasswordStep3Dialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
                     modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 8.dp),
                     text = stringResource(R.string.enter_new_password)
                 )
-                OutlinedTextField(
-                    modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 16.dp),
+                PasswordInputTextField(
                     value = newPassword,
-                    onValueChange = { newPassword = it },
-                    placeholder = {
-                        Text(stringResource(R.string.txt_new_password))
+                    onValueChange = { value ->
+                        newPassword = value
                     },
-                    colors = OutlinedTextFieldDefaults.colors().copy(
-                        cursorColor = MainColor,
-                        focusedIndicatorColor = MainColor,
-                    )
+                    placeholder = stringResource(R.string.txt_new_password)
                 )
                 Text(
                     modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 8.dp),
                     text = stringResource(R.string.re_enter_password)
                 )
-                OutlinedTextField(
+                PasswordInputTextField(
                     value = confirmPassword,
-                    onValueChange = { confirmPassword = it },
-                    placeholder = {
-                        Text(stringResource(R.string.txt_confirm))
+                    onValueChange = { value ->
+                        confirmPassword = value
                     },
-                    colors = OutlinedTextFieldDefaults.colors().copy(
-                        cursorColor = MainColor,
-                        focusedIndicatorColor = MainColor,
-                    )
+                    placeholder = stringResource(R.string.txt_confirm),
+                    isError = isForgotPassError,
+                    errorMessage = errorMessage
                 )
                 Row(
                     modifier = Modifier
@@ -95,7 +92,7 @@ fun ForgotPasswordStep3Dialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
                         Modifier.width(8.dp)
                     )
                     ElevatedButton(
-                        onClick = { onConfirm() },
+                        onClick = { onConfirm(newPassword, confirmPassword) },
                         colors = ButtonDefaults.elevatedButtonColors()
                             .copy(
                                 containerColor = MainColor,
@@ -113,5 +110,5 @@ fun ForgotPasswordStep3Dialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
 @Preview
 @Composable
 fun ForgotPasswordStep3DialogPreview() {
-    ForgotPasswordStep3Dialog({}, {})
+    ForgotPasswordStep3Dialog( false, 0, {}, { _, _ -> })
 }

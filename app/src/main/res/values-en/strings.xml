@@ -1,5 +1,170 @@
 <resources>
+    <string name="english">English</string>
+    <string name="vietnamese">Vietnamese</string>
     <string name="app_name">Hotel Application</string>
+    <string name="splash_screen_title">Find your ideal \nHotel to stay</string>
+    <string name="splash_screen_description">Discover the best hotels at great prices when you search with Otel</string>
+    <string name="splash_screen_subcontent">Search through 10,234 hotels in VietNam</string>
+    <string name="btn_get_started">Get started</string>
 
+    <!-- Login / Signup Screen -->
+    <string name="dont_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="have_any_account">Already have an account ?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="login">Log In</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="txt_password_policy">Password must be at least 8 Characters, 1 uppercase, 1 lowercase, 1 numeric and 1 symbol\n(like abc1234!A)</string>
+    <string name="txt_email_wrong_format">Incorrect email format</string>
+    <string name="txt_username_should_not_null">Incorrect phone number format</string>
+    <string name="txt_unknow_error">Incorrect email format</string>
+    <string name="txt_register_done">Register Done!</string>
+    <string name="txt_default_username">0987654321</string>
+    <string name="txt_default_password">abc1234!</string>
+
+    <string name="new_credit_debit_card">New credit/Debit Card</string>
+    <string name="paypal">Paypal</string>
+    <string name="apple_pay">Apple Pay</string>
+    <string name="google_pay">Google Pay</string>
+    <string name="_continue">Continue</string>
+    <string name="other_payment_method">Other Payment Method</string>
+    <string name="my_card">My Card</string>
+    <string name="edit_card">Edit Card</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="txt_or">or</string>
+    <string name="txt_username">Username</string>
+    <string name="txt_password">Password</string>
+    <string name="txt_email">Email</string>
     <string name="search_hint">Search for hotel</string>
+    <string name="enter_username">Enter name</string>
+    <string name="txt_phone">Phone</string>
+    <string name="enter_phonenumber">Enter phone number</string>
+    <string name="enter_email">Enter email</string>
+    <string name="txt_dob">Date of Birth</string>
+    <string name="txt_format_dob">MM/dd/yyyy</string>
+    <string name="select_date">Select date</string>
+    <string name="txt_ok">OK</string>
+    <string name="txt_cancel">Cancel</string>
+    <string name="txt_edit_profile">Edit Profile</string>
+    <string name="txt_accept">Accept</string>
+    <string name="txt_name">Name</string>
+    <string name="txt_confirm_booking">Confirm Booking</string>
+    <string name="txt_check_in">Check in</string>
+    <string name="txt_check_out">Check out</string>
+    <string name="txt_room_type">Room Type</string>
+    <string name="txt_guest">Guest</string>
+    <string name="txt_room_number">Number of rooms</string>
+    <string name="txt_total_price">Total%1$s</string>
+    <string name="cancellation_policy_title">Cancellation Policy</string>
+    <string name="cancellation_policy_text">
+        """
+        Thank you for choosing our service. We understand that sometimes plans change, and you may need to cancel or modify your booking. Below, you’ll find the details of our cancellation policy, which has been designed to be fair to both our customers and our business. Please read the following terms carefully before proceeding with any cancellations.
+
+        1. Cancellation Period
+        - You may cancel your booking or subscription up to 24 hours before the scheduled start time to receive a full refund.
+        - Cancellations made within 24 hours of the scheduled start time will be subject to a cancellation fee of 50% of the total amount.
+        - If the cancellation is made less than 2 hours before the scheduled time, no refund will be provided.
+        - For subscription-based services, cancellations can be made at any time during the billing cycle. However, if you cancel your subscription mid-cycle, no pro-rated refund will be issued for the remaining period.
+
+        2. How to Cancel
+        To cancel your booking or subscription, please follow these steps:
+        1. Log into your account on our website or mobile app.
+        2. Navigate to the "My Bookings" or "My Subscriptions" section.
+        3. Select the booking or subscription you wish to cancel.
+        4. Click on the "Cancel" button and confirm your cancellation.
+
+        Alternatively, you can contact our support team by email or phone, and they will assist you with the cancellation process.
+
+        3. Refund Process
+        - Refunds, if applicable, will be processed using the same payment method that was used for the original transaction. Please allow 5-7 business days for the refund to appear in your account, depending on your payment provider.
+        - In case of a cancellation due to exceptional circumstances such as an emergency or illness, please contact our customer service team, and we may offer special consideration on a case-by-case basis.
+
+        4. No-show Policy
+        If you do not show up for your scheduled service and fail to cancel your booking within the specified time, you will not be entitled to a refund, and a no-show fee may apply. The no-show fee will be equivalent to the full cost of the service or booking.
+
+        5. Exceptions to the Cancellation Policy
+        While we have designed our cancellation policy to be fair and straightforward, we recognize that certain situations may warrant exceptions. The following are some cases where our standard cancellation policy may not apply:
+        - Medical emergencies: If you are unable to attend due to a medical emergency, please provide relevant documentation, and we may offer a refund or reschedule at no extra cost.
+        - Force Majeure: In cases of unforeseen events such as natural disasters, government-imposed restrictions, or other extraordinary circumstances beyond our control, we reserve the right to waive the cancellation fee or offer a full refund.
+
+        """
+    </string>
+    <string name="txt_night">Night</string>
+    <string name="txt_single">Single Room</string>
+    <string name="txt_double">Double Room</string>
+    <string name="txt_suite">Suite Room</string>
+    <string name="txt_have_breakfast">Breakfast Included</string>
+    <string name="txt_no_breakfast">No Breakfast Included</string>
+    <string name="txt_book">Book</string>
+    <string name="room_list_screen">Room List Screen</string>
+    <string name="upcoming_book_screen">UpComing Book Screen</string>
+
+    <!--Search Screen-->
+    <string name="search_screen_title">Search</string>
+    <string name="hotel_result">Filter (%d hotels)</string>
+    <string name="txt_viewbooking">View Booking</string>
+    <string name="txt_booking_completed">Booking Completed</string>
+    <string name="txt_booking_cancel">You cancelled this hotel booking</string>
+
+    <!--Forgot Password Screen-->
+    <string name="txt_continue">Continue</string>
+    <string name="txt_confirm">Confirm</string>
+    <string name="re_enter_password">Re-enter new password</string>
+    <string name="txt_new_password">New password</string>
+    <string name="enter_new_password">Enter new password:</string>
+    <string name="txt_done">Done</string>
+    <string name="enter_phone_email_title">Enter phone number / email:</string>
+    <string name="txt_phone_email">Phone/email</string>
+    <string name="txt_enter_verification_code">Enter verification code:</string>
+    <string name="txt_success">Success!</string>
+    <string name="txt_error_change_pw">Error! Cannot change the password!</string>
+
+
+    <!--Notifications Screen-->
+    <string name="txt_subject_password_change">Password Changed Successfully</string>
+    <string name="txt_content_password_change">Your password has been updated successfully.</string>
+
+    <string name="txt_subject_order_placed_successfully">Your order has been placed successfully.</string>
+    <string name="txt_content_order_placed_successfully">Password Changed Successfully</string>
+
+    <string name="txt_subject_payment_successfully">Payment Successful.</string>
+    <string name="txt_content_payment_successfully">Your payment has been processed successfully.</string>
+
+    <string name="txt_title_screen_notifications">Notification</string>
+
+    <!--Booking Form Screen-->
+    <string name="txt_select_date">Select date</string>
+    <string name="title_booking_form">Booking Form</string>
+    <string name="title_booking_summary">Booking Summary</string>
+    <string name="txt_first_name">First Name</string>
+    <string name="txt_surname">Surname</string>
+    <string name="txt_id_card_passport">ID Card/Passport</string>
+    <string name="txt_notes">Notes</string>
+
+    <!--Sort/ Filter Screen-->
+    <string name="sort_filter_title">Filter</string>
+    <string name="reset_label">Reset</string>
+    <string name="apply_label">Apply</string>
+    <string name="sortBy_label">Sort by</string>
+    <string name="see_all_label">See All</string>
+    <string name="sort_result_by_label">Sort results by</string>
+    <string name="star_rating_label">Star Rating</string>
+    <string name="facilities_label">Facilities</string>
+    <string name="wifi_label">Wifi</string>
+
+    <!-- Forgot Password -->
+    <string name="txt_incorrect_username_password">The Username or Password is Incorrect!</string>
+    <string name="txt_incorrect_verify_code">Incorrect Verify Code!</string>
+    <string name="txt_password_not_equals">Passwords did not match</string>
+    <string name="txt_invalid_account">Incorrect phone number or email format</string>
+
+    <string name="txt_booking_confirm_message">You have successfully made the payment</string>
+
+    <!-- Sort drop down -->
+    <string name="price_increase_title">Price increase</string>
+    <string name="price_decrease_title">Price decrease</string>
+    <string name="rate_increase_title">Rate increase</string>
+    <string name="rate_decrease_title">Rate decrease</string>
+    <string name="all_title">All</string>
+
 </resources>
