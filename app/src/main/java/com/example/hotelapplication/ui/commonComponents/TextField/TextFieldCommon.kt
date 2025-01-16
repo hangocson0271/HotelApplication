@@ -3,9 +3,6 @@ package com.example.hotelapplication.ui.commonComponents.TextField
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -25,20 +22,22 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.hotelapplication.R
-import com.example.hotelapplication.ui.commonComponents.Buttons.ElevatedCardHomeScreen
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TextFieldCommon(
+    value: String,
+    onChangeValue: (value: String) -> Unit,
     label: String,
     leadingIcon: Int,
     trailingIcon: Int? = null
 ) {
-    var textInput by rememberSaveable { mutableStateOf("") }
     var passwordVisible by rememberSaveable { mutableStateOf(trailingIcon == null) }
+
     TextField(
-        value = textInput,
-        onValueChange = { textInput = it },
+        value = value,
+        onValueChange = {
+            onChangeValue(it)
+        },
         label = {
             Text(text = label, color = colorResource(id = R.color.gray))
         },
@@ -74,6 +73,8 @@ fun TextFieldCommon(
 fun TextFieldCommonPreview() {
     MaterialTheme {
         TextFieldCommon(
+            "",
+            { _ -> {}},
             label = "Enter location",
             leadingIcon = R.drawable.ic_location
         )
