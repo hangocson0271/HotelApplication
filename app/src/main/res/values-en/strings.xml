@@ -155,4 +155,5 @@
     <string name="txt_incorrect_verify_code">Incorrect Verify Code!</string>
     <string name="txt_password_not_equals">Passwords did not match</string>
     <string name="txt_invalid_account">Incorrect phone number or email format</string>
+    <string name="txt_booking_confirm_message">You have successfully made the payment</string>
 </resources>
