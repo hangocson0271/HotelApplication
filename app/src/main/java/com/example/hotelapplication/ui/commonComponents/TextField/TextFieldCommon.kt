@@ -22,6 +22,8 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.hotelapplication.R
+import com.example.hotelapplication.constant.EMPTY_STRING
+import com.example.hotelapplication.ui.commonComponents.Texts.TextPlaceholder
 
 @Composable
 fun TextFieldCommon(
@@ -29,7 +31,8 @@ fun TextFieldCommon(
     onChangeValue: (value: String) -> Unit,
     label: String,
     leadingIcon: Int,
-    trailingIcon: Int? = null
+    trailingIcon: Int? = null,
+    placeholder: String = EMPTY_STRING
 ) {
     var passwordVisible by rememberSaveable { mutableStateOf(trailingIcon == null) }
 
@@ -66,14 +69,17 @@ fun TextFieldCommon(
             focusedIndicatorColor = colorResource(id = R.color.main_color),
             unfocusedIndicatorColor = colorResource(id = R.color.gray)
         ),
+        placeholder = {
+            TextPlaceholder(text = placeholder)
+        }
     )
 }
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun TextFieldCommonPreview() {
     MaterialTheme {
         TextFieldCommon(
-            "",
+            "basc",
             { _ -> {}},
             label = "Enter location",
             leadingIcon = R.drawable.ic_location

@@ -1,6 +1,5 @@
 package com.example.hotelapplication.ui.features.signup
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.hotelapplication.R
 import com.example.hotelapplication.base.BaseViewModel
@@ -39,9 +38,9 @@ class SignupViewModel @Inject constructor(
             /* Fake internet connection time */
             delay(2000)
 
-            val username = _signupUiState.value.username
-            val email = _signupUiState.value.email
-            val password = _signupUiState.value.password
+            val username = _signupUiState.value.username.trim()
+            val email = _signupUiState.value.email.trim()
+            val password = _signupUiState.value.password.trim()
 
             if (!isPhoneNumber(username)) {
                 updateErrorState(R.string.txt_username_should_not_null)
@@ -56,9 +55,9 @@ class SignupViewModel @Inject constructor(
                 return@launch
             }
 
-            val user_id = userRepository.insertUser(username, email, password)
-            Log.d("TuanTQ45", "signup: ${user_id}")
-            if (user_id > 0) {
+            val userId = userRepository.insertUser(username, email, password)
+
+            if (userId > 0) {
                 _signupUiState.update {
                     it.copy(
                         state = LoadStatus.Success()

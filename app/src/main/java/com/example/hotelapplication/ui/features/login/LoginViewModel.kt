@@ -4,18 +4,22 @@ import androidx.lifecycle.viewModelScope
 import com.example.hotelapplication.R
 import com.example.hotelapplication.base.BaseViewModel
 import com.example.hotelapplication.constant.SharePreferenceConstant
+import com.example.hotelapplication.data.user.User
 import com.example.hotelapplication.data.user.UserRepository
 import com.example.hotelapplication.extentions.isEmail
 import com.example.hotelapplication.extentions.isPhoneNumber
+import com.example.hotelapplication.extentions.isValidPassword
 import com.example.hotelapplication.repositories.StoreValue
 import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordStep
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,6 +31,8 @@ class LoginViewModel @Inject constructor(
     private val _viewModelState = MutableStateFlow(LoginUiState())
     val loginUiState: StateFlow<LoginUiState>
         get() = _viewModelState.asStateFlow()
+
+    private var forgotUser: User? = null
 
     fun checkAndAutoLogin() {
         val username: String = storeValue.getStringValue(SharePreferenceConstant.USER_NAME_PREF)
@@ -70,12 +76,13 @@ class LoginViewModel @Inject constructor(
             )
 
             if (user != null) {
+                storeValue.setIntValue(
+                    SharePreferenceConstant.USER_ID_PREF,
+                    user.user_id
+                )
+
                 if (loginUiState.value.isRememberChecked) {
                     /* Save user info to SharePreference */
-                    storeValue.setIntValue(
-                        SharePreferenceConstant.USER_ID_PREF,
-                        user.user_id
-                    )
                     storeValue.setStringValue(
                         SharePreferenceConstant.USER_NAME_PREF,
                         loginAccount
@@ -127,7 +134,10 @@ class LoginViewModel @Inject constructor(
     fun setForgotPasswordState(step: ForgotPasswordStep) {
         viewModelScope.launch {
             _viewModelState.update {
-                it.copy(forgotPasswordStep = step)
+                it.copy(
+                    forgotPasswordStep = step,
+                    errorMessage = R.string.txt_incorrect_username_password
+                )
             }
         }
     }
@@ -145,5 +155,87 @@ class LoginViewModel @Inject constructor(
 
     private fun checkValidInput(account: String): Boolean {
         return isPhoneNumber(account) || isEmail(account)
+    }
+
+    fun checkForgotAccount(account: String) {
+        viewModelScope.launch {
+            forgotUser = userRepository.getUserByAccount(account)
+            setForgotPasswordState(ForgotPasswordStep.VERIFY_CODE)
+        }
+    }
+
+    fun checkForgotVerifyCode(code: String) {
+        viewModelScope.launch {
+            /* Check verify code like user's password */
+            if (forgotUser?.password?.trim().equals(code.trim())) {
+                _viewModelState.update {
+                    it.copy(
+                        isForgotPassError = false,
+                        forgotPasswordStep = ForgotPasswordStep.ENTER_NEW_PW,
+                        errorMessage = R.string.txt_incorrect_username_password
+                    )
+                }
+            } else {
+                _viewModelState.update {
+                    it.copy(
+                        isForgotPassError = true,
+                        forgotPassErrorMessage = R.string.txt_incorrect_verify_code
+                    )
+                }
+            }
+        }
+    }
+
+    fun checkForgotNewPassword(newPassword: String, confirmPassword: String) {
+        viewModelScope.launch {
+            withContext(Dispatchers.Default) {
+                if (!isValidPassword(newPassword) || !isValidPassword(confirmPassword)) {
+                    _viewModelState.update {
+                        it.copy(
+                            isForgotPassError = true,
+                            forgotPassErrorMessage = R.string.txt_password_policy
+                        )
+                    }
+                } else if (newPassword != confirmPassword) {
+                    _viewModelState.update {
+                        it.copy(
+                            isForgotPassError = true,
+                            forgotPassErrorMessage = R.string.txt_password_not_equals
+                        )
+                    }
+                } else {
+                    _viewModelState.update {
+                        it.copy(
+                            isLoading = true
+                        )
+                    }
+
+                    /* Update password */
+                    withContext(Dispatchers.IO) {
+                        val result = forgotUser?.copy(password = newPassword)
+                            ?.let { userRepository.updatePassword(it) }
+                        if (result != null && result > 0) {
+                            _viewModelState.update {
+                                it.copy(
+                                    isLoading = false,
+                                    isForgotPassError = false,
+                                    forgotPassErrorMessage = 0,
+                                    forgotPasswordStep = ForgotPasswordStep.RESULT_OK
+                                )
+                            }
+                        } else {
+                            _viewModelState.update {
+                                it.copy(
+                                    isLoading = false,
+                                    isForgotPassError = false,
+                                    forgotPassErrorMessage = 0,
+                                    forgotPasswordStep = ForgotPasswordStep.ERROR
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
