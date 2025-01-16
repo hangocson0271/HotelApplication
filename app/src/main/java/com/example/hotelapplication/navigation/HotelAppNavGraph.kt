@@ -16,7 +16,7 @@ import com.example.hotelapplication.ui.features.booking.CancellationPolicyScreen
 import com.example.hotelapplication.ui.features.editprofile.EditProfileScreen
 import com.example.hotelapplication.ui.features.login.LoginScreen
 import com.example.hotelapplication.ui.features.main.MainScreen
-import com.example.hotelapplication.ui.features.main.RoomListScreen
+import com.example.hotelapplication.ui.features.roomList.RoomListScreen
 import com.example.hotelapplication.ui.features.notifications.NotificationsScreen
 import com.example.hotelapplication.ui.features.payment.SceneSelectPayment
 import com.example.hotelapplication.ui.features.searchScreen.SearchScreen

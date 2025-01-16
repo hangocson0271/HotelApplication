@@ -80,6 +80,7 @@
     <string name="txt_night">Night</string>
     <string name="txt_single">Single Room</string>
     <string name="txt_double">Double Room</string>
+    <string name="txt_suite">Suite Room</string>
     <string name="txt_have_breakfast">Breakfast Included</string>
     <string name="txt_no_breakfast">No Breakfast Included</string>
     <string name="txt_book">Book</string>
