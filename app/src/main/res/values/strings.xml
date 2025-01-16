@@ -159,9 +159,9 @@
     <string name="txt_password_not_equals">Mật khẩu không khớp</string>
     <string name="txt_invalid_account">Định dạng số điện thoại hoặc email không đúng</string>
     <!-- Sort drop down -->
-    <string name="price_increase_title">Tăng giá</string>
-    <string name="price_decrease_title">Giảm giá</string>
-    <string name="rate_increase_title">DD</string>
-    <string name="rate_decrease_title">Giảm tỷ lệ</string>
-    <string name="all_title">Tất cả</string>
+    <string name="price_increase_title">Giá tăng dần</string>
+    <string name="price_decrease_title">Giá giảm dần</string>
+    <string name="rate_increase_title">Đánh giá tăng dần</string>
+    <string name="rate_decrease_title">Đánh giá tăng dần</string>
+    <string name="all_title">All</string>
 </resources>

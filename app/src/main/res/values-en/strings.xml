@@ -159,9 +159,9 @@
     <string name="txt_invalid_account">Incorrect phone number or email format</string>
 
     <!-- Sort drop down -->
-    <string name="price_increase_title">Tăng giá</string>
-    <string name="price_decrease_title">Giảm giá</string>
-    <string name="rate_increase_title">DD</string>
-    <string name="rate_decrease_title">Giảm tỷ lệ</string>
-    <string name="all_title">Tất cả</string>
+    <string name="price_increase_title">Price increase</string>
+    <string name="price_decrease_title">Price decrease</string>
+    <string name="rate_increase_title">Rate increase</string>
+    <string name="rate_decrease_title">Rate decrease</string>
+    <string name="all_title">All</string>
 </resources>
