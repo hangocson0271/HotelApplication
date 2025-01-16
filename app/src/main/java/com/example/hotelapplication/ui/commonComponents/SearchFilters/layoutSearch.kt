@@ -32,11 +32,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.hotelapplication.R
+import com.example.hotelapplication.constant.EMPTY_STRING
 
 @Composable
 fun LayoutSearch(
+    contentSearch: String = EMPTY_STRING,
     modifier: Modifier = Modifier,
     isSearchable: Boolean,
+    onQueryChanged: (String) -> Unit,
     onClick: () -> Unit = {},
     percentFillWidth: Float = 0.8f,
 ) {
@@ -45,9 +48,11 @@ fun LayoutSearch(
             .fillMaxWidth(percentFillWidth)
             .clip(RoundedCornerShape(20))
             .background(colorResource(R.color.gray_e3e3e4))
-            .clickable(enabled = true, onClick = {
-                onClick()
-            })
+            .clickable(
+                enabled = true,
+                onClick = {
+                    if (!isSearchable) onClick()
+                })
             .padding(5.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
@@ -55,12 +60,14 @@ fun LayoutSearch(
         var text by remember { mutableStateOf("") }
 
         BasicTextField(
-            enabled = isSearchable, value = text, onValueChange = {
-                text = it
-            }, textStyle = LocalTextStyle.current.copy(
+            enabled = isSearchable,
+            value = contentSearch,
+            onValueChange = onQueryChanged,
+            textStyle = LocalTextStyle.current.copy(
                 fontSize = 16.sp
-            ), decorationBox = { innerTextField ->
-                if (text.isEmpty()) {
+            ),
+            decorationBox = { innerTextField ->
+                if (contentSearch.isEmpty()) {
                     Text(
                         text = stringResource(R.string.search_hint),
                         color = Color.Gray,
@@ -77,18 +84,23 @@ fun LayoutSearch(
             modifier = Modifier
                 .padding(end = 10.dp)
                 .size(24.dp)
-
+                .clickable(
+                    enabled = true,
+                    onClick = {
+                        onClick()
+                    }
+                )
         )
     }
 }
 
 @Composable
 fun ButtonFilter(onClick: () -> Unit = {}) {
-    Image(painter = painterResource(R.drawable.ic_filter),
+    Image(
+        painter = painterResource(R.drawable.ic_filter),
         contentDescription = "",
         modifier = Modifier
             .clickable(enabled = true, onClick = {
-                Log.d("ButtonFilter", "ButtonFilter: XXX")
                 onClick()
             })
             .padding(5.dp)
@@ -102,7 +114,12 @@ fun ButtonFilter(onClick: () -> Unit = {}) {
 @Preview
 @Composable
 fun PreviewLayoutSearch() {
-    LayoutSearch(isSearchable = true)
+    var query by remember { mutableStateOf("") }
+
+    LayoutSearch(
+        isSearchable = true,
+        onQueryChanged = { newQuery -> query = newQuery },
+    )
 }
 
 @Preview

@@ -1,8 +1,11 @@
 package com.example.hotelapplication.base
 
 import androidx.lifecycle.ViewModel
-import com.example.hotelapplication.utils.SingleLiveEvent
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
 abstract class BaseViewModel : ViewModel() {
-    val loadingEvent by lazy { SingleLiveEvent<Boolean>() }
+//    protected val _loadingEvent = MutableStateFlow(false)
+//    val loadingEvent: StateFlow<Boolean> = _loadingEvent
+
 }

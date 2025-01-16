@@ -12,13 +12,14 @@ data class Hotel(
     @ColumnInfo(name = "rate_star") var rate_star: Long?,
     @ColumnInfo(name = "total_rate") var total_rate: Int?,
     @ColumnInfo(name = "description") var description: String?,
-    @ColumnInfo(name = "lat") var lat: String?,
-    @ColumnInfo(name = "lon") var lon: String?,
+    @ColumnInfo(name = "lat") var lat: Long?,
+    @ColumnInfo(name = "lon") var lon: Long?,
     @ColumnInfo(name = "start_price") var start_price: Long?,
     @ColumnInfo(name = "wifi") var wifi: Int?,
     @ColumnInfo(name = "pool") var pool: Int?,
     @ColumnInfo(name = "breakfast") var breakfast: Int?,
     @ColumnInfo(name = "gym") var gym: Int?,
     @ColumnInfo(name = "bar") var bar: Int?,
-    @ColumnInfo(name = "phone") var phone: String?
+    @ColumnInfo(name = "phone") var phone: String?,
+    @ColumnInfo(name = "address") var address: String?,
 )

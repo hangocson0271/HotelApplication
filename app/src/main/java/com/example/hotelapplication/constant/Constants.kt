@@ -6,3 +6,5 @@ object SharePreferenceConstant {
     const val USER_NAME_PREF: String = "username_pref"
     const val PASSWORD_PREF: String = "password_pref"
 }
+
+val EMPTY_STRING = ""

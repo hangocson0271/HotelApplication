@@ -96,8 +96,10 @@ fun MainScreen(
                     modifier = Modifier.padding(horizontal = 10.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    LayoutSearch(isSearchable = false,
+                    LayoutSearch(
+                        isSearchable = false,
                         percentFillWidth = 0.9f,
+                        onQueryChanged = {},
                         onClick = {
                             Log.d(TAG, "MainScreen: XXX")
                             navController.navigate(Route.SearchScreen.route)
