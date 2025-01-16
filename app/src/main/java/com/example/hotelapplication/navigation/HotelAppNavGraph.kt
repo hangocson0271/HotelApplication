@@ -30,7 +30,7 @@ fun HotelAppNavGraph() {
     Scaffold() {
         NavHost(
             navController = navController,
-            startDestination = Route.SceneSelectPayment.route,
+            startDestination = Route.SplashScreen.route,
             modifier = Modifier.padding(it)
         ) {
             composable(Route.MainScreen.route) { MainScreen(navController = navController) }
