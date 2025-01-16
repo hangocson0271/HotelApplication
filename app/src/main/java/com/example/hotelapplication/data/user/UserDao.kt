@@ -12,4 +12,6 @@ interface UserDao {
     @Query("SELECT * FROM user WHERE (phone LIKE :phone OR email LIKE :email) AND password LIKE :passWord LIMIT 1")
     suspend fun getUser(phone: String, email: String, passWord: String) : User?
 
+    @Query("SELECT * FROM user WHERE user_id = :userId LIMIT 1")
+    suspend fun getUserById(userId: Int): User?
 }

@@ -1,5 +1,6 @@
 package com.example.hotelapplication.ui.features.login
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.hotelapplication.R
 import com.example.hotelapplication.base.BaseViewModel
@@ -72,6 +73,7 @@ class LoginViewModel @Inject constructor(
             if (user != null) {
                 if (loginUiState.value.isRememberChecked) {
                     /* Save user info to SharePreference */
+                    Log.i("TAG", "user_id ${user.user_id} ")
                     storeValue.setIntValue(
                         SharePreferenceConstant.USER_ID_PREF,
                         user.user_id

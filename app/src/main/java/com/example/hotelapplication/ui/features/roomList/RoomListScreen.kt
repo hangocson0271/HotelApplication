@@ -63,7 +63,7 @@ fun RoomListScreen(
                         isHaveGym = rooms.value[index].gym,
                         isHaveBar = rooms.value[index].bar,
                     ) {
-                        navController.navigate(Route.BookingFormFirstPageScreen.route)
+                        navController.navigate("${Route.BookingFormFirstPageScreen.route}/${rooms.value[index].room_id}")
                     }
                 }
             }

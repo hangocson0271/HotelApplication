@@ -7,5 +7,4 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EditProfileScreenViewModel @Inject constructor(userRepository: UserRepository) : BaseViewModel() {
-
 }

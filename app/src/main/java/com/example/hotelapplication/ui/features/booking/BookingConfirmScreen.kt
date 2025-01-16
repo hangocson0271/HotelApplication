@@ -21,6 +21,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableLongStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -45,11 +50,14 @@ import com.example.hotelapplication.ui.theme.MainColor
 fun BookingConfirmScreen(navController: NavController) {
 
     val bookingViewModel = hiltViewModel<BookingScreenViewModel>()
-    val bookings = bookingViewModel.bookings.collectAsState()
     val insertedBookingId = bookingViewModel.insertedBookingId.value
+
+//    val userViewModel = hiltViewModel<User>()
 
     LaunchedEffect(insertedBookingId) {
         Log.i("TAG", "onClick bookingId $insertedBookingId")
+        bookingViewModel.getValues()
+
         if(insertedBookingId != -1) {
             navController.navigate("${Route.SceneSelectPayment.route}/${insertedBookingId}")
             bookingViewModel.resetInsertedBookingId()
@@ -93,7 +101,7 @@ fun BookingConfirmScreen(navController: NavController) {
                         )
 
                         Text(
-                            text = stringResource(id = R.string.txt_name),
+                            text = bookingViewModel.userName.collectAsState().value,
                             style = MaterialTheme.typography.titleLarge,
                             textAlign = TextAlign.End
                         )
@@ -113,7 +121,7 @@ fun BookingConfirmScreen(navController: NavController) {
                         )
 
                         Text(
-                            text = stringResource(id = R.string.txt_email),
+                            text = bookingViewModel.email.collectAsState().value,
                             style = MaterialTheme.typography.titleLarge,
                             textAlign = TextAlign.End
                         )
@@ -133,7 +141,7 @@ fun BookingConfirmScreen(navController: NavController) {
                         )
 
                         Text(
-                            text = stringResource(id = R.string.txt_phone),
+                            text = bookingViewModel.phone.collectAsState().value,
                             style = MaterialTheme.typography.titleLarge,
                             textAlign = TextAlign.End
                         )
@@ -191,13 +199,13 @@ fun BookingConfirmScreen(navController: NavController) {
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "01/01/2025",
+                            text = bookingViewModel.checkInDate.collectAsState().value,
                             style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.SemiBold),
                             textAlign = TextAlign.Center
                         )
 
                         Text(
-                            text = "28/01/2025",
+                            text = bookingViewModel.checkOutDate.collectAsState().value,
                             style = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.SemiBold),
                             textAlign = TextAlign.Center
                         )
@@ -221,47 +229,48 @@ fun BookingConfirmScreen(navController: NavController) {
                             )
 
                             Text(
-                                text = stringResource(id = R.string.txt_room_type),
+                                text = stringResource(R.string.txt_single),
                                 style = MaterialTheme.typography.titleLarge,
                                 textAlign = TextAlign.End
                             )
                         }
 
+//                        Row(
+//                            modifier = Modifier
+//                                .fillMaxWidth()
+//                                .padding(start = 15.dp, end = 15.dp),
+//                            horizontalArrangement = Arrangement.SpaceBetween,
+//                            verticalAlignment = Alignment.CenterVertically
+//                        ) {
+//                            Text(
+//                                text = stringResource(id = R.string.txt_guest),
+//                                style = MaterialTheme.typography.titleMedium,
+//                                textAlign = TextAlign.Start
+//                            )
+//
+//                            Text(
+//                                text = stringResource(id = R.string.txt_guest),
+//                                style = MaterialTheme.typography.titleLarge,
+//                                textAlign = TextAlign.End
+//                            )
+//                        }
+
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
+                                .height(100.dp)
                                 .padding(start = 15.dp, end = 15.dp),
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
-                                text = stringResource(id = R.string.txt_guest),
+                                text = stringResource(id = R.string.txt_notes),
                                 style = MaterialTheme.typography.titleMedium,
                                 textAlign = TextAlign.Start
                             )
 
                             Text(
-                                text = stringResource(id = R.string.txt_guest),
-                                style = MaterialTheme.typography.titleLarge,
-                                textAlign = TextAlign.End
-                            )
-                        }
-
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(start = 15.dp, end = 15.dp),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Text(
-                                text = stringResource(id = R.string.txt_room_number),
-                                style = MaterialTheme.typography.titleMedium,
-                                textAlign = TextAlign.Start
-                            )
-
-                            Text(
-                                text = stringResource(id = R.string.txt_room_number),
+                                text = bookingViewModel.notes.collectAsState().value,
                                 style = MaterialTheme.typography.titleLarge,
                                 textAlign = TextAlign.End
                             )
@@ -281,7 +290,7 @@ fun BookingConfirmScreen(navController: NavController) {
                             )
 
                             Text(
-                                text = stringResource(id = R.string.txt_total_price, ""),
+                                text =  "${200 * bookingViewModel.daysBetween.collectAsState().value}$",
                                 style = MaterialTheme.typography.titleLarge,
                                 textAlign = TextAlign.End
                             )
@@ -303,7 +312,6 @@ fun BookingConfirmScreen(navController: NavController) {
             ) {
                 Button(
                     onClick = {
-                        /* TODO implement to pass correct booking data for adding new booking */
                         bookingViewModel.addNewBooking()
                     },
                     modifier = Modifier

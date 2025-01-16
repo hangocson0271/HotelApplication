@@ -115,7 +115,7 @@ fun CancellationPolicyScreen(navController: NavController) {
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 Button(
-                    onClick = { /* TODO: Handle button click */ },
+                    onClick = { navController.navigateUp() },
                     modifier = Modifier
                         .padding(horizontal = 4.dp)
                         .width(150.dp),

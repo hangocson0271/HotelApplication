@@ -16,7 +16,7 @@ import com.example.hotelapplication.ui.theme.HotelApplicationTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint(ComponentActivity::class)
-class MainActivity : Hilt_MainActivity() {
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
