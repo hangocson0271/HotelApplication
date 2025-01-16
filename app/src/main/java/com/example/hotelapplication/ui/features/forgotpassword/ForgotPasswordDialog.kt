@@ -28,6 +28,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.hotelapplication.R
+import com.example.hotelapplication.constant.EMPTY_STRING
 import com.example.hotelapplication.ui.theme.MainColor
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -37,7 +38,9 @@ fun ForgotPasswordDialog(
     title: String,
     placeHolder: String,
     onDismiss: () -> Unit,
-    onConfirm: () -> Unit
+    onConfirm: (account: String) -> Unit,
+    isError: Boolean? = false,
+    errorMessage: Int? = 0,
 ) {
     var accountValue by rememberSaveable { mutableStateOf("") }
 
@@ -66,7 +69,13 @@ fun ForgotPasswordDialog(
                     colors = OutlinedTextFieldDefaults.colors().copy(
                         cursorColor = MainColor,
                         focusedIndicatorColor = MainColor,
-                    )
+                    ),
+                    isError = isError ?: false,
+                    supportingText = {
+                        if (isError == true) {
+                            Text(errorMessage?.let { stringResource(it) } ?: EMPTY_STRING)
+                        }
+                    }
                 )
                 Row(
                     modifier = Modifier
@@ -87,7 +96,7 @@ fun ForgotPasswordDialog(
                         Modifier.width(8.dp)
                     )
                     ElevatedButton(
-                        onClick = { onConfirm() },
+                        onClick = { onConfirm(accountValue) },
                         colors = ButtonDefaults.elevatedButtonColors()
                             .copy(
                                 containerColor = MainColor,

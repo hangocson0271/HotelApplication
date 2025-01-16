@@ -148,5 +148,7 @@
     <string name="facilities_label">Facilities</string>
     <string name="wifi_label">Wifi</string>
     <string name="txt_incorrect_username_password">The Username or Password is Incorrect!</string>
+    <string name="txt_incorrect_verify_code">Incorrect Verify Code!</string>
+    <string name="txt_password_not_equals">Passwords did not match</string>
 
 </resources>

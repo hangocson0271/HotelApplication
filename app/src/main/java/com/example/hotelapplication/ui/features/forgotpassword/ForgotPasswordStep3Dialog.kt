@@ -28,11 +28,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.hotelapplication.R
+import com.example.hotelapplication.constant.EMPTY_STRING
 import com.example.hotelapplication.ui.theme.MainColor
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ForgotPasswordStep3Dialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
+fun ForgotPasswordStep3Dialog(
+    isForgotPassError: Boolean? = false,
+    errorMessage: Int?,
+    onDismiss: () -> Unit,
+    onConfirm: (newPassword: String, confirmPassword: String) -> Unit
+) {
     var newPassword by rememberSaveable { mutableStateOf("") }
     var confirmPassword by rememberSaveable { mutableStateOf("") }
 
@@ -74,7 +80,13 @@ fun ForgotPasswordStep3Dialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
                     colors = OutlinedTextFieldDefaults.colors().copy(
                         cursorColor = MainColor,
                         focusedIndicatorColor = MainColor,
-                    )
+                    ),
+                    isError = isForgotPassError ?: false,
+                    supportingText = {
+                        if (isForgotPassError == true) {
+                            Text(errorMessage?.let { stringResource(it) } ?: EMPTY_STRING)
+                        }
+                    }
                 )
                 Row(
                     modifier = Modifier
@@ -95,7 +107,7 @@ fun ForgotPasswordStep3Dialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
                         Modifier.width(8.dp)
                     )
                     ElevatedButton(
-                        onClick = { onConfirm() },
+                        onClick = { onConfirm(newPassword, confirmPassword) },
                         colors = ButtonDefaults.elevatedButtonColors()
                             .copy(
                                 containerColor = MainColor,
@@ -113,5 +125,5 @@ fun ForgotPasswordStep3Dialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
 @Preview
 @Composable
 fun ForgotPasswordStep3DialogPreview() {
-    ForgotPasswordStep3Dialog({}, {})
+    ForgotPasswordStep3Dialog( false, 0, {}, { _, _ -> })
 }

@@ -18,9 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -47,7 +45,6 @@ import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordDia
 import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordResultDialog
 import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordStep
 import com.example.hotelapplication.ui.features.forgotpassword.ForgotPasswordStep3Dialog
-import kotlin.random.Random
 
 @Composable
 fun LoginScreen(
@@ -199,8 +196,8 @@ fun LoginScreen(
                     onDismiss = {
                         viewModel.setForgotPasswordState(ForgotPasswordStep.NONE)
                     },
-                    onConfirm = {
-                        viewModel.setForgotPasswordState(ForgotPasswordStep.VERIFY_CODE)
+                    onConfirm = { account ->
+                        viewModel.checkForgotAccount(account)
                     }
                 )
             }
@@ -212,25 +209,24 @@ fun LoginScreen(
                     onDismiss = {
                         viewModel.setForgotPasswordState(ForgotPasswordStep.NONE)
                     },
-                    onConfirm = {
-                        viewModel.setForgotPasswordState(ForgotPasswordStep.ENTER_NEW_PW)
-                    }
+                    onConfirm = { code ->
+                        viewModel.checkForgotVerifyCode(code)
+                    },
+                    isError = uiState.isForgotPassError,
+                    errorMessage = uiState.forgotPassErrorMessage
                 )
             }
 
             ForgotPasswordStep.ENTER_NEW_PW -> {
                 ForgotPasswordStep3Dialog(
+                    isForgotPassError = uiState.isForgotPassError,
+                    errorMessage = uiState.forgotPassErrorMessage,
                     onDismiss = {
                         viewModel.setForgotPasswordState(ForgotPasswordStep.NONE)
                     },
-                    onConfirm = {
-                        if (Random.nextBoolean()) {
-                            viewModel.setForgotPasswordState(ForgotPasswordStep.RESULT_OK)
-                        } else {
-                            viewModel.setForgotPasswordState(ForgotPasswordStep.ERROR)
-                        }
-
-                    }
+                    onConfirm = { newPassword, confirmPassword ->
+                        viewModel.checkForgotNewPassword(newPassword, confirmPassword)
+                    },
                 )
             }
 
